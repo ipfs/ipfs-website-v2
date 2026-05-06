@@ -1,0 +1,15 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import FoundationsIsland from './islands/Foundations.tsx';
+---
+
+<section style="padding: 96px 32px; background: var(--paper);">
+  <div class="mx-auto" style="max-width: 1240px;">
+    <SectionHeader
+      label="shared foundations"
+      title="Three commitments. Everything else follows."
+      kicker="Every tool in the IPFS constellation agrees on three principles. Pick one to see it in motion."
+    />
+    <FoundationsIsland client:visible />
+  </div>
+</section>

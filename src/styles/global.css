@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* Self-hosted Geist Sans (subpath imports, one weight per file) */
+@import "@fontsource/geist-sans/300.css";
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-sans/700.css";
+
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2'),
+       url('/fonts/DepartureMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* IPFS palette — names match the design source */
+  --color-ink: #0D1644;
+  --color-ink-2: #2D3662;
+  --color-ink-3: #616785;
+  --color-stone: #C4C7D6;
+  --color-pearl: #F5F7FD;
+  --color-paper: #ffffff;
+  --color-navy: #073A53;
+  --color-teal: #6BC4CE;
+  --color-turq: #47AFB4;
+  --color-jade: #3B8C90;
+  --color-yellow: #F39106;
+  --color-carmine: #E9502F;
+
+  --font-sans: 'Geist', system-ui, -apple-system, Segoe UI, sans-serif;
+  --font-mono: 'Departure Mono', ui-monospace, Menlo, monospace;
+}
+
+/* Aliases for prototype-style `var(--ink)` etc. so ported inline styles still work. */
+:root {
+  --ink: var(--color-ink);
+  --ink-2: var(--color-ink-2);
+  --ink-3: var(--color-ink-3);
+  --stone: var(--color-stone);
+  --pearl: var(--color-pearl);
+  --paper: var(--color-paper);
+  --navy: var(--color-navy);
+  --teal: var(--color-teal);
+  --turq: var(--color-turq);
+  --jade: var(--color-jade);
+  --yellow: var(--color-yellow);
+  --carmine: var(--color-carmine);
+  --line: rgba(13, 22, 68, 0.12);
+  --hair: rgba(13, 22, 68, 0.08);
+  --grad: linear-gradient(135deg, #073A53 0%, #43979B 100%);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--navy);
+}

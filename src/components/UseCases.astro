@@ -1,0 +1,45 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+const cases = [
+  {
+    icon: '▤', title: 'Archiving & publishing',
+    body: "Content-addressed data doesn't rot. Or — worst case — you know immediately when it's rotten. Store once, reference forever, verify anywhere.",
+  },
+  {
+    icon: '◈', title: 'Offline & local-first apps',
+    body: "A CID works the same whether bytes come from a local cache, a peer next door, or a remote server. Edit locally, sync later, no conflicts.",
+  },
+  {
+    icon: '⟐', title: 'Self-certifying communication',
+    body: "Networks like AT Protocol use CIDs. Receive data from anyone on the network and still know it's correct — no central authority required.",
+  },
+  {
+    icon: '◉', title: 'Decentralized data',
+    body: "Serve content from many sources simultaneously. No single point of failure, no single point of control. Scale up and down freely.",
+  },
+];
+---
+
+<section style="padding: 96px 32px; background: var(--pearl); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);">
+  <div class="mx-auto" style="max-width: 1240px;">
+    <SectionHeader
+      label="fits into what you're building"
+      title="Not a platform to migrate to. A property you add."
+      kicker="Content addressing is something you add to your toolbox to make it more powerful — not a separate platform. Sprinkle it in where it earns its keep."
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2" style="gap: 16px;">
+      {cases.map((c) => (
+        <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; grid-template-columns: 44px 1fr; gap: 16px;">
+          <div class="mono" style="width: 44px; height: 44px; border-radius: 8px; background: linear-gradient(135deg, rgba(107,196,206,0.18), rgba(7,58,83,0.08)); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600;">
+            {c.icon}
+          </div>
+          <div>
+            <h3 style="margin: 2px 0 6px; font-size: 18px; font-weight: 600; color: var(--navy);">{c.title}</h3>
+            <p style="margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.55;">{c.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

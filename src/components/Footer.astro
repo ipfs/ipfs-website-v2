@@ -1,0 +1,40 @@
+---
+import Logomark from './Logomark.astro';
+
+const columns: [string, string[]][] = [
+  ['Learn', ['Docs', 'Specs', 'Blog', 'Tutorials']],
+  ['Tools', ['Kubo', 'Helia', 'DASL', 'IPLD']],
+  ['Network', ['Amino', 'IPNI', 'Gateways']],
+  ['Community', ['Discuss', 'GitHub', 'Foundation']],
+];
+---
+
+<footer style="background: var(--navy); color: rgba(255,255,255,0.75); padding: 48px 32px; border-top: 1px solid rgba(255,255,255,0.08);">
+  <div class="mx-auto grid" style="max-width: 1240px; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px;">
+    <div>
+      <div class="flex items-center" style="gap: 10px; color: #fff; margin-bottom: 14px;">
+        <Logomark size={22} color="#fff" />
+        <span class="mono" style="font-weight: 600; font-size: 15px;">IPFS</span>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; max-width: 320px; color: rgba(255,255,255,0.6);">
+        An open-source project. Specs live at specs.ipfs.tech. The community gathers at discuss.ipfs.tech. Development is supported by the IPFS Foundation.
+      </p>
+    </div>
+    {columns.map(([h, items]) => (
+      <div>
+        <div class="mono" style="font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; font-weight: 600;">
+          {h}
+        </div>
+        {items.map((i) => (
+          <div style="font-size: 13px; margin-bottom: 8px;">
+            <a style="color: rgba(255,255,255,0.75); text-decoration: none;">{i}</a>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+  <div class="mx-auto flex justify-between" style="max-width: 1240px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: rgba(255,255,255,0.5);">
+    <span>© IPFS · MIT License</span>
+    <span class="mono">bafkreihzy3k2p7...qj9mnv</span>
+  </div>
+</footer>
