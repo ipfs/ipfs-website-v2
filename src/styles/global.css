@@ -7,6 +7,12 @@
 @import "@fontsource/geist-sans/600.css";
 @import "@fontsource/geist-sans/700.css";
 
+/* Workhorse monospace for code, CIDs, terminal-style content. */
+@import "@fontsource/commit-mono/400.css";
+@import "@fontsource/commit-mono/500.css";
+@import "@fontsource/commit-mono/600.css";
+
+/* Departure Mono — display accent only (brand wordmark, hero CTA). */
 @font-face {
   font-family: 'Departure Mono';
   src: url('/fonts/DepartureMono-Regular.woff2') format('woff2'),
@@ -32,7 +38,8 @@
   --color-carmine: #E9502F;
 
   --font-sans: 'Geist', system-ui, -apple-system, Segoe UI, sans-serif;
-  --font-mono: 'Departure Mono', ui-monospace, Menlo, monospace;
+  --font-mono: 'Commit Mono', ui-monospace, Menlo, monospace;
+  --font-display-mono: 'Departure Mono', 'Commit Mono', ui-monospace, monospace;
 }
 
 /* Aliases for prototype-style `var(--ink)` etc. so ported inline styles still work. */
@@ -64,8 +71,13 @@ html, body {
   line-height: 1.55;
 }
 
-code, .mono {
+code, pre, kbd, samp, .mono {
   font-family: var(--font-mono);
+}
+
+/* Reserved for brand/display accents — keep usage minimal. */
+.mono-display {
+  font-family: var(--font-display-mono);
 }
 
 ::selection {
