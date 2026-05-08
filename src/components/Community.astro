@@ -1,0 +1,114 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+const row1 = [
+  { n: 3, w: 420 },
+  { n: 11, w: 280 },
+  { n: 17, w: 380 },
+  { n: 6, w: 260 },
+  { n: 14, w: 340 },
+  { n: 9, w: 300 },
+];
+const row2 = [
+  { n: 7, w: 260 },
+  { n: 5, w: 400 },
+  { n: 13, w: 300 },
+  { n: 18, w: 360 },
+  { n: 2, w: 320 },
+  { n: 16, w: 280 },
+];
+const src = (n: number) => `/community/community-${n}.jpg`;
+---
+
+<section style="padding: 96px 0 96px; background: var(--paper); border-top: 1px solid var(--hair);">
+  <div class="mx-auto" style="max-width: 1240px; padding: 0 32px;">
+    <SectionHeader
+      label="get involved"
+      title="A protocol built in public."
+      kicker="The spec is open. The issues are filed in public. The roadmap belongs to everyone. Come see the work."
+    />
+  </div>
+
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon-row">
+      {[...row1, ...row1, ...row1].map(({ n, w }) => (
+        <div class="ribbon-tile" style={`width: ${w}px;`}>
+          <img src={src(n)} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+    <div class="ribbon-row">
+      {[...row2, ...row2, ...row2].map(({ n, w }) => (
+        <div class="ribbon-tile" style={`width: ${w}px;`}>
+          <img src={src(n)} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mx-auto" style="max-width: 1240px; padding: 40px 32px 0; display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline;">
+    <a class="mono community-link" href="https://lu.ma/ipfs">↗ event calendar</a>
+    <a class="mono community-link" href="https://discuss.ipfs.tech/">↗ discuss.ipfs.tech</a>
+    <a class="mono community-link" href="https://matrix.to/#/#ipfs-space:ipfs.io">↗ matrix</a>
+    <a class="mono community-link" href="https://discord.gg/vj7qWuAyHY">↗ discord</a>
+    <a class="mono community-link" href="https://ipfs.fyi/newsletter">↗ newsletter</a>
+  </div>
+</section>
+
+<style>
+  .ribbon {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* fade right edge where the row bleeds off-viewport */
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 92%, transparent);
+            mask-image: linear-gradient(to right, #000 0, #000 92%, transparent);
+  }
+  .ribbon-row {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: 32px;
+    /* hide scrollbar but keep touch/trackpad swipe */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .ribbon-row::-webkit-scrollbar { display: none; }
+  .ribbon-tile {
+    flex: 0 0 auto;
+    height: 220px;
+    overflow: hidden;
+    background: var(--stone, #eef0f2);
+    scroll-snap-align: start;
+  }
+  .ribbon-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(1);
+    transform: scale(1);
+    transition: filter .4s ease, transform .5s ease;
+  }
+  .ribbon-tile:hover img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+  }
+  @media (max-width: 640px) {
+    .ribbon { margin-top: 40px; gap: 8px; }
+    .ribbon-row { gap: 8px; padding-left: 20px; }
+    /* uniform, smaller tiles on mobile so the row reads as a swipeable strip */
+    .ribbon-tile { height: 160px; width: 240px !important; }
+  }
+  .community-link {
+    font-size: 13px;
+    color: var(--turq);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .community-link:hover { color: var(--navy); }
+</style>
