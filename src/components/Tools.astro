@@ -1,0 +1,15 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import ToolsIsland from './islands/Tools.tsx';
+---
+
+<section style="padding: 96px 32px; background: var(--paper); border-top: 1px solid var(--hair);">
+  <div class="mx-auto" style="max-width: 1240px;">
+    <SectionHeader
+      label="tools, by job-to-be-done"
+      title="Pick the tool that fits the job."
+      kicker="The constellation is large. Filter by what you actually need to do — run a node, pin content, ship a static site, or embed transfer in your app."
+    />
+    <ToolsIsland client:visible />
+  </div>
+</section>
