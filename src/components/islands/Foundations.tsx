@@ -23,7 +23,7 @@ interface Foundation {
 const FOUNDATIONS: Foundation[] = [
   {
     id: 'cid', num: '01', title: 'CIDs for addressing',
-    body: 'Data is identified by what it is, not where it lives. A CID is a self-describing, cryptographic fingerprint of the content — used by UnixFS, DASL, and BDASL to address everything from a single byte to a multi-gigabyte dataset. Any party generates one; any party verifies one.',
+    body: 'Data is identified by what it is, not where it lives. A CID is a self-describing, cryptographic fingerprint of the content, used by UnixFS, DASL, and BDASL to address everything from a single byte to a multi-gigabyte dataset. Any party generates one; any party verifies one.',
     demoHeading: 'Hash around, and find out.',
     demoSub: 'Change one character. Watch the whole CID change.',
     demo: <FileDropCID />,
@@ -34,7 +34,7 @@ const FOUNDATIONS: Foundation[] = [
   },
   {
     id: 'transport', num: '02', title: 'Transport agnostic',
-    body: "IPFS is strict about outcomes, tolerant about methods. The same CID can travel over HTTP, libp2p, Bitswap, RASL, or a USB key — and verification still happens at the endpoints. Hosts come and go. Routes change. The bytes you asked for arrive intact, or you know they didn't.",
+    body: "IPFS is strict about outcomes, tolerant about methods. The same CID can travel over HTTP, libp2p, Bitswap, RASL, or a USB key. Verification still happens at the endpoints. Hosts come and go. Routes change. The bytes you asked for arrive intact, or you know they didn't.",
     demoHeading: 'Take the host down. The content survives.',
     demoSub: 'Location-addressed URLs depend on a single server. CIDs do not.',
     demo: <LocationVsContent />,
@@ -46,7 +46,7 @@ const FOUNDATIONS: Foundation[] = [
   {
     id: 'everywhere', num: '03', title: 'Works everywhere',
     body: 'Verified publishing and retrieval, wherever you operate. Open social on atproto, sovereign web publishing on Mainnet tooling, IoT and streaming with iroh-blobs and private IPFS, tamperproof media for journalists and artists. Same protocol, different jobs to be done.',
-    demoHeading: 'Same bytes. Six runtimes.',
+    demoHeading: 'Pick up the bits you need, and run',
     demoSub: 'One CID, fetched and verified from wildly different places.',
     demo: <WorksEverywhere />,
     ctas: [

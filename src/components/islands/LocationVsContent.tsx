@@ -81,7 +81,7 @@ export default function LocationVsContent() {
           ✓ verified from any peer
         </div>
         <div style={{ marginTop: 12, fontSize: 12, color: 'var(--ink-3)', fontStyle: 'italic' }}>
-          The address <em>is</em> the fingerprint. Host, network, middle-box — none of them get to lie.
+          The address <em>is</em> the fingerprint. Host, network, middle-box. None of them get to lie.
         </div>
       </div>
     </div>

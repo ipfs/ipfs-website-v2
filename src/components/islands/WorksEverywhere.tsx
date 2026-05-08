@@ -95,7 +95,7 @@ export default function WorksEverywhere() {
         display: 'flex', alignItems: 'center', gap: 8,
       }}>
         <span style={{ color: 'var(--jade)' }}>✓</span>
-        same CID · same bytes · same guarantee — regardless of language or transport.
+        same CID · same bytes · same guarantee, regardless of language or transport.
       </div>
     </div>
   );

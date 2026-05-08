@@ -41,13 +41,13 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
       detail: 'Single-letter prefix that tells parsers how the rest is encoded. "b" = base32 lowercase.' },
     { key: 'ver', label: 'version', sub: 'CIDv1',
       chars: cid.slice(1, 2), color: 'var(--yellow)',
-      detail: 'Which CID format. "a" here encodes version 1 — self-describing, upgrade-safe.' },
+      detail: 'Which CID format. "a" here encodes version 1. Self-describing, upgrade-safe.' },
     { key: 'codec', label: 'multicodec', sub: 'raw · 0x55',
       chars: cid.slice(2, 4), color: 'var(--jade)',
-      detail: "What kind of bytes we're naming — raw, dag-pb, dag-cbor, JSON, etc. Tells you how to interpret the data once you fetch it." },
+      detail: "What kind of bytes we're naming. Raw, dag-pb, dag-cbor, JSON, etc. Tells you how to interpret the data once you fetch it." },
     { key: 'hfn', label: 'hash algo', sub: 'sha-256',
       chars: cid.slice(4, 6), color: 'var(--turq)',
-      detail: 'Which hash function was used. sha-256 here; but blake3, sha-512, and others are legal — the CID tells you which.' },
+      detail: 'Which hash function was used. sha-256 here; but blake3, sha-512, and others are legal. The CID tells you which.' },
     { key: 'hlen', label: 'hash length', sub: '32 bytes',
       chars: cid.slice(6, 8), color: 'var(--navy)',
       detail: 'How many bytes of digest follow. 32 bytes = 256 bits of sha-256.' },
@@ -131,7 +131,7 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
               </span>
             ) : (
               <span style={{ color: 'var(--ink-3)', fontStyle: 'italic' }}>
-                Hover any chunk above — a CID self-describes: it tells you how it was encoded, what kind of bytes it names, and which hash was used.
+                Hover any chunk above. A CID self-describes: it tells you how it was encoded, what kind of bytes it names, and which hash was used.
               </span>
             )}
           </div>

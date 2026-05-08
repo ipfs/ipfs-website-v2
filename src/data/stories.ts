@@ -21,12 +21,12 @@ export const categories: UseCaseCategory[] = [
     id: 'social',
     label: 'Open social',
     job: 'Self-certifying data for the next wave of open networks.',
-    framing: 'AT Protocol uses CIDs so anyone on the network can verify what they receive — no trusted server in the middle.',
+    framing: 'AT Protocol uses CIDs so anyone on the network can verify what they receive. No trusted server in the middle.',
     cases: [
       {
         brand: 'Stargate', hue: 270,
         title: 'A content-addressed backbone for atproto apps',
-        body: 'Stargate gives atproto applications a verifiable, content-addressed layer for identity, posts, and assets — anchored to IPFS.',
+        body: 'Stargate gives atproto applications a verifiable, content-addressed layer for identity, posts, and assets, anchored to IPFS.',
         linkLabel: 'Visit Stargate', link: 'vereign.com/stargate',
       },
       {
@@ -52,7 +52,7 @@ export const categories: UseCaseCategory[] = [
       {
         brand: 'Wikipedia', hue: 220,
         title: 'Restore a censored encyclopedia',
-        body: 'When the government of Turkey blocked Wikipedia, a copy was posted to IPFS — restoring access for millions of readers.',
+        body: 'When the government of Turkey blocked Wikipedia, a copy was posted to IPFS, restoring access for millions of readers.',
         linkLabel: 'Read the story', link: 'observer.com',
       },
       {
@@ -68,7 +68,7 @@ export const categories: UseCaseCategory[] = [
         linkLabel: 'Case study', link: 'docs.ipfs.tech',
         quote: {
           who: 'Tobias Kölling', role: 'Max Planck Institute for Meteorology',
-          text: 'Our local data infrastructure was stuck in customs. We set up IPFS on notebooks and a Raspberry Pi, and suddenly all scientists could sync, share, and collaborate — with automatic uploads back to Hamburg whenever the connection returned.',
+          text: 'Our local data infrastructure was stuck in customs. We set up IPFS on notebooks and a Raspberry Pi, and suddenly all scientists could sync, share, and collaborate, with automatic uploads back to Hamburg whenever the connection returned.',
         },
       },
     ],
@@ -77,7 +77,7 @@ export const categories: UseCaseCategory[] = [
     id: 'iot',
     label: 'IoT data & streaming',
     job: 'Lightweight private swarms with iroh-blobs and embedded IPFS.',
-    framing: 'Move bytes between sensors, satellites, factories, and games — with cryptographic guarantees and no central broker.',
+    framing: 'Move bytes between sensors, satellites, factories, and games, with cryptographic guarantees and no central broker.',
     cases: [
       {
         brand: 'WeatherXM', hue: 200,
@@ -98,7 +98,7 @@ export const categories: UseCaseCategory[] = [
         linkLabel: 'Read more', link: 'actyx.com',
         quote: {
           who: 'Roland Kuhn', role: 'Actyx',
-          text: 'Using IPFS private swarms, we deployed a fleet of devices communicating mission-critical data in a factory without any central infrastructure — which has allowed us to move much faster.',
+          text: 'Using IPFS private swarms, we deployed a fleet of devices communicating mission-critical data in a factory without any central infrastructure, which has allowed us to move much faster.',
         },
       },
       {
@@ -113,7 +113,7 @@ export const categories: UseCaseCategory[] = [
     id: 'media',
     label: 'Tamperproof media',
     job: 'Integrity for journalism, art, and field evidence.',
-    framing: 'A CID is a fingerprint. Anchor a photograph, a dataset, or a research artifact — and prove later that nothing was altered.',
+    framing: 'A CID is a fingerprint. Anchor a photograph, a dataset, or a research artifact, and prove later that nothing was altered.',
     cases: [
       {
         brand: 'Starling Lab', hue: 12,
@@ -124,11 +124,11 @@ export const categories: UseCaseCategory[] = [
       {
         brand: 'Nancy Baker Cahill', hue: 15,
         title: 'A permanent home for digital art',
-        body: 'Nancy Baker Cahill stores all her full-resolution art assets on IPFS via NFT.storage — each work with its own CID.',
+        body: 'Nancy Baker Cahill stores all her full-resolution art assets on IPFS via NFT.storage. Each work with its own CID.',
         linkLabel: 'Watch her presentation', link: 'youtu.be',
         quote: {
           who: 'Nancy Baker Cahill', role: 'Artist',
-          text: 'It was such a relief to know I could store my videos in one place — each with its own IPFS URL and CID. Resilience is important to me, and having the work backed up means it’ll be around for a long time.',
+          text: 'It was such a relief to know I could store my videos in one place, each with its own IPFS URL and CID. Resilience is important to me, and having the work backed up means it’ll be around for a long time.',
         },
       },
       {

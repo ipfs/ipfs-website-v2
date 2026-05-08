@@ -4,30 +4,85 @@ const ctas = [
     kind: 'Chat',
     primary: 'Matrix · Discord',
     blurb: 'Real-time help, working groups, and the Friday show-and-tell.',
-    line1: { label: '#ipfs-space:ipfs.io', link: 'https://matrix.to/#/#ipfs-space:ipfs.io' },
-    line2: { label: 'discord.gg/ipfs', link: 'https://discord.gg/vj7qWuAyHY' },
+    links: [
+      { label: '#ipfs-space:ipfs.io', link: 'https://matrix.to/#/#ipfs-space:ipfs.io' },
+      { label: 'discord.gg/ipfs', link: 'https://discord.gg/vj7qWuAyHY' },
+    ],
     glyph: '◍',
   },
   {
     kind: 'Forums',
     primary: 'discuss.ipfs.tech',
-    blurb: 'Long-form questions, RFCs, and proposals — searchable and public.',
-    line1: { label: 'Browse the categories', link: 'https://discuss.ipfs.tech/' },
-    line2: { label: 'github.com/ipfs', link: 'https://github.com/ipfs' },
+    blurb: 'Long-form questions, RFCs, and proposals. Searchable and public.',
+    links: [
+      { label: 'Browse the categories', link: 'https://discuss.ipfs.tech/' },
+      { label: 'github.com/ipfs', link: 'https://github.com/ipfs' },
+    ],
     glyph: '◇',
   },
   {
     kind: 'Calendar',
     primary: 'lu.ma/ipfs',
     blurb: 'Working group calls, in-person meetups, conferences, and IPFS Camp.',
-    line1: { label: 'See upcoming events', link: 'https://lu.ma/ipfs' },
-    line2: { label: 'ipfs.fyi/newsletter', link: 'https://ipfs.fyi/newsletter' },
+    links: [
+      { label: 'See upcoming events', link: 'https://lu.ma/ipfs' },
+    ],
     glyph: '◐',
   },
+  {
+    kind: 'Newsletter',
+    primary: 'ipfs.fyi/newsletter',
+    blurb: 'A monthly digest of releases, RFCs, and what shipped across the network.',
+    links: [
+      { label: 'Subscribe', link: 'https://ipfs.fyi/newsletter' },
+    ],
+    glyph: '◫',
+  },
+  {
+    kind: 'YouTube',
+    primary: 'youtube.com/@ipfs',
+    blurb: 'Recordings of working group calls, conference talks, and IPFS Camp sessions.',
+    links: [
+      { label: 'Watch the channel', link: 'https://www.youtube.com/@ipfs' },
+    ],
+    glyph: '▶',
+  },
 ];
+
+// rows of community photos used in the ribbon below the header
+const row1 = [
+  { n: 3, w: 420 },
+  { n: 11, w: 280 },
+  { n: 17, w: 380 },
+  { n: 6, w: 260 },
+  { n: 14, w: 340 },
+  { n: 9, w: 300 },
+  { n: 20, w: 360 },
+  { n: 1, w: 280 },
+  { n: 22, w: 400 },
+  { n: 8, w: 260 },
+  { n: 24, w: 340 },
+  { n: 12, w: 300 },
+  { n: 19, w: 380 },
+];
+const row2 = [
+  { n: 7, w: 260 },
+  { n: 5, w: 400 },
+  { n: 13, w: 300 },
+  { n: 18, w: 360 },
+  { n: 2, w: 320 },
+  { n: 16, w: 280 },
+  { n: 21, w: 340 },
+  { n: 4, w: 380 },
+  { n: 23, w: 280 },
+  { n: 10, w: 360 },
+  { n: 25, w: 320 },
+  { n: 15, w: 300 },
+];
+const src = (n: number) => `/community/community-${n}.jpg`;
 ---
 
-<section class="relative overflow-hidden text-white" style="padding: 96px 32px 88px; background: var(--navy);">
+<section class="relative overflow-hidden text-white" style="padding: 96px 0 88px; background: var(--navy);">
   <svg class="absolute inset-0 w-full h-full" style="opacity: 0.4;" aria-hidden="true">
     <defs>
       <pattern id="ctadots" width="36" height="36" patternUnits="userSpaceOnUse">
@@ -36,39 +91,60 @@ const ctas = [
     </defs>
     <rect width="100%" height="100%" fill="url(#ctadots)" />
   </svg>
-  <div class="relative mx-auto" style="max-width: 1240px;">
+
+  <div class="relative mx-auto" style="max-width: 1240px; padding: 0 32px;">
     <div style="margin-bottom: 40px; max-width: 820px;">
       <div class="mono" style="font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(107,196,206,0.7); font-weight: 500; margin-bottom: 14px;">
         join the constellation
       </div>
       <h2 style="margin: 0 0 12px; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.08;">
-        Pick up the bits you need, and run.
+        By the community, for the community.
       </h2>
       <p style="margin: 0; font-size: 17px; color: rgba(255,255,255,0.7); max-width: 640px; line-height: 1.55;">
-        Implementations and specs live alongside each commitment above. The community lives here — chat with builders, propose changes, and find the next event near you.
+        IPFS is built in the open by a thriving community. Chat with builders, propose changes, and find the next event near you.
       </p>
     </div>
+  </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3" style="gap: 16px;">
+  <div class="relative ribbon" aria-hidden="true">
+    <div class="ribbon-row">
+      {[...row1, ...row1, ...row1].map(({ n, w }) => (
+        <div class="ribbon-tile" style={`width: ${w}px;`}>
+          <img src={src(n)} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+    <div class="ribbon-row">
+      {[...row2, ...row2, ...row2].map(({ n, w }) => (
+        <div class="ribbon-tile" style={`width: ${w}px;`}>
+          <img src={src(n)} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="relative mx-auto" style="max-width: 1240px; padding: 0 32px;">
+    <div class="cta-grid">
       {ctas.map((c) => (
-        <div style="border: 1px solid rgba(107,196,206,0.25); border-radius: 12px; padding: 26px; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; gap: 14px;">
+        <div class="cta-card">
           <div class="flex items-center" style="gap: 12px;">
-            <div class="mono" style="width: 40px; height: 40px; border-radius: 8px; background: linear-gradient(135deg, rgba(107,196,206,0.25), rgba(255,255,255,0.05)); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600;">
+            <div class="mono cta-glyph">
               {c.glyph}
             </div>
             <div class="mono" style="font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); font-weight: 600;">
               {c.kind}
             </div>
           </div>
-          <div style="font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.01em;">
+          <div style="font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.01em;">
             → {c.primary}
           </div>
           <div style="font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.55; flex: 1;">
             {c.blurb}
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
-            <a class="mono cta-link" href={c.line1.link}>↗ {c.line1.label}</a>
-            <a class="mono cta-link" href={c.line2.link}>↗ {c.line2.label}</a>
+            {c.links.map((l) => (
+              <a class="mono cta-link" href={l.link}>↗ {l.label}</a>
+            ))}
           </div>
         </div>
       ))}
@@ -77,6 +153,33 @@ const ctas = [
 </section>
 
 <style>
+  /* responsive grid: collapses from 5 cols → fewer as space tightens */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+  }
+  .cta-card {
+    border: 1px solid rgba(107,196,206,0.25);
+    border-radius: 12px;
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .cta-glyph {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(107,196,206,0.25), rgba(255,255,255,0.05));
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
   .cta-link {
     font-size: 13px;
     color: var(--teal);
@@ -86,5 +189,57 @@ const ctas = [
   }
   .cta-link:hover {
     color: #fff;
+  }
+
+  /* community photo ribbon */
+  .ribbon {
+    margin: 0 0 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* fade right edge where the row bleeds off-viewport */
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 92%, transparent);
+            mask-image: linear-gradient(to right, #000 0, #000 92%, transparent);
+  }
+  .ribbon-row {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: 32px;
+    /* hide scrollbar but keep touch/trackpad swipe */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .ribbon-row::-webkit-scrollbar { display: none; }
+  .ribbon-tile {
+    flex: 0 0 auto;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    scroll-snap-align: start;
+  }
+  .ribbon-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* desaturate + slightly dim so photos sit calmly on the navy */
+    filter: grayscale(1) brightness(0.85);
+    transform: scale(1);
+    transition: filter .4s ease, transform .5s ease;
+  }
+  .ribbon-tile:hover img {
+    filter: grayscale(0) brightness(1);
+    transform: scale(1.05);
+  }
+  @media (max-width: 640px) {
+    .ribbon { margin-bottom: 40px; gap: 8px; }
+    .ribbon-row { gap: 8px; padding-left: 20px; }
+    /* uniform, smaller tiles on mobile so the row reads as a swipeable strip */
+    .ribbon-tile { height: 150px; width: 220px !important; }
   }
 </style>
