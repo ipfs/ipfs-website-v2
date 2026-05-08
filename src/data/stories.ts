@@ -1,62 +1,142 @@
-export interface StoryCard {
+export interface UseCase {
   brand: string;
   hue: number;
   title: string;
   body: string;
   linkLabel: string;
   link: string;
+  quote?: { who: string; role: string; text: string };
 }
 
-export const stories: StoryCard[] = [
-  { brand: 'Anytype', hue: 255, title: 'Develop offline-native productivity tools',
-    body: 'Anytype uses content addressing on IPFS to empower users to build personal knowledge webs that can be shared with others.',
-    linkLabel: 'Read how they do it', link: 'doc.anytype.io' },
-  { brand: 'Wikipedia', hue: 220, title: 'Make archives censorship-resistant',
-    body: 'When the government of Turkey blocked access to Wikipedia, a copy of the site was posted to IPFS, restoring visibility to millions of people.',
-    linkLabel: 'Read the story', link: 'observer.com' },
-  { brand: '3S Studios', hue: 340, title: 'Speed up gameplay for your superfans',
-    body: '3S Studios built an IPFS plugin for Unity that reduced the content size of a game from 2 GB to 40 MB.',
-    linkLabel: 'Read their story', link: 'blog.ipfs.tech' },
-  { brand: 'Nancy Baker Cahill', hue: 15, title: 'Guarantee a permanent home for your digital art',
-    body: 'Digital artist Nancy Baker Cahill stores all of her full-resolution art assets using IPFS through NFT.storage.',
-    linkLabel: 'Watch her presentation', link: 'youtu.be' },
-  { brand: 'WeatherXM', hue: 200, title: 'Publish scientific research that invites global collaboration',
-    body: 'WeatherXM configured thousands of smart weather vanes with IPFS client functionality to collaboratively share weather patterns from around the world.',
-    linkLabel: 'Watch the presentation', link: 'youtube.com' },
-  { brand: 'ORCESTRA', hue: 35, title: 'Share verifiable scientific datasets across institutions',
-    body: 'The ORCESTRA campaign uses IPFS to advance open scientific research by sharing verifiable, accessible datasets across institutions worldwide.',
-    linkLabel: 'Read the case study', link: 'docs.ipfs.tech' },
-  { brand: 'Snapshot', hue: 48, title: 'Enable data transparency in Web3',
-    body: 'Snapshot uses IPFS to publicly record all proposals, votes, and data for more than 9,000 web3 projects and DAOs.',
-    linkLabel: 'Read the case study', link: 'docs.ipfs.tech' },
-  { brand: 'Lockheed', hue: 210, title: 'Literally store your data out of this world',
-    body: 'Lockheed Martin launched an IPFS node into orbit to demonstrate more efficient interplanetary communication.',
-    linkLabel: 'Learn more', link: 'thedefiant.io' },
-];
-
-export interface Testimonial {
-  who: string;
-  role: string;
-  quote: string;
+export interface UseCaseCategory {
+  id: string;
+  label: string;
+  job: string;
+  framing: string;
+  cases: UseCase[];
 }
 
-export const testimonials: Testimonial[] = [
-  { who: 'Tobias Kölling', role: 'Max Planck Institute for Meteorology',
-    quote: 'During our 2024 ORCESTRA campaign, our planned local data infrastructure was stuck in customs. We set up IPFS on our notebooks and a Raspberry Pi, and suddenly all scientists could sync, share data, and collaborate on a local network — with automatic uploads back to Hamburg during intermittent internet connectivity.' },
-  { who: 'Mauve Signweaver', role: 'Founder · Agregore',
-    quote: 'IPFS gives us a set of flexible building blocks for connecting devices and exchanging data. The plethora of documentation and community members contributes toward our goal of making peer-to-peer web apps easy to use.' },
-  { who: 'Gabo H Beaumont', role: 'Co-Founder · Seed Hypermedia',
-    quote: "It's crucially important to have a distributed file system in our open hypertext system. IPFS is the missing piece that allows for a truly decentralized and open web." },
-  { who: 'Wes Floyd', role: 'Bacalhau',
-    quote: "As people learn about IPFS, they also get a view of it as a component in a broader ecosystem. It's not an island. It's an onramp to broader decentralization." },
-  { who: 'Nancy Baker Cahill', role: 'Artist',
-    quote: 'I use NFT.storage for my digital art. It was such a relief to know I could store my videos in one place — each with its own IPFS URL and CID. Resilience is important to me, and having the work backed up to Filecoin means it’ll be around for a long time.' },
-  { who: 'Joel Thorstensson', role: 'Co-founder · 3Box Labs',
-    quote: 'At 3Box Labs, IPFS is our storage layer. If you want to build fully decentralized applications, you need data integrity — and IPFS guarantees it by providing a framework for merkelized data.' },
-  { who: 'Boris Mann', role: 'Co-founder · Fission',
-    quote: 'IPFS and content addressing give us the opportunity to work toward every human being able to put data online effectively for free, and effectively forever.' },
-  { who: 'Thibault Meunier', role: 'Research Engineer · Cloudflare',
-    quote: 'At Cloudflare, we make content available to every user of the Internet. By removing lock-in to any single data storage provider, IPFS really allows our customers to choose a storage provider they are comfortable with.' },
-  { who: 'Roland Kuhn', role: 'Actyx',
-    quote: 'Using IPFS private swarms, we deployed a fleet of devices communicating mission-critical data in a factory without any central infrastructure — which has allowed us to move much faster.' },
+export const categories: UseCaseCategory[] = [
+  {
+    id: 'social',
+    label: 'Open social',
+    job: 'Self-certifying data for the next wave of open networks.',
+    framing: 'AT Protocol uses CIDs so anyone on the network can verify what they receive — no trusted server in the middle.',
+    cases: [
+      {
+        brand: 'Stargate', hue: 270,
+        title: 'A content-addressed backbone for atproto apps',
+        body: 'Stargate gives atproto applications a verifiable, content-addressed layer for identity, posts, and assets — anchored to IPFS.',
+        linkLabel: 'Visit Stargate', link: 'vereign.com/stargate',
+      },
+      {
+        brand: 'GainForest', hue: 130,
+        title: 'Rainforest data, posted to a public network',
+        body: 'GainForest publishes on-the-ground forest monitoring through atproto so funders, scientists, and communities can audit outcomes themselves.',
+        linkLabel: 'See GainForest', link: 'gainforest.app',
+      },
+      {
+        brand: 'Anytype', hue: 255,
+        title: 'Offline-native knowledge graphs',
+        body: 'Anytype uses content addressing to let users build personal knowledge webs that sync peer to peer, with no server lock-in.',
+        linkLabel: 'How they do it', link: 'doc.anytype.io',
+      },
+    ],
+  },
+  {
+    id: 'publishing',
+    label: 'Resilient web publishing',
+    job: 'Sovereign, peer-to-peer publishing on Mainnet tooling.',
+    framing: 'Publish once, reference forever. The site survives a host outage, a takedown, or a country-wide block.',
+    cases: [
+      {
+        brand: 'Wikipedia', hue: 220,
+        title: 'Restore a censored encyclopedia',
+        body: 'When the government of Turkey blocked Wikipedia, a copy was posted to IPFS — restoring access for millions of readers.',
+        linkLabel: 'Read the story', link: 'observer.com',
+      },
+      {
+        brand: 'Snapshot', hue: 48,
+        title: 'Permanent, public DAO records',
+        body: 'Snapshot uses IPFS to publicly record every proposal, vote, and result for more than 9,000 web3 projects and DAOs.',
+        linkLabel: 'Case study', link: 'docs.ipfs.tech',
+      },
+      {
+        brand: 'ORCESTRA', hue: 35,
+        title: 'Verifiable scientific datasets across institutions',
+        body: 'The ORCESTRA atmospheric campaign uses IPFS to share verifiable, accessible datasets across research institutions worldwide.',
+        linkLabel: 'Case study', link: 'docs.ipfs.tech',
+        quote: {
+          who: 'Tobias Kölling', role: 'Max Planck Institute for Meteorology',
+          text: 'Our local data infrastructure was stuck in customs. We set up IPFS on notebooks and a Raspberry Pi, and suddenly all scientists could sync, share, and collaborate — with automatic uploads back to Hamburg whenever the connection returned.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'iot',
+    label: 'IoT data & streaming',
+    job: 'Lightweight private swarms with iroh-blobs and embedded IPFS.',
+    framing: 'Move bytes between sensors, satellites, factories, and games — with cryptographic guarantees and no central broker.',
+    cases: [
+      {
+        brand: 'WeatherXM', hue: 200,
+        title: 'Crowdsourced weather, verified at the edge',
+        body: 'WeatherXM ships smart weather vanes with IPFS clients so thousands of stations can collaboratively share atmospheric data.',
+        linkLabel: 'Watch presentation', link: 'youtube.com',
+      },
+      {
+        brand: 'Lockheed', hue: 210,
+        title: 'Store data out of this world',
+        body: 'Lockheed Martin launched an IPFS node into orbit to demonstrate more efficient interplanetary communication.',
+        linkLabel: 'Learn more', link: 'thedefiant.io',
+      },
+      {
+        brand: 'Actyx', hue: 290,
+        title: 'Mission-critical factory swarms',
+        body: 'Actyx deploys private IPFS swarms to coordinate factory devices with no central infrastructure.',
+        linkLabel: 'Read more', link: 'actyx.com',
+        quote: {
+          who: 'Roland Kuhn', role: 'Actyx',
+          text: 'Using IPFS private swarms, we deployed a fleet of devices communicating mission-critical data in a factory without any central infrastructure — which has allowed us to move much faster.',
+        },
+      },
+      {
+        brand: '3S Studios', hue: 340,
+        title: 'Fast game asset delivery for superfans',
+        body: '3S Studios built an IPFS plugin for Unity that reduced game content from 2 GB to 40 MB, then streamed updates over the swarm.',
+        linkLabel: 'Their story', link: 'blog.ipfs.tech',
+      },
+    ],
+  },
+  {
+    id: 'media',
+    label: 'Tamperproof media',
+    job: 'Integrity for journalism, art, and field evidence.',
+    framing: 'A CID is a fingerprint. Anchor a photograph, a dataset, or a research artifact — and prove later that nothing was altered.',
+    cases: [
+      {
+        brand: 'Starling Lab', hue: 12,
+        title: 'Authenticate human-rights evidence',
+        body: 'Starling Lab anchors photos, videos, and documents to CIDs so journalists, archivists, and prosecutors can prove integrity over time.',
+        linkLabel: 'See their work', link: 'starlinglab.org',
+      },
+      {
+        brand: 'Nancy Baker Cahill', hue: 15,
+        title: 'A permanent home for digital art',
+        body: 'Nancy Baker Cahill stores all her full-resolution art assets on IPFS via NFT.storage — each work with its own CID.',
+        linkLabel: 'Watch her presentation', link: 'youtu.be',
+        quote: {
+          who: 'Nancy Baker Cahill', role: 'Artist',
+          text: 'It was such a relief to know I could store my videos in one place — each with its own IPFS URL and CID. Resilience is important to me, and having the work backed up means it’ll be around for a long time.',
+        },
+      },
+      {
+        brand: 'GainForest', hue: 130,
+        title: 'Provable conservation outcomes',
+        body: 'Field photos and sensor readings are hashed and pinned, so reforestation claims can be independently checked.',
+        linkLabel: 'Visit GainForest', link: 'gainforest.app',
+      },
+    ],
+  },
 ];

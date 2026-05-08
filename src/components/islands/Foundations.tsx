@@ -3,6 +3,12 @@ import FileDropCID from './FileDropCID';
 import LocationVsContent from './LocationVsContent';
 import WorksEverywhere from './WorksEverywhere';
 
+interface CTA {
+  label: string;
+  hint: string;
+  link: string;
+}
+
 interface Foundation {
   id: string;
   num: string;
@@ -11,29 +17,43 @@ interface Foundation {
   demoHeading: string;
   demoSub: string;
   demo: React.ReactNode;
+  ctas: CTA[];
 }
 
 const FOUNDATIONS: Foundation[] = [
   {
     id: 'cid', num: '01', title: 'CIDs for addressing',
-    body: 'Data is identified by what it is, not where it lives. A CID is a self-describing, cryptographic identifier that encodes the hash of the content. Any party can generate one; any party can verify one. No authority required.',
+    body: 'Data is identified by what it is, not where it lives. A CID is a self-describing, cryptographic fingerprint of the content — used by UnixFS, DASL, and BDASL to address everything from a single byte to a multi-gigabyte dataset. Any party generates one; any party verifies one.',
     demoHeading: 'Hash around, and find out.',
     demoSub: 'Change one character. Watch the whole CID change.',
     demo: <FileDropCID />,
+    ctas: [
+      { label: 'Read the spec', hint: 'CID, UnixFS, DASL', link: 'specs.ipfs.tech' },
+      { label: 'Try DASL', hint: 'simple profile', link: 'dasl.ing' },
+    ],
   },
   {
     id: 'transport', num: '02', title: 'Transport agnostic',
-    body: "IPFS is strict about outcomes, tolerant about methods. Because CIDs enforce that you get exactly what you asked for, it doesn't matter how the data traveled — HTTP, a peer next door, a USB key. Verification happens at the endpoints.",
+    body: "IPFS is strict about outcomes, tolerant about methods. The same CID can travel over HTTP, libp2p, Bitswap, RASL, or a USB key — and verification still happens at the endpoints. Hosts come and go. Routes change. The bytes you asked for arrive intact, or you know they didn't.",
     demoHeading: 'Take the host down. The content survives.',
     demoSub: 'Location-addressed URLs depend on a single server. CIDs do not.',
     demo: <LocationVsContent />,
+    ctas: [
+      { label: 'Pin & retrieve', hint: 'gateways + RASL', link: 'docs.ipfs.tech/concepts/gateways' },
+      { label: 'libp2p transports', hint: 'connect anywhere', link: 'libp2p.io' },
+    ],
   },
   {
     id: 'everywhere', num: '03', title: 'Works everywhere',
-    body: 'IPFS is intended to work everywhere: web browsers, IoT chips, and large storage clusters. It gets there by building on reusable pieces and an ecosystem of interoperable implementations across languages.',
+    body: 'Verified publishing and retrieval, wherever you operate. Open social on atproto, sovereign web publishing on Mainnet tooling, IoT and streaming with iroh-blobs and private IPFS, tamperproof media for journalists and artists. Same protocol, different jobs to be done.',
     demoHeading: 'Same bytes. Six runtimes.',
     demoSub: 'One CID, fetched and verified from wildly different places.',
     demo: <WorksEverywhere />,
+    ctas: [
+      { label: 'Helia (JS)', hint: 'browsers + Node', link: 'helia.io' },
+      { label: 'Kubo (Go)', hint: 'all-in-one node', link: 'github.com/ipfs/kubo' },
+      { label: 'iroh-blobs', hint: 'embedded / IoT', link: 'iroh.computer' },
+    ],
   },
 ];
 
@@ -79,14 +99,24 @@ export default function Foundations() {
       <div style={{ background: 'var(--pearl)', border: '1px solid var(--line)', borderRadius: 16, padding: 28 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 22, flexWrap: 'wrap', gap: 12 }}>
           <div>
-            <div className="mono" style={{ fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--jade)', marginBottom: 8, fontWeight: 600 }}>
-              try it · live · foundation {node.num}
-            </div>
             <h3 style={{ margin: 0, fontSize: 28, fontWeight: 600, letterSpacing: '-0.015em', color: 'var(--navy)' }}>{node.demoHeading}</h3>
           </div>
           <div style={{ fontSize: 14, color: 'var(--ink-3)', maxWidth: 380, textAlign: 'right' }}>{node.demoSub}</div>
         </div>
         <div key={active}>{node.demo}</div>
+
+        <div className="foundation-ctas">
+          <div className="mono" style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>
+            get started ·
+          </div>
+          {node.ctas.map((c) => (
+            <a key={c.link} href={`https://${c.link}`} className="foundation-cta">
+              <span style={{ color: 'var(--turq)', fontWeight: 600 }}>↗ {c.label}</span>
+              <span style={{ color: 'var(--ink-3)', fontSize: 11 }}>{c.hint}</span>
+              <span className="mono" style={{ color: 'var(--ink-3)', fontSize: 11, marginLeft: 'auto' }}>{c.link}</span>
+            </a>
+          ))}
+        </div>
       </div>
 
       <style>{`
@@ -98,6 +128,33 @@ export default function Foundations() {
         }
         @media (min-width: 768px) {
           .foundation-tabs { grid-template-columns: repeat(3, 1fr); }
+        }
+        .foundation-ctas {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 12px 18px;
+          margin-top: 22px;
+          padding-top: 18px;
+          border-top: 1px dashed var(--line);
+        }
+        .foundation-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 6px 10px;
+          border-radius: 6px;
+          background: var(--paper);
+          border: 1px solid var(--line);
+          font-size: 13px;
+          text-decoration: none;
+          transition: border-color .15s, transform .15s;
+          flex: 1 1 auto;
+          min-width: 220px;
+        }
+        .foundation-cta:hover {
+          border-color: var(--turq);
+          transform: translateY(-1px);
         }
       `}</style>
     </>

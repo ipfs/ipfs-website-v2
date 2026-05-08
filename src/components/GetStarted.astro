@@ -1,33 +1,33 @@
 ---
-const tracks = [
+const ctas = [
   {
-    lang: 'JavaScript',
-    primary: 'Helia',
-    primaryBlurb: 'Modular · browsers + Node',
-    alt: 'or one of the DASL libraries — even lighter.',
-    cmd: 'npm install helia',
-    link: 'helia.io',
+    kind: 'Chat',
+    primary: 'Matrix · Discord',
+    blurb: 'Real-time help, working groups, and the Friday show-and-tell.',
+    line1: { label: '#ipfs-space:ipfs.io', link: 'https://matrix.to/#/#ipfs-space:ipfs.io' },
+    line2: { label: 'discord.gg/ipfs', link: 'https://discord.gg/vj7qWuAyHY' },
+    glyph: '◍',
   },
   {
-    lang: 'Go',
-    primary: 'Kubo',
-    primaryBlurb: 'All-in-one · Swiss-army knife',
-    alt: 'or Boxo for a modular, lightweight toolkit.',
-    cmd: 'brew install ipfs',
-    link: 'github.com/ipfs/kubo',
+    kind: 'Forums',
+    primary: 'discuss.ipfs.tech',
+    blurb: 'Long-form questions, RFCs, and proposals — searchable and public.',
+    line1: { label: 'Browse the categories', link: 'https://discuss.ipfs.tech/' },
+    line2: { label: 'github.com/ipfs', link: 'https://github.com/ipfs' },
+    glyph: '◇',
   },
   {
-    lang: 'Specs',
-    primary: 'specs.ipfs.tech',
-    primaryBlurb: 'Implement independently · audit forks',
-    alt: 'dasl.ing for the simple profile specs.',
-    cmd: 'git clone specs.ipfs.tech',
-    link: 'specs.ipfs.tech',
+    kind: 'Calendar',
+    primary: 'lu.ma/ipfs',
+    blurb: 'Working group calls, in-person meetups, conferences, and IPFS Camp.',
+    line1: { label: 'See upcoming events', link: 'https://lu.ma/ipfs' },
+    line2: { label: 'ipfs.fyi/newsletter', link: 'https://ipfs.fyi/newsletter' },
+    glyph: '◐',
   },
 ];
 ---
 
-<section class="relative overflow-hidden text-white" style="padding: 96px 32px 72px; background: var(--navy);">
+<section class="relative overflow-hidden text-white" style="padding: 96px 32px 88px; background: var(--navy);">
   <svg class="absolute inset-0 w-full h-full" style="opacity: 0.4;" aria-hidden="true">
     <defs>
       <pattern id="ctadots" width="36" height="36" patternUnits="userSpaceOnUse">
@@ -38,32 +38,53 @@ const tracks = [
   </svg>
   <div class="relative mx-auto" style="max-width: 1240px;">
     <div style="margin-bottom: 40px; max-width: 820px;">
-      <div class="mono" style="font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 14px;">
-        get started
+      <div class="mono" style="font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(107,196,206,0.7); font-weight: 500; margin-bottom: 14px;">
+        join the constellation
       </div>
-      <h2 style="margin: 0; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.08;">
+      <h2 style="margin: 0 0 12px; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.08;">
         Pick up the bits you need, and run.
       </h2>
+      <p style="margin: 0; font-size: 17px; color: rgba(255,255,255,0.7); max-width: 640px; line-height: 1.55;">
+        Implementations and specs live alongside each commitment above. The community lives here — chat with builders, propose changes, and find the next event near you.
+      </p>
     </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3" style="gap: 16px;">
-      {tracks.map((t) => (
-        <div style="border: 1px solid rgba(107,196,206,0.25); border-radius: 12px; padding: 24px; background: rgba(255,255,255,0.03);">
-          <div class="mono" style="font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; font-weight: 600;">
-            For {t.lang}
+      {ctas.map((c) => (
+        <div style="border: 1px solid rgba(107,196,206,0.25); border-radius: 12px; padding: 26px; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; gap: 14px;">
+          <div class="flex items-center" style="gap: 12px;">
+            <div class="mono" style="width: 40px; height: 40px; border-radius: 8px; background: linear-gradient(135deg, rgba(107,196,206,0.25), rgba(255,255,255,0.05)); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600;">
+              {c.glyph}
+            </div>
+            <div class="mono" style="font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); font-weight: 600;">
+              {c.kind}
+            </div>
           </div>
-          <div style="font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 4px;">
-            → {t.primary}
+          <div style="font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.01em;">
+            → {c.primary}
           </div>
-          <div style="font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px;">
-            {t.primaryBlurb}
+          <div style="font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.55; flex: 1;">
+            {c.blurb}
           </div>
-          <div class="mono" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(107,196,206,0.18); padding: 10px 12px; border-radius: 6px; font-size: 13px; color: var(--teal); margin-bottom: 12px;">
-            $ {t.cmd}
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+            <a class="mono cta-link" href={c.line1.link}>↗ {c.line1.label}</a>
+            <a class="mono cta-link" href={c.line2.link}>↗ {c.line2.label}</a>
           </div>
-          <div style="font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 14px;">{t.alt}</div>
-          <a class="mono" style="font-size: 12px; color: var(--teal); text-decoration: none; font-weight: 500;">↗ {t.link}</a>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .cta-link {
+    font-size: 13px;
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .15s;
+  }
+  .cta-link:hover {
+    color: #fff;
+  }
+</style>
