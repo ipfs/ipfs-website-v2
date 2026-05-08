@@ -24,12 +24,6 @@ export const categories: UseCaseCategory[] = [
     framing: 'AT Protocol uses CIDs so anyone on the network can verify what they receive. No trusted server in the middle.',
     cases: [
       {
-        brand: 'Stargate', hue: 270,
-        title: 'A content-addressed backbone for atproto apps',
-        body: 'Stargate gives atproto applications a verifiable, content-addressed layer for identity, posts, and assets, anchored to IPFS.',
-        linkLabel: 'Visit Stargate', link: 'vereign.com/stargate',
-      },
-      {
         brand: 'GainForest', hue: 130,
         title: 'Rainforest data, posted to a public network',
         body: 'GainForest publishes on-the-ground forest monitoring through atproto so funders, scientists, and communities can audit outcomes themselves.',
@@ -49,6 +43,12 @@ export const categories: UseCaseCategory[] = [
     job: 'Sovereign, peer-to-peer publishing on Mainnet tooling.',
     framing: 'Publish once, reference forever. The site survives a host outage, a takedown, or a country-wide block.',
     cases: [
+      {
+        brand: 'Stargate', hue: 270,
+        title: 'A content-addressed backbone for atproto apps',
+        body: 'Stargate gives atproto applications a verifiable, content-addressed layer for identity, posts, and assets, anchored to IPFS.',
+        linkLabel: 'Visit Stargate', link: 'vereign.com/stargate',
+      },
       {
         brand: 'Wikipedia', hue: 220,
         title: 'Restore a censored encyclopedia',
@@ -84,12 +84,6 @@ export const categories: UseCaseCategory[] = [
         title: 'Crowdsourced weather, verified at the edge',
         body: 'WeatherXM ships smart weather vanes with IPFS clients so thousands of stations can collaboratively share atmospheric data.',
         linkLabel: 'Watch presentation', link: 'youtube.com',
-      },
-      {
-        brand: 'Lockheed', hue: 210,
-        title: 'Store data out of this world',
-        body: 'Lockheed Martin launched an IPFS node into orbit to demonstrate more efficient interplanetary communication.',
-        linkLabel: 'Learn more', link: 'thedefiant.io',
       },
       {
         brand: 'Actyx', hue: 290,
@@ -130,12 +124,6 @@ export const categories: UseCaseCategory[] = [
           who: 'Nancy Baker Cahill', role: 'Artist',
           text: 'It was such a relief to know I could store my videos in one place, each with its own IPFS URL and CID. Resilience is important to me, and having the work backed up means it’ll be around for a long time.',
         },
-      },
-      {
-        brand: 'GainForest', hue: 130,
-        title: 'Provable conservation outcomes',
-        body: 'Field photos and sensor readings are hashed and pinned, so reforestation claims can be independently checked.',
-        linkLabel: 'Visit GainForest', link: 'gainforest.app',
       },
     ],
   },
