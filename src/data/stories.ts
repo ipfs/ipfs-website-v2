@@ -24,16 +24,46 @@ export const categories: UseCaseCategory[] = [
     framing: 'AT Protocol uses CIDs so anyone on the network can verify what they receive. No trusted server in the middle.',
     cases: [
       {
-        brand: 'GainForest', hue: 130,
-        title: 'Rainforest data, posted to a public network',
-        body: 'GainForest publishes on-the-ground forest monitoring through atproto so funders, scientists, and communities can audit outcomes themselves.',
-        linkLabel: 'See GainForest', link: 'gainforest.app',
+        brand: 'atproto', hue: 210,
+        title: 'Self-verifying records for open social',
+        body: 'AT Protocol identifies every post, repo, and event by CID, so any client can verify what it received without trusting the server that delivered it.',
+        linkLabel: 'How atproto uses CIDs', link: 'atproto.com',
+      },
+      {
+        brand: 'Seed Hypermedia', hue: 165,
+        title: 'Peer-to-peer hypermedia documents',
+        body: 'Seed builds collaborative documents where every version, comment, and link is addressed by CID, durable across servers, editors, and time.',
+        linkLabel: 'Visit Seed', link: 'seed.hyper.media',
       },
       {
         brand: 'Anytype', hue: 255,
         title: 'Offline-native knowledge graphs',
         body: 'Anytype uses content addressing to let users build personal knowledge webs that sync peer to peer, with no server lock-in.',
         linkLabel: 'How they do it', link: 'doc.anytype.io',
+      },
+    ],
+  },
+  {
+    id: 'science',
+    label: 'Open science',
+    job: 'Verifiable, citable datasets across labs, borders, and field sites.',
+    framing: 'Hash-anchored measurements that any colleague, reviewer, or citizen can re-fetch and re-verify, regardless of institution or bandwidth.',
+    cases: [
+      {
+        brand: 'ORCESTRA', hue: 35,
+        title: 'Verifiable scientific datasets across institutions',
+        body: 'The ORCESTRA atmospheric campaign uses IPFS to share verifiable, accessible datasets across research institutions worldwide.',
+        linkLabel: 'Case study', link: 'docs.ipfs.tech',
+        quote: {
+          who: 'Tobias Kölling', role: 'Max Planck Institute for Meteorology',
+          text: 'Our local data infrastructure was stuck in customs. We set up IPFS on notebooks and a Raspberry Pi, and suddenly all scientists could sync, share, and collaborate, with automatic uploads back to Hamburg whenever the connection returned.',
+        },
+      },
+      {
+        brand: 'GainForest', hue: 130,
+        title: 'Provable rainforest monitoring',
+        body: 'GainForest hashes on-the-ground forest measurements and pins them publicly, so funders, scientists, and communities can audit conservation outcomes themselves.',
+        linkLabel: 'See GainForest', link: 'gainforest.app',
       },
     ],
   },
@@ -60,16 +90,6 @@ export const categories: UseCaseCategory[] = [
         title: 'Permanent, public DAO records',
         body: 'Snapshot uses IPFS to publicly record every proposal, vote, and result for more than 9,000 web3 projects and DAOs.',
         linkLabel: 'Case study', link: 'docs.ipfs.tech',
-      },
-      {
-        brand: 'ORCESTRA', hue: 35,
-        title: 'Verifiable scientific datasets across institutions',
-        body: 'The ORCESTRA atmospheric campaign uses IPFS to share verifiable, accessible datasets across research institutions worldwide.',
-        linkLabel: 'Case study', link: 'docs.ipfs.tech',
-        quote: {
-          who: 'Tobias Kölling', role: 'Max Planck Institute for Meteorology',
-          text: 'Our local data infrastructure was stuck in customs. We set up IPFS on notebooks and a Raspberry Pi, and suddenly all scientists could sync, share, and collaborate, with automatic uploads back to Hamburg whenever the connection returned.',
-        },
       },
     ],
   },
