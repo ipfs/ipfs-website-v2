@@ -33,7 +33,7 @@ export const categories: UseCaseCategory[] = [
         brand: 'atproto', hue: 210,
         title: 'Self-verifying records for open social',
         body: 'AT Protocol identifies every post, repo, and event by CID, so any client can verify what it received without trusting the server that delivered it.',
-        linkLabel: 'How atproto uses CIDs', link: 'atproto.com', href: 'https://atproto.com/',
+        linkLabel: 'How atproto uses CIDs', link: 'atproto.com', href: 'https://atproto.com/specs/data-model#link-and-cid-formats',
       },
       {
         brand: 'Seed Hypermedia', hue: 165,
