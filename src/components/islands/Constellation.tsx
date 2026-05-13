@@ -160,7 +160,19 @@ export default function Constellation({ height = 480 }: { height?: number }) {
         </h3>
         <p style={{ margin: '0 0 18px', fontSize: 15, color: 'var(--ink-2)' }}>{activeNode.blurb}</p>
         <div style={{ marginTop: 'auto', display: 'flex', gap: 10, alignItems: 'center', justifyContent: 'space-between' }}>
-          <span className="mono" style={{ fontSize: 12, color: 'var(--turq)' }}>↗ {activeNode.link}</span>
+          {activeNode.link === '—' ? (
+            <span className="mono" style={{ fontSize: 12, color: 'var(--ink-3)' }}>{activeNode.link}</span>
+          ) : (
+            <a
+              className="mono"
+              href={`https://${activeNode.link}`}
+              target="_blank"
+              rel="noopener"
+              style={{ fontSize: 12, color: 'var(--turq)', textDecoration: 'none' }}
+            >
+              ↗ {activeNode.link}
+            </a>
+          )}
           <div style={{ display: 'flex', gap: 8 }}>
             {NODES.map((n) => (
               <button key={n.id} onClick={() => setLocked(n.id)} aria-label={n.label}

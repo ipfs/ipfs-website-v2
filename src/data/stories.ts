@@ -4,7 +4,10 @@ export interface UseCase {
   title: string;
   body: string;
   linkLabel: string;
+  // Short display string shown in the card footer (e.g., "atproto.com").
   link: string;
+  // Full URL the card navigates to.
+  href: string;
   quote?: { who: string; role: string; text: string };
 }
 
@@ -27,19 +30,19 @@ export const categories: UseCaseCategory[] = [
         brand: 'atproto', hue: 210,
         title: 'Self-verifying records for open social',
         body: 'AT Protocol identifies every post, repo, and event by CID, so any client can verify what it received without trusting the server that delivered it.',
-        linkLabel: 'How atproto uses CIDs', link: 'atproto.com',
+        linkLabel: 'How atproto uses CIDs', link: 'atproto.com', href: 'https://atproto.com/',
       },
       {
         brand: 'Seed Hypermedia', hue: 165,
         title: 'Peer-to-peer hypermedia documents',
         body: 'Seed builds collaborative documents where every version, comment, and link is addressed by CID, durable across servers, editors, and time.',
-        linkLabel: 'Visit Seed', link: 'seed.hyper.media',
+        linkLabel: 'Visit Seed', link: 'seed.hyper.media', href: 'https://seed.hyper.media/',
       },
       {
         brand: 'Anytype', hue: 255,
         title: 'Offline-native knowledge graphs',
         body: 'Anytype uses content addressing to let users build personal knowledge webs that sync peer to peer, with no server lock-in.',
-        linkLabel: 'How they do it', link: 'doc.anytype.io',
+        linkLabel: 'How they do it', link: 'doc.anytype.io', href: 'https://doc.anytype.io/',
       },
     ],
   },
@@ -53,7 +56,7 @@ export const categories: UseCaseCategory[] = [
         brand: 'ORCESTRA', hue: 35,
         title: 'Verifiable scientific datasets across institutions',
         body: 'The ORCESTRA atmospheric campaign uses IPFS to share verifiable, accessible datasets across research institutions worldwide.',
-        linkLabel: 'Case study', link: 'docs.ipfs.tech',
+        linkLabel: 'Case study', link: 'docs.ipfs.tech', href: 'https://docs.ipfs.tech/case-studies/orcestra/',
         quote: {
           who: 'Tobias Kölling', role: 'Max Planck Institute for Meteorology',
           text: 'Our local data infrastructure was stuck in customs. We set up IPFS on notebooks and a Raspberry Pi, and suddenly all scientists could sync, share, and collaborate, with automatic uploads back to Hamburg whenever the connection returned.',
@@ -63,7 +66,7 @@ export const categories: UseCaseCategory[] = [
         brand: 'GainForest', hue: 130,
         title: 'Provable rainforest monitoring',
         body: 'GainForest hashes on-the-ground forest measurements and pins them publicly, so funders, scientists, and communities can audit conservation outcomes themselves.',
-        linkLabel: 'See GainForest', link: 'gainforest.app',
+        linkLabel: 'See GainForest', link: 'gainforest.app', href: 'https://gainforest.app/',
       },
     ],
   },
@@ -77,19 +80,19 @@ export const categories: UseCaseCategory[] = [
         brand: 'Stargate', hue: 270,
         title: 'A content-addressed backbone for atproto apps',
         body: 'Stargate gives atproto applications a verifiable, content-addressed layer for identity, posts, and assets, anchored to IPFS.',
-        linkLabel: 'Visit Stargate', link: 'vereign.com/stargate',
+        linkLabel: 'Visit Stargate', link: 'vereign.com/stargate', href: 'https://www.vereign.com/stargate',
       },
       {
         brand: 'Wikipedia', hue: 220,
         title: 'Restore a censored encyclopedia',
         body: 'When the government of Turkey blocked Wikipedia, a copy was posted to IPFS, restoring access for millions of readers.',
-        linkLabel: 'Read the story', link: 'observer.com',
+        linkLabel: 'Read the story', link: 'observer.com', href: 'https://observer.com/2017/05/turkey-blocks-wikipedia-ipfs/',
       },
       {
         brand: 'Snapshot', hue: 48,
         title: 'Permanent, public DAO records',
         body: 'Snapshot uses IPFS to publicly record every proposal, vote, and result for more than 9,000 web3 projects and DAOs.',
-        linkLabel: 'Case study', link: 'docs.ipfs.tech',
+        linkLabel: 'Case study', link: 'docs.ipfs.tech', href: 'https://docs.ipfs.tech/case-studies/snapshot/',
       },
     ],
   },
@@ -103,13 +106,13 @@ export const categories: UseCaseCategory[] = [
         brand: 'WeatherXM', hue: 200,
         title: 'Crowdsourced weather, verified at the edge',
         body: 'WeatherXM ships smart weather vanes with IPFS clients so thousands of stations can collaboratively share atmospheric data.',
-        linkLabel: 'Watch presentation', link: 'youtube.com',
+        linkLabel: 'Watch presentation', link: 'youtube.com', href: 'https://www.youtube.com/watch?v=Y2VgbDS1Hak',
       },
       {
         brand: 'Actyx', hue: 290,
         title: 'Mission-critical factory swarms',
         body: 'Actyx deploys private IPFS swarms to coordinate factory devices with no central infrastructure.',
-        linkLabel: 'Read more', link: 'actyx.com',
+        linkLabel: 'Read more', link: 'actyx.com', href: 'https://www.actyx.com/',
         quote: {
           who: 'Roland Kuhn', role: 'Actyx',
           text: 'Using IPFS private swarms, we deployed a fleet of devices communicating mission-critical data in a factory without any central infrastructure, which has allowed us to move much faster.',
@@ -119,7 +122,7 @@ export const categories: UseCaseCategory[] = [
         brand: '3S Studios', hue: 340,
         title: 'Fast game asset delivery for superfans',
         body: '3S Studios built an IPFS plugin for Unity that reduced game content from 2 GB to 40 MB, then streamed updates over the swarm.',
-        linkLabel: 'Their story', link: 'blog.ipfs.tech',
+        linkLabel: 'Their story', link: 'blog.ipfs.tech', href: 'https://blog.ipfs.tech/2020-07-3s-studios/',
       },
     ],
   },
@@ -133,13 +136,13 @@ export const categories: UseCaseCategory[] = [
         brand: 'Starling Lab', hue: 12,
         title: 'Authenticate human-rights evidence',
         body: 'Starling Lab anchors photos, videos, and documents to CIDs so journalists, archivists, and prosecutors can prove integrity over time.',
-        linkLabel: 'See their work', link: 'starlinglab.org',
+        linkLabel: 'See their work', link: 'starlinglab.org', href: 'https://www.starlinglab.org/',
       },
       {
         brand: 'Nancy Baker Cahill', hue: 15,
         title: 'A permanent home for digital art',
         body: 'Nancy Baker Cahill stores all her full-resolution art assets on IPFS via NFT.storage. Each work with its own CID.',
-        linkLabel: 'Watch her presentation', link: 'youtu.be',
+        linkLabel: 'Watch her presentation', link: 'youtu.be', href: 'https://youtu.be/qO3a05dY1Lk',
         quote: {
           who: 'Nancy Baker Cahill', role: 'Artist',
           text: 'It was such a relief to know I could store my videos in one place, each with its own IPFS URL and CID. Resilience is important to me, and having the work backed up means it’ll be around for a long time.',

@@ -134,7 +134,13 @@ function Card({ card, index }: { card: UseCase; index: number }) {
     background: `linear-gradient(135deg, hsl(${card.hue} 55% 45%) 0%, hsl(${(card.hue + 30) % 360} 55% 30%) 100%)`,
   };
   return (
-    <a className="story-card" style={{ '--i': index } as CSSProperties}>
+    <a
+      className="story-card"
+      href={card.href}
+      target="_blank"
+      rel="noopener"
+      style={{ '--i': index } as CSSProperties}
+    >
       <div className="story-card-head">
         <div className="story-card-mark" style={markStyle}>
           {initials(card.brand)}

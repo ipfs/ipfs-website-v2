@@ -1,11 +1,29 @@
 ---
 import Logomark from './Logomark.astro';
 
-const columns: [string, string[]][] = [
-  ['Learn', ['Docs', 'Specs', 'Blog', 'Tutorials']],
-  ['Tools', ['Kubo', 'Helia', 'DASL', 'IPLD']],
-  ['Network', ['Amino', 'IPNI', 'Gateways']],
-  ['Community', ['Discuss', 'GitHub', 'Foundation']],
+const columns: [string, { label: string; href: string }[]][] = [
+  ['Learn', [
+    { label: 'Docs', href: 'https://docs.ipfs.tech/' },
+    { label: 'Specs', href: 'https://specs.ipfs.tech/' },
+    { label: 'Blog', href: 'https://blog.ipfs.tech/' },
+    { label: 'Tutorials', href: 'https://proto.school/' },
+  ]],
+  ['Tools', [
+    { label: 'Kubo', href: 'https://github.com/ipfs/kubo' },
+    { label: 'Helia', href: 'https://helia.io/' },
+    { label: 'DASL', href: 'https://dasl.ing/' },
+    { label: 'IPLD', href: 'https://ipld.io/' },
+  ]],
+  ['Network', [
+    { label: 'Amino', href: 'https://blog.ipfs.tech/2023-09-amino-refactoring/' },
+    { label: 'IPNI', href: 'https://ipni.io/' },
+    { label: 'Gateways', href: 'https://specs.ipfs.tech/http-gateways/' },
+  ]],
+  ['Community', [
+    { label: 'Discuss', href: 'https://discuss.ipfs.tech/' },
+    { label: 'GitHub', href: 'https://github.com/ipfs' },
+    { label: 'Foundation', href: 'https://ipfs.foundation/' },
+  ]],
 ];
 ---
 
@@ -27,7 +45,7 @@ const columns: [string, string[]][] = [
         </div>
         {items.map((i) => (
           <div style="font-size: 13px; margin-bottom: 8px;">
-            <a style="color: rgba(255,255,255,0.75); text-decoration: none;">{i}</a>
+            <a href={i.href} style="color: rgba(255,255,255,0.75); text-decoration: none;">{i.label}</a>
           </div>
         ))}
       </div>
