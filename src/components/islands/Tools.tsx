@@ -28,7 +28,7 @@ const JOBS: Job[] = [
 const TOOLS: Tool[] = [
   {
     name: 'Kubo',
-    blurb: 'The reference IPFS implementation in Go. A full-featured daemon for desktop, server, and infra deployments — DHT, Bitswap, gateway, and pinning all in one binary.',
+    blurb: 'The reference IPFS implementation in Go. A full-featured daemon for desktop, server, and infra deployments: DHT, Bitswap, gateway, and pinning all in one binary.',
     link: 'https://github.com/ipfs/kubo',
     jobs: ['run-a-node', 'pin-and-host', 'read-from-the-web'],
     pillar: 'all',
@@ -37,7 +37,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: 'Helia',
-    blurb: 'Modular IPFS in TypeScript. Run a node directly in the browser or in Node — pick the transports and routers you need, leave the rest behind.',
+    blurb: 'Modular IPFS in TypeScript. Run a node directly in the browser or in Node. Pick the transports and routers you need, leave the rest behind.',
     link: 'https://helia.io/',
     jobs: ['run-a-node', 'embed-in-apps'],
     pillar: 'all',
@@ -53,7 +53,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: 'Omnipin',
-    blurb: 'A decentralized pinning network. Submit a CID, get it persisted across many providers — no single host to call, no single host to fail.',
+    blurb: 'A decentralized pinning network. Submit a CID, get it persisted across many providers, with no single host to call and no single host to fail.',
     link: 'https://omnipin.eth.link/',
     jobs: ['pin-and-host'],
     pillar: 'all',

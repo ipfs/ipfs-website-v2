@@ -22,7 +22,7 @@ export default function UseCasesTabs() {
       setIndicator({ left: tab.offsetLeft, width: tab.offsetWidth });
     };
     measure();
-    // Mono fonts often shift after they finish loading — re-measure once they do.
+    // Mono fonts often shift after they finish loading. Re-measure once they do.
     if (typeof document !== 'undefined' && document.fonts?.ready) {
       document.fonts.ready.then(measure);
     }

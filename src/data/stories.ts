@@ -88,10 +88,10 @@ export const categories: UseCaseCategory[] = [
     framing: 'Publish once, reference forever. The site survives a host outage, a takedown, or a country-wide block.',
     cases: [
       {
-        brand: 'Stargate', hue: 270,
-        title: 'A content-addressed backbone for atproto apps',
-        body: 'Stargate gives atproto applications a verifiable, content-addressed layer for identity, posts, and assets, anchored to IPFS.',
-        linkLabel: 'Visit Stargate', link: 'vereign.com/stargate', href: 'https://www.vereign.com/stargate',
+        brand: 'HIN', hue: 270,
+        title: 'Secure healthcare messaging for Switzerland',
+        body: 'HIN runs the encrypted messaging backbone between Swiss doctors and patients. Every message is sharded into cryptographic fragments and distributed across an IPFS swarm, with no central database to breach. 700,000 messages a month, up from 350,000 last year.',
+        linkLabel: 'Read the case study', link: 'vereign.com/use-cases/hin', href: 'https://vereign.com/use-cases/hin/',
       },
       {
         brand: 'Wikipedia', hue: 220,
