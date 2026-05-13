@@ -1,50 +1,40 @@
 ---
 const ctas = [
+  // Matrix temporarily hidden so the row fits 5 cards
+  // {
+  //   kind: 'Matrix',
+  //   blurb: 'Real-time help, working groups, and the Friday show-and-tell.',
+  //   href: 'https://matrix.to/#/#ipfs-space:ipfs.io',
+  //   glyph: '◍',
+  // },
   {
-    kind: 'Chat',
-    primary: 'Matrix · Discord',
-    blurb: 'Real-time help, working groups, and the Friday show-and-tell.',
-    links: [
-      { label: '#ipfs-space:ipfs.io', link: 'https://matrix.to/#/#ipfs-space:ipfs.io' },
-      { label: 'discord.gg/ipfs', link: 'https://discord.gg/vj7qWuAyHY' },
-    ],
-    glyph: '◍',
+    kind: 'Discord',
+    blurb: 'Casual chat, project channels, and community Q&A.',
+    href: 'https://discord.gg/vj7qWuAyHY',
+    glyph: '◉',
   },
   {
     kind: 'Forums',
-    primary: 'discuss.ipfs.tech',
     blurb: 'Long-form questions, RFCs, and proposals. Searchable and public.',
-    links: [
-      { label: 'Browse the categories', link: 'https://discuss.ipfs.tech/' },
-      { label: 'github.com/ipfs', link: 'https://github.com/ipfs' },
-    ],
+    href: 'https://discuss.ipfs.tech/',
     glyph: '◇',
   },
   {
     kind: 'Calendar',
-    primary: 'lu.ma/ipfs',
     blurb: 'Working group calls, in-person meetups, conferences, and IPFS Camp.',
-    links: [
-      { label: 'See upcoming events', link: 'https://lu.ma/ipfs' },
-    ],
+    href: 'https://lu.ma/ipfs',
     glyph: '◐',
   },
   {
     kind: 'Newsletter',
-    primary: 'ipfs.fyi/newsletter',
     blurb: 'A monthly digest of releases, RFCs, and what shipped across the network.',
-    links: [
-      { label: 'Subscribe', link: 'https://ipfs.fyi/newsletter' },
-    ],
+    href: 'https://ipfs.fyi/newsletter',
     glyph: '◫',
   },
   {
     kind: 'YouTube',
-    primary: 'youtube.com/@ipfs',
     blurb: 'Recordings of working group calls, conference talks, and IPFS Camp sessions.',
-    links: [
-      { label: 'Watch the channel', link: 'https://www.youtube.com/@ipfs' },
-    ],
+    href: 'https://www.youtube.com/@IPFSbot',
     glyph: '▶',
   },
 ];
@@ -94,9 +84,6 @@ const src = (n: number) => `/community/community-${n}.jpg`;
 
   <div class="relative mx-auto" style="max-width: 1240px; padding: 0 32px;">
     <div style="margin-bottom: 40px; max-width: 820px;">
-      <div class="mono" style="font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(107,196,206,0.7); font-weight: 500; margin-bottom: 14px;">
-        join the constellation
-      </div>
       <h2 style="margin: 0 0 12px; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.08;">
         By the community, for the community.
       </h2>
@@ -126,7 +113,7 @@ const src = (n: number) => `/community/community-${n}.jpg`;
   <div class="relative mx-auto" style="max-width: 1240px; padding: 0 32px;">
     <div class="cta-grid">
       {ctas.map((c) => (
-        <div class="cta-card">
+        <a class="cta-card" href={c.href}>
           <div class="flex items-center" style="gap: 12px;">
             <div class="mono cta-glyph">
               {c.glyph}
@@ -135,18 +122,10 @@ const src = (n: number) => `/community/community-${n}.jpg`;
               {c.kind}
             </div>
           </div>
-          <div style="font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.01em;">
-            → {c.primary}
-          </div>
           <div style="font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.55; flex: 1;">
             {c.blurb}
           </div>
-          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
-            {c.links.map((l) => (
-              <a class="mono cta-link" href={l.link}>↗ {l.label}</a>
-            ))}
-          </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
@@ -167,6 +146,13 @@ const src = (n: number) => `/community/community-${n}.jpg`;
     display: flex;
     flex-direction: column;
     gap: 14px;
+    color: inherit;
+    text-decoration: none;
+    transition: background .15s, border-color .15s, transform .15s;
+  }
+  .cta-card:hover {
+    background: rgba(107,196,206,0.08);
+    border-color: rgba(107,196,206,0.5);
   }
   .cta-glyph {
     width: 40px;
@@ -180,17 +166,6 @@ const src = (n: number) => `/community/community-${n}.jpg`;
     font-size: 18px;
     font-weight: 600;
   }
-  .cta-link {
-    font-size: 13px;
-    color: var(--teal);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color .15s;
-  }
-  .cta-link:hover {
-    color: #fff;
-  }
-
   /* community photo ribbon */
   .ribbon {
     margin: 0 0 56px;
@@ -227,13 +202,10 @@ const src = (n: number) => `/community/community-${n}.jpg`;
     height: 100%;
     object-fit: cover;
     display: block;
-    /* desaturate + slightly dim so photos sit calmly on the navy */
-    filter: grayscale(1) brightness(0.85);
     transform: scale(1);
-    transition: filter .4s ease, transform .5s ease;
+    transition: transform .5s ease;
   }
   .ribbon-tile:hover img {
-    filter: grayscale(0) brightness(1);
     transform: scale(1.05);
   }
   @media (max-width: 640px) {
