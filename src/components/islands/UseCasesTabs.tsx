@@ -130,7 +130,13 @@ export default function UseCasesTabs() {
 }
 
 function Card({ card, index }: { card: UseCase; index: number }) {
-  const markStyle: CSSProperties = {
+  // Tint the logo background and border with the brand hue so cards stay visually distinct
+  // even when the logo PNG itself is monochrome.
+  const logoStyle: CSSProperties = {
+    background: `hsl(${card.hue} 35% 96%)`,
+    border: `1px solid hsl(${card.hue} 35% 82%)`,
+  };
+  const gradientStyle: CSSProperties = {
     background: `linear-gradient(135deg, hsl(${card.hue} 55% 45%) 0%, hsl(${(card.hue + 30) % 360} 55% 30%) 100%)`,
   };
   return (
@@ -142,9 +148,15 @@ function Card({ card, index }: { card: UseCase; index: number }) {
       style={{ '--i': index } as CSSProperties}
     >
       <div className="story-card-head">
-        <div className="story-card-mark" style={markStyle}>
-          {initials(card.brand)}
-        </div>
+        {card.logo ? (
+          <div className="story-card-mark story-card-mark-logo" style={logoStyle}>
+            <img src={card.logo} alt={`${card.brand} logo`} loading="lazy" />
+          </div>
+        ) : (
+          <div className="story-card-mark" style={gradientStyle}>
+            {initials(card.brand)}
+          </div>
+        )}
         <div className="mono story-card-brand">{card.brand}</div>
       </div>
       <h4 className="story-card-title">{card.title}</h4>
@@ -156,7 +168,16 @@ function Card({ card, index }: { card: UseCase; index: number }) {
             “{card.quote.text}”
           </blockquote>
           <figcaption className="story-card-quote-cap">
-            <div className="story-card-avatar">{initials2(card.quote.who)}</div>
+            {card.quote.photo ? (
+              <img
+                className="story-card-avatar story-card-avatar-photo"
+                src={card.quote.photo}
+                alt={card.quote.who}
+                loading="lazy"
+              />
+            ) : (
+              <div className="story-card-avatar">{initials2(card.quote.who)}</div>
+            )}
             <div>
               <div className="story-card-quote-who">{card.quote.who}</div>
               <div className="story-card-quote-role">{card.quote.role}</div>
