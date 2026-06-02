@@ -23,7 +23,7 @@ const initials = (name: string) =>
   name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
 ---
 
-<section class="proof-section">
+<section class="proof-section" data-proof>
   <div class="proof-inner">
     <div class="mono proof-label">running in production at</div>
     <div class="proof-logos">
@@ -32,7 +32,15 @@ const initials = (name: string) =>
       ))}
     </div>
 
-    <div class="proof-quotes">
+    <div class="proof-quotes-head">
+      <div class="mono proof-quotes-label">what builders say</div>
+      <div class="proof-arrows">
+        <button type="button" class="proof-arrow" data-prev aria-label="Previous testimonials">←</button>
+        <button type="button" class="proof-arrow" data-next aria-label="More testimonials">→</button>
+      </div>
+    </div>
+
+    <div class="proof-track">
       {quotes.map((q) => (
         <figure class="proof-quote">
           <blockquote class="proof-quote-text">“{q.text}”</blockquote>
@@ -54,9 +62,24 @@ const initials = (name: string) =>
   </div>
 </section>
 
+<script>
+  // Wire the arrow controls to scroll the testimonial row by roughly one card.
+  document.querySelectorAll<HTMLElement>('[data-proof]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('.proof-track');
+    if (!track) return;
+    const step = () => Math.min(track.clientWidth * 0.9, 380);
+    root.querySelector('[data-prev]')?.addEventListener('click', () =>
+      track.scrollBy({ left: -step(), behavior: 'smooth' }),
+    );
+    root.querySelector('[data-next]')?.addEventListener('click', () =>
+      track.scrollBy({ left: step(), behavior: 'smooth' }),
+    );
+  });
+</script>
+
 <style>
   .proof-section {
-    padding: 64px 32px;
+    padding: 48px 32px;
     background: var(--pearl);
     border-bottom: 1px solid var(--hair);
   }
@@ -71,7 +94,7 @@ const initials = (name: string) =>
     color: var(--ink-3);
     font-weight: 600;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
 
   /* ── Logo strip ───────────────────────────────────────────────────── */
@@ -80,11 +103,11 @@ const initials = (name: string) =>
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 40px 56px;
-    margin-bottom: 56px;
+    gap: 32px 52px;
+    margin-bottom: 44px;
   }
   .proof-logo {
-    height: 30px;
+    height: 28px;
     width: auto;
     max-width: 150px;
     object-fit: contain;
@@ -98,32 +121,77 @@ const initials = (name: string) =>
     opacity: 1;
   }
 
-  /* ── Testimonials ─────────────────────────────────────────────────── */
-  .proof-quotes {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
+  /* ── Testimonials: one scrollable row ─────────────────────────────── */
+  .proof-quotes-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
   }
-  @media (min-width: 720px) {
-    .proof-quotes { grid-template-columns: repeat(2, 1fr); }
+  .proof-quotes-label {
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
   }
-  @media (min-width: 1080px) {
-    .proof-quotes { grid-template-columns: repeat(3, 1fr); }
+  .proof-arrows {
+    display: flex;
+    gap: 8px;
   }
+  .proof-arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--navy);
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .15s, background .15s;
+  }
+  .proof-arrow:hover {
+    border-color: var(--turq);
+    background: var(--pearl);
+  }
+  .proof-arrow:focus-visible {
+    outline: 2px solid var(--turq);
+    outline-offset: 2px;
+  }
+
+  .proof-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* Let cards bleed to the edge so the row reads as scrollable. */
+    margin: 0 -32px;
+    padding: 4px 32px;
+  }
+  .proof-track::-webkit-scrollbar { display: none; }
 
   .proof-quote {
     margin: 0;
+    flex: 0 0 340px;
+    max-width: 340px;
+    scroll-snap-align: start;
     background: var(--paper);
     border: 1px solid var(--line);
     border-radius: 14px;
-    padding: 26px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
   }
   .proof-quote-text {
     margin: 0;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.55;
     color: var(--ink);
     letter-spacing: -0.005em;
@@ -173,8 +241,10 @@ const initials = (name: string) =>
   }
 
   @media (max-width: 760px) {
-    .proof-section { padding: 48px 24px; }
-    .proof-logos { gap: 28px 36px; margin-bottom: 40px; }
-    .proof-logo { height: 24px; }
+    .proof-section { padding: 40px 24px; }
+    .proof-logos { gap: 24px 32px; margin-bottom: 36px; }
+    .proof-logo { height: 22px; }
+    .proof-track { margin: 0 -24px; padding: 4px 24px; }
+    .proof-quote { flex-basis: 280px; max-width: 280px; }
   }
 </style>

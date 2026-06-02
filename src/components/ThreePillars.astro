@@ -8,14 +8,6 @@ const pillars = [
     title: 'Name data by what it is.',
     body: 'A Content Identifier (CID) is a self-describing cryptographic fingerprint. From a plain hash of a single byte to a Merkle DAG that proves an entire dataset, the CID is the contract between publisher and consumer. Anyone can mint one. Anyone can verify one.',
     question: 'What is the data?',
-    code: {
-      caption: 'content in, CID out',
-      body: `import { unixfs } from '@helia/unixfs'
-
-const fs = unixfs(helia)
-const cid = await fs.addBytes(file)
-// → bafybeigdyrzt5sfp7udm7hu76…`,
-    },
     tech: [
       { name: 'CID', hint: 'self-describing hash', link: 'https://docs.ipfs.tech/concepts/content-addressing/' },
       { name: 'UnixFS', hint: 'files & directories', link: 'https://specs.ipfs.tech/architecture/unixfs/' },
@@ -29,13 +21,6 @@ const cid = await fs.addBytes(file)
     title: 'Find who has it.',
     body: 'A CID alone does not move bytes. Discovery turns a hash into a list of providers willing to serve it. IPFS is plural here: a global open DHT, indexer-style HTTP routing, and newer routing systems compete and interoperate behind the same content-addressed contract.',
     question: 'Who has it?',
-    code: {
-      caption: 'a CID, a list of providers',
-      body: `// who is willing to serve this CID?
-for await (const p of helia.routing.findProviders(cid)) {
-  console.log(p.id.toString())
-}`,
-    },
     tech: [
       { name: 'Amino DHT', hint: 'open Kademlia DHT', link: 'https://blog.ipfs.tech/2023-09-amino-refactoring/' },
       { name: 'IPNI', hint: 'HTTP indexers at scale', link: 'https://cid.contact/' },
@@ -50,13 +35,6 @@ for await (const p of helia.routing.findProviders(cid)) {
     title: 'Move the bytes.',
     body: 'Once a provider is found, fetch the blocks and verify them on arrival. The transport is interchangeable: HTTP gateways, libp2p with Bitswap, iroh-blobs over QUIC, RASL, even sneakernet. The CID is the integrity check; the wire is whatever fits the deployment.',
     question: 'How do the bytes arrive?',
-    code: {
-      caption: 'bytes arrive, hash re-verifies ✓',
-      body: `// the wire is interchangeable; the check is not
-for await (const chunk of fs.cat(cid)) {
-  write(chunk)
-}`,
-    },
     tech: [
       { name: 'HTTP Gateways', hint: 'request / response', link: 'https://specs.ipfs.tech/http-gateways/' },
       { name: 'Bitswap', hint: 'block exchange over libp2p', link: 'https://docs.ipfs.tech/concepts/bitswap/' },
@@ -84,11 +62,6 @@ for await (const chunk of fs.cat(cid)) {
           <div class="mono pillar-question">→ {p.question}</div>
           <h3 class="pillar-title">{p.title}</h3>
           <p class="pillar-body">{p.body}</p>
-
-          <div class="pillar-code">
-            <div class="mono pillar-code-cap">{p.code.caption}</div>
-            <pre class="mono pillar-code-body">{p.code.body}</pre>
-          </div>
 
           <div class="pillar-tech">
             {p.tech.map((t) => (
@@ -173,29 +146,6 @@ for await (const chunk of fs.cat(cid)) {
     color: var(--ink-2);
     line-height: 1.6;
     flex: 1;
-  }
-
-  .pillar-code {
-    background: var(--navy);
-    border-radius: 10px;
-    padding: 14px 16px;
-    overflow: hidden;
-  }
-  .pillar-code-cap {
-    font-size: 10px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--teal);
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .pillar-code-body {
-    margin: 0;
-    font-size: 12.5px;
-    line-height: 1.55;
-    color: #fff;
-    white-space: pre-wrap;
-    word-break: break-word;
   }
 
   .pillar-tech {

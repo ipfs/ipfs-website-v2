@@ -92,6 +92,10 @@ export const categories: UseCaseCategory[] = [
         title: 'Secure healthcare messaging for Switzerland',
         body: 'HIN runs the encrypted messaging backbone between Swiss doctors and patients. Every message is sharded into cryptographic fragments and distributed across an IPFS swarm, with no central database to breach. 700,000 messages a month, up from 350,000 last year.',
         linkLabel: 'Read the case study', link: 'vereign.com/use-cases/hin', href: 'https://vereign.com/use-cases/hin/',
+        quote: {
+          who: 'Georg Greve', role: 'CEO and Co-founder, Vereign',
+          text: 'There is no central point of compromise anymore. There is no database that can be hacked, because the data just doesn’t exist, even in encrypted form, in one place anywhere. It only comes together at the edge device of the patient.',
+        },
       },
       {
         brand: 'Wikipedia', hue: 220,
