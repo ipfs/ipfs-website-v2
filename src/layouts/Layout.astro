@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import geistSans400 from '@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2?url';
+import geistPixelCircle from '/fonts/GeistPixelCircle-Regular.woff2?url';
 
 interface Props {
   title?: string;
@@ -18,6 +20,8 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <link rel="preload" href={geistSans400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistPixelCircle} as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
