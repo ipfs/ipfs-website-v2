@@ -15,7 +15,6 @@ interface Foundation {
   title: string;
   body: string;
   demoHeading: string;
-  demoSub: string;
   demo: React.ReactNode;
   ctas: CTA[];
 }
@@ -25,7 +24,6 @@ const FOUNDATIONS: Foundation[] = [
     id: 'cid', num: '01', title: 'CIDs for addressing',
     body: 'Data is identified by what it is, not where it lives. A CID is a self-describing, cryptographic fingerprint of the content, used by UnixFS, DASL, and BDASL to address everything from a single byte to a multi-gigabyte dataset. Any party generates one; any party verifies one.',
     demoHeading: 'Hash around, and find out.',
-    demoSub: 'Change one character. Watch the whole CID change.',
     demo: <FileDropCID />,
     ctas: [
       { label: 'Read the spec', hint: 'CID, UnixFS, DASL', link: 'specs.ipfs.tech' },
@@ -34,9 +32,8 @@ const FOUNDATIONS: Foundation[] = [
   },
   {
     id: 'transport', num: '02', title: 'Transport agnostic',
-    body: "IPFS is strict about outcomes, tolerant about methods. The same CID can travel over HTTP, libp2p with Bitswap, iroh over QUIC, RASL, or a USB key. Verification still happens at the endpoints. Hosts come and go. Routes change. The bytes you asked for arrive intact, or you know they didn't.",
+    body: "IPFS is strict about outcomes, tolerant about methods. The same CID can travel over HTTP, libp2p with Bitswap, iroh-blobs over QUIC, RASL. Verification always happens at the endpoints. Hosts come and go. Routes change. The bytes you asked for arrive intact, or you know they didn't.",
     demoHeading: 'One CID. Any wire. Same bytes.',
-    demoSub: 'HTTP, libp2p, iroh, RASL, or sneakernet — verification happens at the endpoint, not on the wire.',
     demo: (
       <>
         <TransportRoutes />
