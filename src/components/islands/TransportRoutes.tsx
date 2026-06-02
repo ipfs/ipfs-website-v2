@@ -18,36 +18,31 @@ const LANES: Lane[] = [
 
 export default function TransportRoutes() {
   return (
-    <div style={{ border: '1px solid var(--line)', borderRadius: 12, padding: 20, background: 'var(--paper)', marginBottom: 18 }}>
+    <div style={{ background: 'var(--paper)', borderRadius: 12, padding: '16px 20px', marginBottom: 18 }}>
 
-      <div style={{
-        background: 'var(--navy)', borderRadius: 10, padding: '10px 14px', marginBottom: 14,
-        display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center',
-      }}>
-        <span className="mono" style={{ fontSize: 11, color: 'var(--teal)', letterSpacing: '.12em', textTransform: 'uppercase' }}>cid</span>
-        <span className="mono" style={{ fontSize: 13, color: '#fff', fontWeight: 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0 }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 14 }}>
+        <span className="mono" style={{ fontSize: 11, color: 'var(--teal)', letterSpacing: '.12em', textTransform: 'uppercase', flexShrink: 0 }}>cid</span>
+        <span className="mono" style={{ fontSize: 12, color: 'var(--ink-2)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
           {CID}
         </span>
       </div>
 
-      {/* Lanes: each transport delivers the same bytes, each verifies locally. */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 0, borderTop: '1px solid var(--line)' }}>
         {LANES.map((l) => (
           <div key={l.name} style={{
             display: 'flex', alignItems: 'center', gap: 12,
-            border: '1px solid var(--line)', borderRadius: 8, padding: '10px 14px',
-            background: 'var(--pearl)',
+            borderBottom: '1px solid var(--line)', padding: '10px 0',
+            borderLeft: `3px solid ${l.color}`, paddingLeft: 12,
           }}>
-            <span className="mono" style={{ color: l.color, fontWeight: 600, fontSize: 14, width: 16, textAlign: 'center', flexShrink: 0 }}>{l.icon}</span>
-            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--navy)', whiteSpace: 'nowrap' }}>{l.name}</span>
+            <span className="mono" style={{ color: l.color, fontWeight: 600, fontSize: 13, width: 14, textAlign: 'center', flexShrink: 0 }}>{l.icon}</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--navy)', whiteSpace: 'nowrap' }}>{l.name}</span>
             <span className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{l.hint}</span>
-            {/* <span className="mono" style={{ marginLeft: 'auto', fontSize: 11, color: 'var(--jade)', fontWeight: 600, whiteSpace: 'nowrap', flexShrink: 0 }}>✓ verified</span> */}
           </div>
         ))}
       </div>
 
       <div className="mono" style={{
-        marginTop: 14, fontSize: 12, color: 'var(--ink-3)',
+        marginTop: 12, fontSize: 12, color: 'var(--ink-3)',
         display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
       }}>
         <span style={{ color: 'var(--jade)' }}>✓</span>

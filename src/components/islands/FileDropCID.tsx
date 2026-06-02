@@ -60,9 +60,8 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
 
   return (
     <div style={{
-      border: '1.5px solid var(--navy)', borderRadius: 10,
-      background: pulse ? 'rgba(107,196,206,0.12)' : 'var(--paper)',
-      padding: 14, transition: 'background .4s',
+      background: pulse ? 'rgba(107,196,206,0.12)' : 'var(--pearl)',
+      borderRadius: 10, padding: 14, transition: 'background .4s',
     }}>
       <div className="mono" style={{ fontSize: 14, lineHeight: 1.5, marginBottom: 12, wordBreak: 'break-all' }}>
         {parts.map((p) => {
@@ -145,7 +144,6 @@ export default function FileDropCID() {
   const [text, setText] = useState('hello, content-addressed world\n');
   const [cid, setCid] = useState('');
   const [computing, setComputing] = useState(false);
-  const [fileName, setFileName] = useState('note.txt');
   const [size, setSize] = useState(0);
   const [dragOver, setDragOver] = useState(false);
   const [pulseCid, setPulseCid] = useState(false);
@@ -175,7 +173,6 @@ export default function FileDropCID() {
     setDragOver(false);
     const f = e.dataTransfer.files[0];
     if (!f) return;
-    setFileName(f.name);
     const buf = await f.arrayBuffer();
     try {
       const t = new TextDecoder('utf-8', { fatal: false }).decode(buf);
@@ -186,10 +183,10 @@ export default function FileDropCID() {
   };
 
   return (
-    <div style={{ background: 'var(--paper)', border: '1px solid var(--line)', borderRadius: 10, padding: 18 }}>
+    <div style={{ background: 'var(--paper)', borderRadius: 10, padding: 18 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
         <div style={{ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>
-          file → CID
+          ↓ drop a file or edit
         </div>
         <div className="mono" style={{ fontSize: 11, color: 'var(--ink-3)' }}>
           sha-256 · {size} bytes
@@ -206,30 +203,14 @@ export default function FileDropCID() {
           transition: 'all .15s',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-          <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
-            <path d="M1 1h9l5 5v13H1z" stroke="currentColor" strokeWidth="1.4" />
-            <path d="M10 1v5h5" stroke="currentColor" strokeWidth="1.4" />
-          </svg>
-          <input
-            value={fileName}
-            onChange={(e) => setFileName(e.target.value)}
-            className="mono"
-            style={{
-              border: 'none', background: 'transparent', fontSize: 13,
-              color: 'var(--ink)', outline: 'none', flex: 1, padding: 0,
-            }}
-          />
-          <span style={{ fontSize: 11, color: 'var(--ink-3)' }}>↓ drop a file or edit</span>
-        </div>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={4}
           className="mono"
           style={{
-            width: '100%', border: '1px solid var(--hair)', borderRadius: 5,
-            fontSize: 13, padding: 10, resize: 'vertical', background: '#fff',
+            width: '100%', border: 'none', borderRadius: 5,
+            fontSize: 13, padding: 10, resize: 'vertical', background: 'transparent',
             color: 'var(--ink)', outline: 'none', boxSizing: 'border-box',
             lineHeight: 1.5,
           }}
@@ -245,10 +226,6 @@ export default function FileDropCID() {
       </div>
 
       <CIDAnatomy cid={cid} pulse={pulseCid} />
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, fontSize: 12, color: 'var(--ink-3)' }}>
-        <span>change one character…</span>
-        <span>…the digest changes completely →</span>
-      </div>
     </div>
   );
 }
