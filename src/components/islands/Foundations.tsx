@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FileDropCID from './FileDropCID';
 import LocationVsContent from './LocationVsContent';
-import WorksEverywhere from './WorksEverywhere';
+import TransportRoutes from './TransportRoutes';
 
 interface CTA {
   label: string;
@@ -34,25 +34,18 @@ const FOUNDATIONS: Foundation[] = [
   },
   {
     id: 'transport', num: '02', title: 'Transport agnostic',
-    body: "IPFS is strict about outcomes, tolerant about methods. The same CID can travel over HTTP, libp2p, Bitswap, RASL, or a USB key. Verification still happens at the endpoints. Hosts come and go. Routes change. The bytes you asked for arrive intact, or you know they didn't.",
-    demoHeading: 'Take the host down. The content survives.',
-    demoSub: 'Location-addressed URLs depend on a single server. CIDs do not.',
-    demo: <LocationVsContent />,
+    body: "IPFS is strict about outcomes, tolerant about methods. The same CID can travel over HTTP, libp2p with Bitswap, iroh over QUIC, RASL, or a USB key. Verification still happens at the endpoints. Hosts come and go. Routes change. The bytes you asked for arrive intact, or you know they didn't.",
+    demoHeading: 'One CID. Any wire. Same bytes.',
+    demoSub: 'HTTP, libp2p, iroh, RASL, or sneakernet — verification happens at the endpoint, not on the wire.',
+    demo: (
+      <>
+        <TransportRoutes />
+        <LocationVsContent />
+      </>
+    ),
     ctas: [
       { label: 'Pin & retrieve', hint: 'gateways + RASL', link: 'docs.ipfs.tech/concepts/gateways' },
       { label: 'libp2p transports', hint: 'connect anywhere', link: 'libp2p.io' },
-    ],
-  },
-  {
-    id: 'everywhere', num: '03', title: 'Works everywhere',
-    body: 'Verified publishing and retrieval, wherever you operate. Open social on atproto, sovereign web publishing on Mainnet tooling, IoT and streaming with iroh-blobs and private IPFS, tamperproof media for journalists and artists. Same protocol, different jobs to be done.',
-    demoHeading: 'Pick up the bits you need, and run',
-    demoSub: 'One CID, fetched and verified from wildly different places.',
-    demo: <WorksEverywhere />,
-    ctas: [
-      { label: 'Helia (JS)', hint: 'browsers + Node', link: 'helia.io' },
-      { label: 'Kubo (Go)', hint: 'all-in-one node', link: 'github.com/ipfs/kubo' },
-      { label: 'iroh-blobs', hint: 'embedded / IoT', link: 'iroh.computer' },
     ],
   },
 ];
@@ -127,7 +120,7 @@ export default function Foundations() {
           margin-bottom: 28px;
         }
         @media (min-width: 768px) {
-          .foundation-tabs { grid-template-columns: repeat(3, 1fr); }
+          .foundation-tabs { grid-template-columns: repeat(2, 1fr); }
         }
         .foundation-ctas {
           display: flex;

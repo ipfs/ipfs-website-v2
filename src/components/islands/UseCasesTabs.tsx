@@ -3,8 +3,6 @@ import { categories, type UseCase } from '../../data/stories';
 
 const initials = (name: string) =>
   name.split(/\s+/).map((w) => w[0]).join('').slice(0, 3).toUpperCase();
-const initials2 = (name: string) =>
-  name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
 
 export default function UseCasesTabs() {
   const [active, setActive] = useState(0);
@@ -161,30 +159,6 @@ function Card({ card, index }: { card: UseCase; index: number }) {
       </div>
       <h4 className="story-card-title">{card.title}</h4>
       <p className="story-card-body">{card.body}</p>
-
-      {card.quote && (
-        <figure className="story-card-quote">
-          <blockquote className="story-card-quote-text">
-            “{card.quote.text}”
-          </blockquote>
-          <figcaption className="story-card-quote-cap">
-            {card.quote.photo ? (
-              <img
-                className="story-card-avatar story-card-avatar-photo"
-                src={card.quote.photo}
-                alt={card.quote.who}
-                loading="lazy"
-              />
-            ) : (
-              <div className="story-card-avatar">{initials2(card.quote.who)}</div>
-            )}
-            <div>
-              <div className="story-card-quote-who">{card.quote.who}</div>
-              <div className="story-card-quote-role">{card.quote.role}</div>
-            </div>
-          </figcaption>
-        </figure>
-      )}
 
       <div className="mono story-card-footer">
         <span>↗ {card.linkLabel}</span>
