@@ -50,48 +50,48 @@ import SectionHeader from './SectionHeader.astro';
             </circle>
 
             <!-- Traveling dots — one per edge, staggered 0.33 s -->
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="140" cy="25" opacity="0">
               <animate attributeName="cx" values="140;199;140" dur="3s" repeatCount="indefinite" begin="0s"/>
               <animate attributeName="cy" values="25;59;25"    dur="3s" repeatCount="indefinite" begin="0s"/>
               <animate attributeName="opacity" values="0;1;0"  dur="3s" repeatCount="indefinite" begin="0s"/>
             </circle>
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="199" cy="59" opacity="0">
               <animate attributeName="cx" values="199;199;199" dur="3s" repeatCount="indefinite" begin="0.33s"/>
               <animate attributeName="cy" values="59;127;59"   dur="3s" repeatCount="indefinite" begin="0.33s"/>
               <animate attributeName="opacity" values="0;1;0"  dur="3s" repeatCount="indefinite" begin="0.33s"/>
             </circle>
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="199" cy="127" opacity="0">
               <animate attributeName="cx" values="199;140;199" dur="3s" repeatCount="indefinite" begin="0.67s"/>
               <animate attributeName="cy" values="127;161;127" dur="3s" repeatCount="indefinite" begin="0.67s"/>
               <animate attributeName="opacity" values="0;1;0"  dur="3s" repeatCount="indefinite" begin="0.67s"/>
             </circle>
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="140" cy="161" opacity="0">
               <animate attributeName="cx" values="140;81;140"  dur="3s" repeatCount="indefinite" begin="1s"/>
               <animate attributeName="cy" values="161;127;161" dur="3s" repeatCount="indefinite" begin="1s"/>
               <animate attributeName="opacity" values="0;1;0"  dur="3s" repeatCount="indefinite" begin="1s"/>
             </circle>
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="81" cy="127" opacity="0">
               <animate attributeName="cx" values="81;81;81"   dur="3s" repeatCount="indefinite" begin="1.33s"/>
               <animate attributeName="cy" values="127;59;127" dur="3s" repeatCount="indefinite" begin="1.33s"/>
               <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1.33s"/>
             </circle>
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="81" cy="59" opacity="0">
               <animate attributeName="cx" values="81;140;81" dur="3s" repeatCount="indefinite" begin="1.67s"/>
               <animate attributeName="cy" values="59;25;59"  dur="3s" repeatCount="indefinite" begin="1.67s"/>
               <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1.67s"/>
             </circle>
             <!-- Diagonal dots -->
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="140" cy="25" opacity="0">
               <animate attributeName="cx" values="140;140;140" dur="3s" repeatCount="indefinite" begin="2s"/>
               <animate attributeName="cy" values="25;161;25"   dur="3s" repeatCount="indefinite" begin="2s"/>
               <animate attributeName="opacity" values="0;1;0"  dur="3s" repeatCount="indefinite" begin="2s"/>
             </circle>
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="199" cy="59" opacity="0">
               <animate attributeName="cx" values="199;81;199"  dur="3s" repeatCount="indefinite" begin="2.33s"/>
               <animate attributeName="cy" values="59;127;59"   dur="3s" repeatCount="indefinite" begin="2.33s"/>
               <animate attributeName="opacity" values="0;1;0"  dur="3s" repeatCount="indefinite" begin="2.33s"/>
             </circle>
-            <circle class="t-dot" r="3.5">
+            <circle class="t-dot" r="3.5" cx="199" cy="127" opacity="0">
               <animate attributeName="cx" values="199;81;199"  dur="3s" repeatCount="indefinite" begin="2.67s"/>
               <animate attributeName="cy" values="127;59;127"  dur="3s" repeatCount="indefinite" begin="2.67s"/>
               <animate attributeName="opacity" values="0;1;0"  dur="3s" repeatCount="indefinite" begin="2.67s"/>
@@ -104,17 +104,131 @@ import SectionHeader from './SectionHeader.astro';
         </div>
       </div>
 
+            <!-- Hybrid network: same hexagon as public, but packets carry a lock (ciphertext) -->
+      <div class="topo-card">
+        <div class="topo-diagram" aria-hidden="true">
+          <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <!-- Perimeter edges -->
+            <line class="t-line" x1="140" y1="25"  x2="199" y2="59"/>
+            <line class="t-line" x1="199" y1="59"  x2="199" y2="127"/>
+            <line class="t-line" x1="199" y1="127" x2="140" y2="161"/>
+            <line class="t-line" x1="140" y1="161" x2="81"  y2="127"/>
+            <line class="t-line" x1="81"  y1="127" x2="81"  y2="59"/>
+            <line class="t-line" x1="81"  y1="59"  x2="140" y2="25"/>
+            <!-- Long diagonals -->
+            <line class="t-line t-line--dim" x1="140" y1="25"  x2="140" y2="161"/>
+            <line class="t-line t-line--dim" x1="199" y1="59"  x2="81"  y2="127"/>
+            <line class="t-line t-line--dim" x1="199" y1="127" x2="81"  y2="59"/>
+
+            <!-- Nodes (all equal peers) -->
+            <circle class="t-node" cx="140" cy="25"  r="10">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.6s" repeatCount="indefinite" begin="0s"/>
+            </circle>
+            <circle class="t-node" cx="199" cy="59"  r="10">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.6s" repeatCount="indefinite" begin="0.43s"/>
+            </circle>
+            <circle class="t-node" cx="199" cy="127" r="10">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.6s" repeatCount="indefinite" begin="0.87s"/>
+            </circle>
+            <circle class="t-node" cx="140" cy="161" r="10">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.6s" repeatCount="indefinite" begin="1.3s"/>
+            </circle>
+            <circle class="t-node" cx="81"  cy="127" r="10">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.6s" repeatCount="indefinite" begin="1.73s"/>
+            </circle>
+            <circle class="t-node" cx="81"  cy="59"  r="10">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.6s" repeatCount="indefinite" begin="2.17s"/>
+            </circle>
+
+            <!-- Lock-packet groups — one per edge/diagonal, staggered 0.33 s.
+                 Each <g> translates to its midpoint path; the lock icon is at origin.
+                 Static transform matches the first animation keyframe so the group
+                 is never at the SVG origin (0,0) before animateTransform fires. -->
+            <g opacity="0" transform="translate(140,25)">
+              <animateTransform attributeName="transform" type="translate" values="140,25;199,59;140,25" dur="3s" repeatCount="indefinite" begin="0s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(199,59)">
+              <animateTransform attributeName="transform" type="translate" values="199,59;199,127;199,59" dur="3s" repeatCount="indefinite" begin="0.33s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0.33s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(199,127)">
+              <animateTransform attributeName="transform" type="translate" values="199,127;140,161;199,127" dur="3s" repeatCount="indefinite" begin="0.67s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0.67s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(140,161)">
+              <animateTransform attributeName="transform" type="translate" values="140,161;81,127;140,161" dur="3s" repeatCount="indefinite" begin="1s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(81,127)">
+              <animateTransform attributeName="transform" type="translate" values="81,127;81,59;81,127" dur="3s" repeatCount="indefinite" begin="1.33s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1.33s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(81,59)">
+              <animateTransform attributeName="transform" type="translate" values="81,59;140,25;81,59" dur="3s" repeatCount="indefinite" begin="1.67s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1.67s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(140,25)">
+              <animateTransform attributeName="transform" type="translate" values="140,25;140,161;140,25" dur="3s" repeatCount="indefinite" begin="2s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="2s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(199,59)">
+              <animateTransform attributeName="transform" type="translate" values="199,59;81,127;199,59" dur="3s" repeatCount="indefinite" begin="2.33s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="2.33s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+            <g opacity="0" transform="translate(199,127)">
+              <animateTransform attributeName="transform" type="translate" values="199,127;81,59;199,127" dur="3s" repeatCount="indefinite" begin="2.67s"/>
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="2.67s"/>
+              <circle class="h-pkt-bg" r="5.5"/>
+              <path class="h-lock-shackle" d="M -1.8 -0.5 A 1.8 1.8 0 0 1 1.8 -0.5"/>
+              <rect class="h-lock-body" x="-2.5" y="-0.5" width="5" height="3.5" rx="0.8"/>
+              <circle class="h-lock-hole" cx="0" cy="1.5" r="0.7"/>
+            </g>
+          </svg>
+        </div>
+        <div class="topo-body">
+          <span class="topo-badge topo-badge--hybrid">Hybrid</span>
+          <p class="topo-desc">Public peers, private data. Content is encrypted. CIDs route over the Amino DHT while ciphertext stays opaque to every transit node.</p>
+        </div>
+      </div>
+
+
       <!-- Private network -->
       <div class="topo-card">
         <div class="topo-diagram" aria-hidden="true">
           <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <!-- Rotating boundary ring -->
-            <circle class="p-boundary" cx="140" cy="95" r="68">
-              <animateTransform attributeName="transform" type="rotate"
-                                from="0 140 95" to="360 140 95"
-                                dur="18s" repeatCount="indefinite"/>
-            </circle>
-
             <!-- Mesh lines (drawn before nodes) -->
             <!-- Square edges: T(140,27)–R(208,95)–B(140,163)–L(72,95)–T -->
             <line class="p-line" x1="140" y1="27" x2="208" y2="95"/>
@@ -147,25 +261,25 @@ import SectionHeader from './SectionHeader.astro';
 
             <!-- Traveling dots around the ring -->
             <!-- T → R -->
-            <circle class="p-dot" r="3.5">
+            <circle class="p-dot" r="3.5" cx="140" cy="27" opacity="0">
               <animate attributeName="cx" values="140;208;140" dur="3.5s" repeatCount="indefinite" begin="0s"/>
               <animate attributeName="cy" values="27;95;27" dur="3.5s" repeatCount="indefinite" begin="0s"/>
               <animate attributeName="opacity" values="0;0.9;0" dur="3.5s" repeatCount="indefinite" begin="0s"/>
             </circle>
             <!-- R → B -->
-            <circle class="p-dot" r="3.5">
+            <circle class="p-dot" r="3.5" cx="208" cy="95" opacity="0">
               <animate attributeName="cx" values="208;140;208" dur="3.5s" repeatCount="indefinite" begin="0.875s"/>
               <animate attributeName="cy" values="95;163;95" dur="3.5s" repeatCount="indefinite" begin="0.875s"/>
               <animate attributeName="opacity" values="0;0.9;0" dur="3.5s" repeatCount="indefinite" begin="0.875s"/>
             </circle>
             <!-- B → L -->
-            <circle class="p-dot" r="3.5">
+            <circle class="p-dot" r="3.5" cx="140" cy="163" opacity="0">
               <animate attributeName="cx" values="140;72;140" dur="3.5s" repeatCount="indefinite" begin="1.75s"/>
               <animate attributeName="cy" values="163;95;163" dur="3.5s" repeatCount="indefinite" begin="1.75s"/>
               <animate attributeName="opacity" values="0;0.9;0" dur="3.5s" repeatCount="indefinite" begin="1.75s"/>
             </circle>
             <!-- L → T -->
-            <circle class="p-dot" r="3.5">
+            <circle class="p-dot" r="3.5" cx="72" cy="95" opacity="0">
               <animate attributeName="cx" values="72;140;72" dur="3.5s" repeatCount="indefinite" begin="2.625s"/>
               <animate attributeName="cy" values="95;27;95" dur="3.5s" repeatCount="indefinite" begin="2.625s"/>
               <animate attributeName="opacity" values="0;0.9;0" dur="3.5s" repeatCount="indefinite" begin="2.625s"/>
@@ -185,10 +299,13 @@ import SectionHeader from './SectionHeader.astro';
 <style>
   .topo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
-  @media (max-width: 700px) {
+  @media (max-width: 960px) {
+    .topo-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
     .topo-grid { grid-template-columns: 1fr; }
   }
 
@@ -244,8 +361,7 @@ import SectionHeader from './SectionHeader.astro';
   .t-dot { fill: var(--turq); }
 
   /* Private network SVG classes */
-  .p-boundary { fill: none; stroke: var(--jade); stroke-width: 1.5; stroke-dasharray: 6 4; opacity: 0.4; }
-  .p-line { stroke: var(--line); stroke-width: 1.5; fill: none; }
+.p-line { stroke: var(--line); stroke-width: 1.5; fill: none; }
   .p-line--dim { opacity: 0.45; }
   .p-node { fill: var(--paper); stroke: var(--jade); stroke-width: 1.5; }
   .p-dot { fill: var(--jade); }
@@ -253,7 +369,11 @@ import SectionHeader from './SectionHeader.astro';
   .p-lock-body { fill: var(--pearl); stroke: var(--jade); stroke-width: 1.5; }
   .p-lock-key { fill: var(--jade); }
 
-  @media (prefers-reduced-motion: reduce) {
-    .p-boundary { animation: none; }
-  }
+  /* Hybrid lock-packet styles */
+  .h-pkt-bg      { fill: var(--violet, #818cf8); }
+  .h-lock-shackle { fill: none; stroke: var(--paper); stroke-width: 1.2; stroke-linecap: round; }
+  .h-lock-body   { fill: var(--paper); }
+  .h-lock-hole   { fill: var(--violet, #818cf8); }
+  .topo-badge--hybrid { color: var(--violet, #818cf8); border-color: var(--violet, #818cf8); background: var(--pearl); }
+
 </style>
