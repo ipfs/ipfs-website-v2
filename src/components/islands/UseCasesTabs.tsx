@@ -87,7 +87,6 @@ export default function UseCasesTabs() {
               className={`uc-tab${isActive ? ' is-active' : ''}`}
               onClick={() => setActive(i)}
             >
-              <span className="mono uc-tab-num">0{i + 1}</span>
               <span className="uc-tab-label">{c.label}</span>
               <span className="uc-tab-count mono" aria-hidden="true">
                 {c.cases.length.toString().padStart(2, '0')}

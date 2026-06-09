@@ -73,8 +73,7 @@ export default function Foundations() {
                 background: isActive ? 'var(--grad)' : 'var(--stone)',
                 opacity: isActive ? 1 : 0.4,
               }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-                <span className="mono" style={{ fontSize: 12, color: isActive ? 'var(--turq)' : 'var(--ink-3)', fontWeight: 600, letterSpacing: '.1em' }}>{f.num}</span>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'baseline', marginBottom: 16 }}>
                 <span className="mono" style={{ fontSize: 11, color: isActive ? 'var(--turq)' : 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '.12em', fontWeight: 600, whiteSpace: 'nowrap' }}>
                   {isActive ? '◉ live demo ↓' : '○ try demo'}
                 </span>
