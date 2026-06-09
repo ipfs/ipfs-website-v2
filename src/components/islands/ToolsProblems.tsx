@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type Lang = 'all' | 'go' | 'typescript' | 'rust' | 'http';
+type Lang = 'all' | 'node' | 'cli' | 'go' | 'typescript' | 'rust' | 'http' | 'other';
 
 interface ToolChip {
   name: string;
@@ -16,51 +16,69 @@ interface Problem {
 
 const LANG_META: Record<Lang, { label: string; color: string }> = {
   all:        { label: 'All',          color: 'var(--navy)' },
+  node:       { label: 'Node',         color: '#64748B' },
+  cli:        { label: 'CLI',          color: '#9333EA' },
   go:         { label: 'Go',           color: '#00ADD8' },
   typescript: { label: 'TypeScript',   color: '#3178C6' },
   rust:       { label: 'Rust',         color: '#CE422B' },
   http:       { label: 'HTTP / API',   color: 'var(--jade)' },
+  other:      { label: 'Other',        color: '#A16207' },
 };
 
 const PROBLEMS: Problem[] = [
   {
     label: 'Use CIDs in my own stack',
-    guidance: 'Use DASL for simple content-addressed values; reach for full IPLD when you need linked data or Merkle structures.',
+    guidance: 'Use DASL for simple content-addressed values; reach for full IPLD when you need linked data or Merkle structures. Boxo provides Go building blocks for CID handling and IPFS protocols.',
     tools: [
-      { name: 'DASL',  link: 'https://dasl.ing/',    lang: 'http' },
-      { name: 'IPLD',  link: 'https://ipld.io/',     lang: 'http' },
-      { name: 'Helia', link: 'https://helia.io/',    lang: 'typescript' },
+      { name: 'DASL',  link: 'https://dasl.ing/',                lang: 'http' },
+      { name: 'IPLD',  link: 'https://ipld.io/',                 lang: 'http' },
+      { name: 'Helia', link: 'https://helia.io/',                lang: 'typescript' },
+      { name: 'Boxo',  link: 'https://github.com/ipfs/boxo',     lang: 'go' },
     ],
   },
   {
     label: 'Share data in a private network',
     guidance: 'Run Kubo with a swarm key for a closed IPFS network, or use iroh-blobs for lightweight QUIC-native transfer.',
     tools: [
-      { name: 'Kubo',       link: 'https://github.com/ipfs/kubo',   lang: 'go' },
+      { name: 'Kubo',       link: 'https://github.com/ipfs/kubo',   lang: 'node' },
+      { name: 'Helia', link: 'https://helia.io/',                lang: 'typescript' },
       { name: 'iroh-blobs', link: 'https://www.iroh.computer/',     lang: 'rust' },
     ],
   },
   {
     label: 'Publish from my own node',
-    guidance: 'Run a Kubo daemon, pin your content locally, and serve it through the built-in HTTP gateway.',
+    guidance: 'Run a Kubo or Helia node to pin and serve content; use ipfs-cluster for coordinated pinning across multiple nodes.',
     tools: [
-      { name: 'Kubo', link: 'https://github.com/ipfs/kubo', lang: 'go' },
+      { name: 'IPFS Desktop',  link: 'https://docs.ipfs.tech/install/ipfs-desktop/', lang: 'node' },
+      { name: 'Kubo',         link: 'https://github.com/ipfs/kubo',         lang: 'node' },
+      { name: 'Helia',        link: 'https://helia.io/',                     lang: 'typescript' },
+      { name: 'ipfs-cluster', link: 'https://ipfscluster.io/',               lang: 'node' },
     ],
   },
   {
     label: 'Publish via a hosted service',
     guidance: 'Upload to a pinning service — they handle replication, availability, and IPNI announcements.',
     tools: [
-      { name: 'Pinata',   link: 'https://pinata.cloud/',         lang: 'http' },
-      { name: 'Filebase', link: 'https://filebase.com/',         lang: 'http' },
-      { name: 'Omnipin',  link: 'https://omnipin.eth.link/',     lang: 'http' },
+      { name: 'Pinata',          link: 'https://pinata.cloud/',      lang: 'http' },
+      { name: 'Filebase',        link: 'https://filebase.com/',      lang: 'http' },
+      { name: 'Filecoin.Cloud',  link: 'https://filecoin.cloud/',    lang: 'http' },
     ],
   },
   {
     label: 'Ship a content-addressed static website',
-    guidance: 'Drop ipfs-deploy-action into your CI pipeline to get a CID per build and pin it automatically.',
+    guidance: 'Drop ipfs-deploy-action into your CI pipeline to get a CID per build and pin it automatically. Omnipin offers one-click pinning via MetaMask.',
     tools: [
-      { name: 'ipfs-deploy-action', link: 'https://github.com/ipshipyard/ipfs-deploy-action', lang: 'http' },
+      { name: 'ipfs-deploy-action', link: 'https://github.com/ipshipyard/ipfs-deploy-action', lang: 'other' },
+      { name: 'Omnipin',            link: 'https://omnipin.eth.link/',                        lang: 'cli' },
+    ],
+  },
+  {
+    label: 'Verified retrieval in browsers',
+    guidance: 'Fetch and cryptographically verify IPFS content directly in the browser with no trusted gateway required.',
+    tools: [
+      { name: 'service-worker-gateway', link: 'https://github.com/ipfs/service-worker-gateway', lang: 'typescript' },
+      { name: '@helia/verified-fetch',   link: 'https://github.com/ipfs/helia-verified-fetch',   lang: 'typescript' },
+      { name: '@dasl/rasl',   link: 'https://github.com/darobin/rasl',   lang: 'typescript' },
     ],
   },
 ];
@@ -68,13 +86,14 @@ const PROBLEMS: Problem[] = [
 function chipOpacity(chipLang: Lang, active: Lang): number {
   if (active === 'all') return 1;
   if (chipLang === active) return 1;
-  if (chipLang === 'http') return 0.5; // HTTP tools work with any language
+  if (chipLang === 'http' || chipLang === 'node' || chipLang === 'cli' || chipLang === 'other') return 0.5;
   return 0.2;
 }
 
 function rowOpacity(tools: ToolChip[], active: Lang): number {
   if (active === 'all') return 1;
-  return tools.some((t) => t.lang === active || t.lang === 'http') ? 1 : 0.35;
+  const agnostic = (l: Lang) => l === 'http' || l === 'node' || l === 'cli' || l === 'other';
+  return tools.some((t) => t.lang === active || agnostic(t.lang)) ? 1 : 0.35;
 }
 
 export default function ToolsProblems() {
@@ -124,7 +143,6 @@ export default function ToolsProblems() {
                     } as React.CSSProperties}
                   >
                     {t.name}
-                    <span aria-hidden="true"> ↗</span>
                   </a>
                 ))}
               </div>
