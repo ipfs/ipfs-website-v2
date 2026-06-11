@@ -29,7 +29,7 @@ const LANG_META: Record<Lang, { label: string; color: string }> = {
 
 const PROBLEMS: Problem[] = [
   {
-    label: 'Use CIDs in my own stack',
+    label: 'Use CIDs in your own stack',
     guidance: 'Use DASL for simple content-addressed values; reach for full IPLD when you need linked data or Merkle structures. Boxo provides Go building blocks for CID handling and IPFS protocols.',
     tools: [
       { name: 'DASL',              link: 'https://dasl.ing/',                                    lang: 'http' },
@@ -53,7 +53,7 @@ const PROBLEMS: Problem[] = [
     ],
   },
   {
-    label: 'Publish from my own node',
+    label: 'Publish from your own node',
     guidance: 'Run a Kubo or Helia node to pin and serve content; use ipfs-cluster for coordinated pinning across multiple nodes.',
     tools: [
       { name: 'IPFS Desktop',  link: 'https://docs.ipfs.tech/install/ipfs-desktop/', lang: 'node' },
@@ -64,7 +64,7 @@ const PROBLEMS: Problem[] = [
   },
   {
     label: 'Publish via a hosted service',
-    guidance: 'Upload to a pinning service — they handle replication, availability, and IPNI announcements.',
+    guidance: 'Upload to a pinning service, they handle replication, availability, and IPNI/DHT announcements.',
     tools: [
       { name: 'Pinata',          link: 'https://pinata.cloud/',      lang: 'http' },
       { name: 'Filebase',        link: 'https://filebase.com/',      lang: 'http' },
