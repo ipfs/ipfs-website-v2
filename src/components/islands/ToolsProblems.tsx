@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type Lang = 'all' | 'node' | 'cli' | 'go' | 'typescript' | 'rust' | 'http' | 'other';
+type Lang = 'all' | 'node' | 'cli' | 'go' | 'typescript' | 'rust' | 'python' | 'java' | 'http' | 'other';
 
 interface ToolChip {
   name: string;
@@ -21,6 +21,8 @@ const LANG_META: Record<Lang, { label: string; color: string }> = {
   go:         { label: 'Go',           color: '#00ADD8' },
   typescript: { label: 'TypeScript',   color: '#3178C6' },
   rust:       { label: 'Rust',         color: '#CE422B' },
+  python:     { label: 'Python',       color: '#3776AB' },
+  java:       { label: 'Java',         color: '#ED8B00' },
   http:       { label: 'HTTP / API',   color: 'var(--jade)' },
   other:      { label: 'Other',        color: '#A16207' },
 };
@@ -30,10 +32,15 @@ const PROBLEMS: Problem[] = [
     label: 'Use CIDs in my own stack',
     guidance: 'Use DASL for simple content-addressed values; reach for full IPLD when you need linked data or Merkle structures. Boxo provides Go building blocks for CID handling and IPFS protocols.',
     tools: [
-      { name: 'DASL',  link: 'https://dasl.ing/',                lang: 'http' },
-      { name: 'IPLD',  link: 'https://ipld.io/',                 lang: 'http' },
-      { name: 'Helia', link: 'https://helia.io/',                lang: 'typescript' },
-      { name: 'Boxo',  link: 'https://github.com/ipfs/boxo',     lang: 'go' },
+      { name: 'DASL',              link: 'https://dasl.ing/',                                    lang: 'http' },
+      { name: 'IPLD',              link: 'https://ipld.io/',                                     lang: 'http' },
+      { name: 'Helia',             link: 'https://helia.io/',                                    lang: 'typescript' },
+      { name: 'Boxo',              link: 'https://github.com/ipfs/boxo',                         lang: 'go' },
+      { name: 'js-multiformats',   link: 'https://github.com/multiformats/js-multiformats',      lang: 'typescript' },
+      { name: 'rust-cid',          link: 'https://github.com/multiformats/rust-cid',             lang: 'rust' },
+      { name: 'go-cid',            link: 'https://github.com/ipfs/go-cid',                       lang: 'go' },
+      { name: 'py-cid',            link: 'https://github.com/ipld/py-cid',                       lang: 'python' },
+      { name: 'java-cid',          link: 'https://github.com/ipld/java-cid',                     lang: 'java' },
     ],
   },
   {
@@ -87,12 +94,13 @@ function chipOpacity(chipLang: Lang, active: Lang): number {
   if (active === 'all') return 1;
   if (chipLang === active) return 1;
   if (chipLang === 'http' || chipLang === 'node' || chipLang === 'cli' || chipLang === 'other') return 0.5;
+  if (chipLang === 'python' || chipLang === 'java') return 0.5;
   return 0.2;
 }
 
 function rowOpacity(tools: ToolChip[], active: Lang): number {
   if (active === 'all') return 1;
-  const agnostic = (l: Lang) => l === 'http' || l === 'node' || l === 'cli' || l === 'other';
+  const agnostic = (l: Lang) => l === 'http' || l === 'node' || l === 'cli' || l === 'other' || l === 'python' || l === 'java';
   return tools.some((t) => t.lang === active || agnostic(t.lang)) ? 1 : 0.35;
 }
 
