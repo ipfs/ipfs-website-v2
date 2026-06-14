@@ -1,117 +1,137 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-type Lang = 'all' | 'node' | 'cli' | 'go' | 'typescript' | 'rust' | 'python' | 'java' | 'http' | 'other';
+type Lang = 'all' | 'node' | 'cli' | 'go' | 'typescript' | 'rust' | 'python' | 'java' | 'http' | 'other'
 
 interface ToolChip {
-  name: string;
-  link: string;
-  lang: Lang;
+  name: string
+  link: string
+  lang: Lang
 }
 
 interface Problem {
-  label: string;
-  guidance: string;
-  tools: ToolChip[];
+  label: string
+  guidance: string
+  tools: ToolChip[]
 }
 
 const LANG_META: Record<Lang, { label: string; color: string }> = {
-  all:        { label: 'All',          color: 'var(--navy)' },
-  node:       { label: 'Node',         color: '#64748B' },
-  cli:        { label: 'CLI',          color: '#9333EA' },
-  go:         { label: 'Go',           color: '#00ADD8' },
-  typescript: { label: 'TypeScript',   color: '#3178C6' },
-  rust:       { label: 'Rust',         color: '#CE422B' },
-  python:     { label: 'Python',       color: '#3776AB' },
-  java:       { label: 'Java',         color: '#ED8B00' },
-  http:       { label: 'HTTP / API',   color: 'var(--jade)' },
-  other:      { label: 'Other',        color: '#A16207' },
-};
+  all: { label: 'All', color: 'var(--navy)' },
+  node: { label: 'Node', color: '#64748B' },
+  cli: { label: 'CLI', color: '#9333EA' },
+  go: { label: 'Go', color: '#00ADD8' },
+  typescript: { label: 'TypeScript', color: '#3178C6' },
+  rust: { label: 'Rust', color: '#CE422B' },
+  python: { label: 'Python', color: '#3776AB' },
+  java: { label: 'Java', color: '#ED8B00' },
+  http: { label: 'HTTP / API', color: 'var(--jade)' },
+  other: { label: 'Other', color: '#A16207' },
+}
 
 const PROBLEMS: Problem[] = [
   {
     label: 'Use CIDs in your own stack',
-    guidance: 'Use DASL for simple content-addressed values; reach for full IPLD when you need linked data or Merkle structures. Boxo provides Go building blocks for CID handling and IPFS protocols.',
+    guidance:
+      'Use DASL for simple content-addressed values; reach for full IPLD when you need linked data or Merkle structures. Boxo provides Go building blocks for CID handling and IPFS protocols.',
     tools: [
-      { name: 'DASL',              link: 'https://dasl.ing/',                                    lang: 'http' },
-      { name: 'IPLD',              link: 'https://ipld.io/',                                     lang: 'http' },
-      { name: 'Helia',             link: 'https://helia.io/',                                    lang: 'typescript' },
-      { name: 'Boxo',              link: 'https://github.com/ipfs/boxo',                         lang: 'go' },
-      { name: 'js-multiformats',   link: 'https://github.com/multiformats/js-multiformats',      lang: 'typescript' },
-      { name: 'rust-cid',          link: 'https://github.com/multiformats/rust-cid',             lang: 'rust' },
-      { name: 'go-cid',            link: 'https://github.com/ipfs/go-cid',                       lang: 'go' },
-      { name: 'py-cid',            link: 'https://github.com/ipld/py-cid',                       lang: 'python' },
-      { name: 'java-cid',          link: 'https://github.com/ipld/java-cid',                     lang: 'java' },
+      { name: 'DASL', link: 'https://dasl.ing/', lang: 'http' },
+      { name: 'IPLD', link: 'https://ipld.io/', lang: 'http' },
+      { name: 'Helia', link: 'https://helia.io/', lang: 'typescript' },
+      { name: 'Boxo', link: 'https://github.com/ipfs/boxo', lang: 'go' },
+      {
+        name: 'js-multiformats',
+        link: 'https://github.com/multiformats/js-multiformats',
+        lang: 'typescript',
+      },
+      { name: 'rust-cid', link: 'https://github.com/multiformats/rust-cid', lang: 'rust' },
+      { name: 'go-cid', link: 'https://github.com/ipfs/go-cid', lang: 'go' },
+      { name: 'py-cid', link: 'https://github.com/ipld/py-cid', lang: 'python' },
+      { name: 'java-cid', link: 'https://github.com/ipld/java-cid', lang: 'java' },
     ],
   },
   {
     label: 'Share data in a private network',
-    guidance: 'Run Kubo with a swarm key for a closed IPFS network, or use iroh-blobs for lightweight QUIC-native transfer.',
+    guidance:
+      'Run Kubo with a swarm key for a closed IPFS network, or use iroh-blobs for lightweight QUIC-native transfer.',
     tools: [
-      { name: 'Kubo',       link: 'https://github.com/ipfs/kubo',   lang: 'node' },
-      { name: 'Helia', link: 'https://helia.io/',                lang: 'typescript' },
-      { name: 'iroh-blobs', link: 'https://www.iroh.computer/',     lang: 'rust' },
+      { name: 'Kubo', link: 'https://github.com/ipfs/kubo', lang: 'node' },
+      { name: 'Helia', link: 'https://helia.io/', lang: 'typescript' },
+      { name: 'iroh-blobs', link: 'https://www.iroh.computer/', lang: 'rust' },
     ],
   },
   {
     label: 'Publish from your own node',
-    guidance: 'Run a Kubo or Helia node to pin and serve content; use ipfs-cluster for coordinated pinning across multiple nodes.',
+    guidance:
+      'Run a Kubo or Helia node to pin and serve content; use ipfs-cluster for coordinated pinning across multiple nodes.',
     tools: [
-      { name: 'IPFS Desktop',  link: 'https://docs.ipfs.tech/install/ipfs-desktop/', lang: 'node' },
-      { name: 'Kubo',         link: 'https://github.com/ipfs/kubo',         lang: 'node' },
-      { name: 'Helia',        link: 'https://helia.io/',                     lang: 'typescript' },
-      { name: 'ipfs-cluster', link: 'https://ipfscluster.io/',               lang: 'node' },
+      { name: 'IPFS Desktop', link: 'https://docs.ipfs.tech/install/ipfs-desktop/', lang: 'node' },
+      { name: 'Kubo', link: 'https://github.com/ipfs/kubo', lang: 'node' },
+      { name: 'Helia', link: 'https://helia.io/', lang: 'typescript' },
+      { name: 'ipfs-cluster', link: 'https://ipfscluster.io/', lang: 'node' },
     ],
   },
   {
     label: 'Publish via a hosted service',
-    guidance: 'Upload to a pinning service, they handle replication, availability, and IPNI/DHT announcements.',
+    guidance:
+      'Upload to a pinning service, they handle replication, availability, and IPNI/DHT announcements.',
     tools: [
-      { name: 'Pinata',          link: 'https://pinata.cloud/',      lang: 'http' },
-      { name: 'Filebase',        link: 'https://filebase.com/',      lang: 'http' },
-      { name: 'Filecoin.Cloud',  link: 'https://filecoin.cloud/',    lang: 'http' },
+      { name: 'Pinata', link: 'https://pinata.cloud/', lang: 'http' },
+      { name: 'Filebase', link: 'https://filebase.com/', lang: 'http' },
+      { name: 'Filecoin.Cloud', link: 'https://filecoin.cloud/', lang: 'http' },
     ],
   },
   {
     label: 'Ship a content-addressed static website',
-    guidance: 'Drop ipfs-deploy-action into your CI pipeline to get a CID per build and pin it automatically. Omnipin offers one-click pinning via MetaMask.',
+    guidance:
+      'Drop ipfs-deploy-action into your CI pipeline to get a CID per build and pin it automatically. Omnipin offers one-click pinning via MetaMask.',
     tools: [
       { name: 'ipfs-deploy-action', link: 'https://github.com/ipshipyard/ipfs-deploy-action', lang: 'other' },
-      { name: 'Omnipin',            link: 'https://omnipin.eth.link/',                        lang: 'cli' },
+      { name: 'Omnipin', link: 'https://omnipin.eth.link/', lang: 'cli' },
+      { name: 'SimplePage', link: 'https://github.com/stigmergic-org/simplepage', lang: 'other' },
     ],
   },
   {
     label: 'Verified retrieval in browsers',
-    guidance: 'Fetch and cryptographically verify IPFS content directly in the browser with no trusted gateway required.',
+    guidance:
+      'Fetch and cryptographically verify IPFS content directly in the browser with no trusted gateway required.',
     tools: [
-      { name: 'service-worker-gateway', link: 'https://github.com/ipfs/service-worker-gateway', lang: 'typescript' },
-      { name: '@helia/verified-fetch',   link: 'https://github.com/ipfs/helia-verified-fetch',   lang: 'typescript' },
-      { name: '@dasl/rasl',   link: 'https://github.com/darobin/rasl',   lang: 'typescript' },
+      {
+        name: 'service-worker-gateway',
+        link: 'https://github.com/ipfs/service-worker-gateway',
+        lang: 'typescript',
+      },
+      {
+        name: '@helia/verified-fetch',
+        link: 'https://github.com/ipfs/helia-verified-fetch',
+        lang: 'typescript',
+      },
+      { name: '@dasl/rasl', link: 'https://github.com/darobin/rasl', lang: 'typescript' },
     ],
   },
-];
+]
 
 function chipOpacity(chipLang: Lang, active: Lang): number {
-  if (active === 'all') return 1;
-  if (chipLang === active) return 1;
-  if (chipLang === 'http' || chipLang === 'node' || chipLang === 'cli' || chipLang === 'other') return 0.5;
-  if (chipLang === 'python' || chipLang === 'java') return 0.5;
-  return 0.2;
+  if (active === 'all') return 1
+  if (chipLang === active) return 1
+  if (chipLang === 'http' || chipLang === 'node' || chipLang === 'cli' || chipLang === 'other') return 0.5
+  if (chipLang === 'python' || chipLang === 'java') return 0.5
+  return 0.2
 }
 
 function rowOpacity(tools: ToolChip[], active: Lang): number {
-  if (active === 'all') return 1;
-  const agnostic = (l: Lang) => l === 'http' || l === 'node' || l === 'cli' || l === 'other' || l === 'python' || l === 'java';
-  return tools.some((t) => t.lang === active || agnostic(t.lang)) ? 1 : 0.35;
+  if (active === 'all') return 1
+  const agnostic = (l: Lang) =>
+    l === 'http' || l === 'node' || l === 'cli' || l === 'other' || l === 'python' || l === 'java'
+  return tools.some((t) => t.lang === active || agnostic(t.lang)) ? 1 : 0.35
 }
 
 export default function ToolsProblems() {
-  const [active, setActive] = useState<Lang>('all');
+  const [active, setActive] = useState<Lang>('all')
 
   return (
     <>
       <div className="lf-bar" role="group" aria-label="Filter by language">
         {(Object.entries(LANG_META) as [Lang, (typeof LANG_META)[Lang]][]).map(([id, meta]) => {
-          const isActive = id === active;
+          const isActive = id === active
           return (
             <button
               key={id}
@@ -122,7 +142,7 @@ export default function ToolsProblems() {
               {id !== 'all' && <span className="lf-dot" aria-hidden="true" />}
               {meta.label}
             </button>
-          );
+          )
         })}
       </div>
 
@@ -144,11 +164,13 @@ export default function ToolsProblems() {
                     target="_blank"
                     rel="noopener"
                     className="tp-chip"
-                    style={{
-                      '--cc': LANG_META[t.lang].color,
-                      opacity: chipOpacity(t.lang, active),
-                      transition: 'opacity .2s, border-color .15s, background .15s, transform .15s',
-                    } as React.CSSProperties}
+                    style={
+                      {
+                        '--cc': LANG_META[t.lang].color,
+                        opacity: chipOpacity(t.lang, active),
+                        transition: 'opacity .2s, border-color .15s, background .15s, transform .15s',
+                      } as React.CSSProperties
+                    }
                   >
                     {t.name}
                   </a>
@@ -253,5 +275,5 @@ export default function ToolsProblems() {
         }
       `}</style>
     </>
-  );
+  )
 }
