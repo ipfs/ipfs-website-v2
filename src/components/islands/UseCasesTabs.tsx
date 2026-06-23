@@ -88,9 +88,6 @@ export default function UseCasesTabs() {
               onClick={() => setActive(i)}
             >
               <span className="uc-tab-label">{c.label}</span>
-              <span className="uc-tab-count mono" aria-hidden="true">
-                {c.cases.length.toString().padStart(2, '0')}
-              </span>
             </button>
           );
         })}

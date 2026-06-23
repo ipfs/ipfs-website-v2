@@ -9,7 +9,7 @@ import UseCasesTabs from './islands/UseCasesTabs.tsx';
         Running in science labs, game studios, art vaults, and low earth orbit.
       </h2>
       <p class="usecases-lede">
-        Anywhere data needs to be verifiable, CIDs tend to show up. A sample of what teams have built with the IPFS tools at the core.
+        Anywhere data needs to be verifiable, CIDs are helpful. A sample of what teams have built with the IPFS tools at the core.
       </p>
     </div>
 
@@ -98,32 +98,12 @@ import UseCasesTabs from './islands/UseCasesTabs.tsx';
   }
   .uc-tabs-rail.is-hydrated .uc-tab.is-active::after { display: none; }
 
-  .uc-tab-num {
-    font-size: 11px;
-    letter-spacing: .15em;
-    font-weight: 600;
-    color: var(--turq);
-    opacity: .55;
-    transition: opacity .25s ease;
-  }
-  .uc-tab.is-active .uc-tab-num { opacity: 1; }
-
   .uc-tab-label {
     font-size: 15px;
     font-weight: 500;
     letter-spacing: -0.005em;
     white-space: nowrap;
   }
-
-  .uc-tab-count {
-    font-size: 10px;
-    letter-spacing: .12em;
-    color: var(--ink-3);
-    opacity: 0;
-    transform: translateY(-1px);
-    transition: opacity .25s ease;
-  }
-  .uc-tab.is-active .uc-tab-count { opacity: .7; }
 
   .uc-indicator {
     position: absolute;
