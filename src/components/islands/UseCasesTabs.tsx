@@ -151,7 +151,7 @@ function Card({ card, index }: { card: UseCase; index: number }) {
             {initials(card.brand)}
           </div>
         )}
-        <div className="mono story-card-brand">{card.brand}</div>
+        <div className="story-card-brand">{card.brand}</div>
       </div>
       <h4 className="story-card-title">{card.title}</h4>
       <p className="story-card-body">{card.body}</p>

@@ -132,7 +132,7 @@ export default function Tools() {
           >
             <div className="tool-head">
               <h3 className="tool-name">{t.name}</h3>
-              {t.badge && <span className="mono tool-badge">{t.badge}</span>}
+              {t.badge && <span className="tool-badge">{t.badge}</span>}
             </div>
             <p className="tool-blurb">{t.blurb}</p>
             <div className="tool-foot">
@@ -238,9 +238,9 @@ export default function Tools() {
           letter-spacing: -0.01em;
         }
         .tool-badge {
-          font-size: 10px;
-          letter-spacing: .12em;
-          text-transform: uppercase;
+          font-family: var(--font-retro);
+          font-style: italic;
+          font-size: 12px;
           color: var(--turq);
           background: var(--pearl);
           padding: 3px 8px;

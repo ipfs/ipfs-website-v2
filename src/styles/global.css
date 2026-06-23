@@ -39,6 +39,9 @@
   --font-sans: 'Geist', system-ui, -apple-system, Segoe UI, sans-serif;
   --font-mono: 'Commit Mono', ui-monospace, Menlo, monospace;
   --font-display-mono: 'Geist Pixel Circle', 'Commit Mono', ui-monospace, monospace;
+  /* Soft early-2000s throwback for eyebrow/badge labels: the web-safe fonts
+     every site shipped back then, minus the Comic Sans loudness. */
+  --font-retro: 'Trebuchet MS', 'Verdana', 'Geneva', 'Segoe UI', sans-serif;
 }
 
 /* Aliases for prototype-style `var(--ink)` etc. so ported inline styles still work. */
@@ -77,6 +80,16 @@ code, pre, kbd, samp, .mono {
 /* Reserved for brand/display accents — keep usage minimal. */
 .mono-display {
   font-family: var(--font-display-mono);
+}
+
+/* Soft retro labels: swaps the muted mono-uppercase eyebrows for a friendly
+   early-2000s italic sans. Used wherever a small caps label used to be. */
+.retro-label {
+  font-family: var(--font-retro);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 ::selection {

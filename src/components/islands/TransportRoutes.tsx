@@ -21,7 +21,7 @@ export default function TransportRoutes() {
     <div style={{ background: 'var(--paper)', borderRadius: 12, padding: '16px 20px', marginBottom: 18 }}>
 
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 14 }}>
-        <span className="mono" style={{ fontSize: 11, color: 'var(--teal)', letterSpacing: '.12em', textTransform: 'uppercase', flexShrink: 0 }}>cid</span>
+        <span className="retro-label" style={{ fontSize: 12, color: 'var(--teal)', flexShrink: 0 }}>cid</span>
         <span className="mono" style={{ fontSize: 12, color: 'var(--ink-2)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
           {CID}
         </span>
