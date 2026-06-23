@@ -80,13 +80,21 @@ const PROBLEMS: Problem[] = [
     ],
   },
   {
-    label: 'Ship a content-addressed static website',
+    label: 'Publish a content-addressed static website',
     guidance:
       'Drop ipfs-deploy-action into your CI pipeline to get a CID per build and pin it automatically. Omnipin offers one-click pinning via MetaMask.',
     tools: [
       { name: 'ipfs-deploy-action', link: 'https://github.com/ipshipyard/ipfs-deploy-action', lang: 'other' },
-      { name: 'Omnipin', link: 'https://omnipin.eth.link/', lang: 'cli' },
+      { name: 'Omnipin', link: 'https://omnipin.eth.limo/', lang: 'cli' },
       { name: 'SimplePage', link: 'https://github.com/stigmergic-org/simplepage', lang: 'other' },
+    ],
+  },
+  {
+    label: 'Distribute signed release artifacts',
+    guidance:
+      'Publish binaries, model weights, or data sets as signed CIDs bound to their source git commit, seedable over iroh-blobs, HTTP, IPFS, and BitTorrent.',
+    tools: [
+      { name: 'radicle-artifact', link: 'https://crates.io/crates/radicle-artifact', lang: 'rust' },
     ],
   },
   {
