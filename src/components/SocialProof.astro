@@ -25,7 +25,7 @@ const initials = (name: string) =>
 
 <section class="proof-section" data-proof>
   <div class="proof-inner">
-    <div class="mono proof-label">running in production at</div>
+    <div class="retro-label proof-label">running in production at</div>
     <div class="proof-logos">
       {logos.map((l) => (
         <img class="proof-logo" src={l.src} alt={l.alt} loading="lazy" />
@@ -33,7 +33,7 @@ const initials = (name: string) =>
     </div>
 
     <div class="proof-quotes-head">
-      <div class="mono proof-quotes-label">what builders say</div>
+      <div class="retro-label proof-quotes-label">what builders say</div>
       <div class="proof-arrows">
         <button type="button" class="proof-arrow" data-prev aria-label="Previous testimonials">←</button>
         <button type="button" class="proof-arrow" data-next aria-label="More testimonials">→</button>
@@ -54,7 +54,7 @@ const initials = (name: string) =>
               <div class="proof-quote-who">{q.who}</div>
               <div class="proof-quote-role">{q.role}</div>
             </div>
-            <span class="mono proof-quote-brand">{q.brand}</span>
+            <span class="retro-label proof-quote-brand">{q.brand}</span>
           </figcaption>
           <span class="mono proof-quote-link">↗ {q.linkLabel}</span>
         </a>
@@ -89,11 +89,8 @@ const initials = (name: string) =>
     max-width: 1240px;
   }
   .proof-label {
-    font-size: 11px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
+    font-size: 14px;
     color: var(--ink-3);
-    font-weight: 600;
     text-align: center;
     margin-bottom: 22px;
   }
@@ -131,11 +128,8 @@ const initials = (name: string) =>
     margin-bottom: 14px;
   }
   .proof-quotes-label {
-    font-size: 11px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    font-size: 14px;
     color: var(--ink-3);
-    font-weight: 600;
   }
   .proof-arrows {
     display: flex;
@@ -248,11 +242,8 @@ const initials = (name: string) =>
   .proof-quote-brand {
     margin-left: auto;
     align-self: flex-start;
-    font-size: 10px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
+    font-size: 12px;
     color: var(--turq);
-    font-weight: 600;
   }
 
   @media (max-width: 760px) {

@@ -22,7 +22,7 @@ export default function LocationVsContent() {
         background: 'var(--paper)', opacity: hostDown ? 0.55 : 1,
         transition: 'opacity .3s', position: 'relative',
       }}>
-        <div style={{ fontSize: 10, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 8, fontWeight: 600 }}>
+        <div className="retro-label" style={{ fontSize: 13, color: 'var(--ink-3)', marginBottom: 8 }}>
           today · location-addressed
         </div>
         <div className="mono" style={{ fontSize: 13, marginBottom: 12, wordBreak: 'break-all', color: 'var(--ink-2)' }}>
@@ -57,7 +57,7 @@ export default function LocationVsContent() {
         background: 'linear-gradient(135deg, rgba(107,196,206,0.08) 0%, rgba(7,58,83,0.04) 100%)',
         position: 'relative',
       }}>
-        <div style={{ fontSize: 10, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--jade)', marginBottom: 8, fontWeight: 600 }}>
+        <div className="retro-label" style={{ fontSize: 13, color: 'var(--jade)', marginBottom: 8 }}>
           ipfs · content-addressed
         </div>
         <div className="mono" style={{ fontSize: 13, marginBottom: 12, wordBreak: 'break-all', color: 'var(--ink-2)' }}>

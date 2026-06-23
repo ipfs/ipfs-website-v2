@@ -152,7 +152,7 @@ export default function Constellation({ height = 480 }: { height?: number }) {
         border: '1px solid var(--line)', borderRadius: 12, padding: 22,
         background: 'var(--paper)', display: 'flex', flexDirection: 'column',
       }}>
-        <div style={{ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600, marginBottom: 6 }}>
+        <div className="retro-label" style={{ fontSize: 13, color: 'var(--ink-3)', marginBottom: 6 }}>
           {activeNode.role}
         </div>
         <h3 className="mono" style={{ margin: '0 0 12px', fontSize: 32, fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em' }}>

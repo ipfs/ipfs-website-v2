@@ -104,9 +104,9 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
                 transition: 'all .12s', minWidth: 0,
                 borderLeft: `3px solid ${p.color}`,
               }}>
-              <div className="mono" style={{
-                fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase',
-                fontWeight: 700, color: isHovered ? '#fff' : p.color,
+              <div className="retro-label" style={{
+                fontSize: 13,
+                color: isHovered ? '#fff' : p.color,
                 marginBottom: 2, whiteSpace: 'nowrap',
                 overflow: 'hidden', textOverflow: 'ellipsis',
               }}>{p.label}</div>
@@ -122,9 +122,9 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
           <div style={{ fontSize: 12, color: 'var(--ink-2)', lineHeight: 1.55, minHeight: 34 }}>
             {hovered ? (
               <span>
-                <span className="mono" style={{
-                  color: hovered.color, fontWeight: 700, textTransform: 'uppercase',
-                  fontSize: 10, letterSpacing: '.08em', marginRight: 8,
+                <span className="retro-label" style={{
+                  color: hovered.color,
+                  fontSize: 13, marginRight: 8,
                 }}>{hovered.label}</span>
                 {hovered.detail}
               </span>
@@ -185,7 +185,7 @@ export default function FileDropCID() {
   return (
     <div style={{ background: 'var(--paper)', borderRadius: 10, padding: 18 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-        <div style={{ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>
+        <div className="retro-label" style={{ fontSize: 13, color: 'var(--ink-3)' }}>
           ↓ drop a file or edit
         </div>
         <div className="mono" style={{ fontSize: 11, color: 'var(--ink-3)' }}>

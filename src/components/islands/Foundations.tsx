@@ -91,8 +91,8 @@ export default function Foundations() {
         <div key={active}>{node.demo}</div>
 
         <div className="foundation-ctas">
-          <div className="mono" style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>
-            get started ·
+          <div className="retro-label" style={{ fontSize: 14, color: 'var(--ink-3)' }}>
+            get started
           </div>
           {node.ctas.map((c) => (
             <a key={c.link} href={`https://${c.link}`} className="foundation-cta">
