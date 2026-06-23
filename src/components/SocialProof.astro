@@ -118,6 +118,14 @@ const initials = (name: string) =>
     filter: grayscale(0);
     opacity: 1;
   }
+  /* Dark mode: invert the muted marks so they read light on the dark surface. */
+  :global(html[data-theme='dark']) .proof-logo {
+    filter: grayscale(1) invert(1) brightness(1.6);
+    opacity: .65;
+  }
+  :global(html[data-theme='dark']) .proof-logo:hover {
+    opacity: 1;
+  }
 
   /* ── Testimonials: one scrollable row ─────────────────────────────── */
   .proof-quotes-head {

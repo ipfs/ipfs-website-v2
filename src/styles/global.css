@@ -12,6 +12,10 @@
 @import "@fontsource/commit-mono/500.css";
 @import "@fontsource/commit-mono/600.css";
 
+/* Geist Mono — used for section labels/eyebrows. */
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
+
 /* Geist Pixel Circle — display accent only (brand wordmark, hero CTA). */
 @font-face {
   font-family: 'Geist Pixel Circle';
@@ -39,9 +43,8 @@
   --font-sans: 'Geist', system-ui, -apple-system, Segoe UI, sans-serif;
   --font-mono: 'Commit Mono', ui-monospace, Menlo, monospace;
   --font-display-mono: 'Geist Pixel Circle', 'Commit Mono', ui-monospace, monospace;
-  /* Soft early-2000s throwback for eyebrow/badge labels: the web-safe fonts
-     every site shipped back then, minus the Comic Sans loudness. */
-  --font-retro: 'Trebuchet MS', 'Verdana', 'Geneva', 'Segoe UI', sans-serif;
+  /* Geist Mono for section labels/eyebrows. */
+  --font-geist-mono: 'Geist Mono', ui-monospace, Menlo, monospace;
 }
 
 /* Aliases for prototype-style `var(--ink)` etc. so ported inline styles still work. */
@@ -53,6 +56,10 @@
   --pearl: var(--color-pearl);
   --paper: var(--color-paper);
   --navy: var(--color-navy);
+  /* Fixed dark navy for dark section *surfaces* (footer, CTA, active chips).
+     Stays dark in both themes, unlike --navy which is also used as heading
+     text and goes light in dark mode. */
+  --navy-surface: var(--color-navy);
   --teal: var(--color-teal);
   --turq: var(--color-turq);
   --jade: var(--color-jade);
@@ -61,6 +68,31 @@
   --line: rgba(13, 22, 68, 0.12);
   --hair: rgba(13, 22, 68, 0.08);
   --grad: linear-gradient(135deg, #073A53 0%, #43979B 100%);
+  /* Translucent nav surface; flips in dark mode. */
+  --nav-bg: rgba(255, 255, 255, 0.92);
+}
+
+/* Dark theme: redefine the alias palette so every var(--paper)/var(--ink)
+   surface flips. Brand accents (teal/turq/jade/yellow/carmine) carry over
+   unchanged since they already read well on dark. */
+html[data-theme='dark'] {
+  --ink: #E7EAF3;
+  --ink-2: #B4BAD2;
+  --ink-3: #868CA8;
+  --stone: #3A4263;
+  --pearl: #141B33;
+  --paper: #0B1126;
+  --line: rgba(255, 255, 255, 0.14);
+  --hair: rgba(255, 255, 255, 0.08);
+  --nav-bg: rgba(11, 17, 38, 0.92);
+  /* Section titles/labels are painted with --navy; lift it to near-white so
+     headings have strong contrast on the dark surfaces. */
+  --navy: #EDF1FA;
+}
+
+html[data-theme='dark'] body {
+  background: var(--paper);
+  color: var(--ink);
 }
 
 html, body {
@@ -82,12 +114,21 @@ code, pre, kbd, samp, .mono {
   font-family: var(--font-display-mono);
 }
 
-/* Soft retro labels: swaps the muted mono-uppercase eyebrows for a friendly
-   early-2000s italic sans. Used wherever a small caps label used to be. */
+/* Large displays: the 1240px column leaves text feeling small on 1440p+.
+   Scale the whole page up proportionally (layout + type) at wide widths. */
+@media (min-width: 1800px) {
+  html { zoom: 1.15; }
+}
+@media (min-width: 2400px) {
+  html { zoom: 1.3; }
+}
+
+/* Section labels/eyebrows ("running in production at", etc.) in Geist Mono
+   for a terminal-flavored, technical tone. */
 .retro-label {
-  font-family: var(--font-retro);
-  font-style: italic;
-  font-weight: 600;
+  font-family: var(--font-geist-mono);
+  font-style: normal;
+  font-weight: 500;
   letter-spacing: 0;
   text-transform: none;
 }
