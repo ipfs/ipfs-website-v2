@@ -95,6 +95,7 @@ export const categories: UseCaseCategory[] = [
         quote: {
           who: 'Georg Greve', role: 'CEO and Co-founder, Vereign',
           text: 'There is no central point of compromise anymore. There is no database that can be hacked, because the data just doesn’t exist, even in encrypted form, in one place anywhere. It only comes together at the edge device of the patient.',
+          photo: '/portraits/georg-grev.jpg',
         },
       },
       {

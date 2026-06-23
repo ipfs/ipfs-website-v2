@@ -153,6 +153,17 @@ const PROBLEMS: Problem[] = [
       { name: 'rust-ipfs', link: 'https://github.com/dariusc93/rust-ipfs/tree/libp2p-next/unixfs', lang: 'rust' },
     ],
   },
+  {
+    label: 'Debug & inspect retrieval',
+    guidance:
+      'Check whether a CID is retrievable, inspect its DAG, and test gateways and IPNS records when content is not resolving as expected.',
+    tools: [
+      { name: 'IPFS Check', link: 'https://check.ipfs.network/', lang: 'http' },
+      { name: 'DAG inspector', link: 'https://dag.ipfs.tech/', lang: 'http' },
+      { name: 'Gateway Checker', link: 'https://ipfs.github.io/public-gateway-checker/', lang: 'http' },
+      { name: 'IPNS inspector', link: 'https://ipns.ipfs.network/', lang: 'http' },
+    ],
+  },
 ]
 
 function chipOpacity(chipLang: Lang, active: Lang): number {

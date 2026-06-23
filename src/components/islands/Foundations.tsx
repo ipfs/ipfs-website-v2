@@ -28,6 +28,7 @@ const FOUNDATIONS: Foundation[] = [
     ctas: [
       { label: 'Read the spec', hint: 'CID, UnixFS, DASL', link: 'specs.ipfs.tech' },
       { label: 'Try DASL', hint: 'simple profile', link: 'dasl.ing' },
+      { label: 'CID inspector', hint: 'decode any CID', link: 'cid.ipfs.tech' },
     ],
   },
   {
@@ -73,11 +74,6 @@ export default function Foundations() {
                 background: isActive ? 'var(--grad)' : 'var(--stone)',
                 opacity: isActive ? 1 : 0.4,
               }} />
-              <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'baseline', marginBottom: 16 }}>
-                <span className="mono" style={{ fontSize: 11, color: isActive ? 'var(--turq)' : 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '.12em', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                  {isActive ? '◉ live demo ↓' : '○ try demo'}
-                </span>
-              </div>
               <h3 style={{ margin: '0 0 12px', fontSize: 24, fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em' }}>{f.title}</h3>
               <p style={{ margin: 0, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.6 }}>{f.body}</p>
             </button>

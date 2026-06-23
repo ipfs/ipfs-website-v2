@@ -16,7 +16,7 @@ const logos = [
 const quotes = categories.flatMap((c) =>
   c.cases
     .filter((x) => x.quote)
-    .map((x) => ({ ...x.quote!, brand: x.brand })),
+    .map((x) => ({ ...x.quote!, brand: x.brand, href: x.href, linkLabel: x.linkLabel })),
 );
 
 const initials = (name: string) =>
@@ -42,7 +42,7 @@ const initials = (name: string) =>
 
     <div class="proof-track">
       {quotes.map((q) => (
-        <figure class="proof-quote">
+        <a class="proof-quote" href={q.href} target="_blank" rel="noopener">
           <blockquote class="proof-quote-text">“{q.text}”</blockquote>
           <figcaption class="proof-quote-cap">
             {q.photo ? (
@@ -56,7 +56,8 @@ const initials = (name: string) =>
             </div>
             <span class="mono proof-quote-brand">{q.brand}</span>
           </figcaption>
-        </figure>
+          <span class="mono proof-quote-link">↗ {q.linkLabel}</span>
+        </a>
       ))}
     </div>
   </div>
@@ -188,6 +189,20 @@ const initials = (name: string) =>
     display: flex;
     flex-direction: column;
     gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .proof-quote:hover {
+    border-color: var(--turq);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -18px rgba(7, 58, 83, 0.25);
+  }
+  .proof-quote-link {
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--turq);
+    font-weight: 600;
   }
   .proof-quote-text {
     margin: 0;
