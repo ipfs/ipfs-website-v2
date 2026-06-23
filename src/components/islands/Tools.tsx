@@ -168,9 +168,9 @@ export default function Tools() {
         }
         .tools-job:hover { border-color: var(--turq); color: var(--navy); }
         .tools-job.is-active {
-          background: var(--navy);
+          background: var(--navy-surface);
           color: #fff;
-          border-color: var(--navy);
+          border-color: var(--navy-surface);
         }
         .tools-job-label { font-size: 14px; font-weight: 500; }
         .tools-job-hint {

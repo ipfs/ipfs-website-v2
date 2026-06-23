@@ -263,8 +263,8 @@ export default function ToolsProblems() {
         }
         .lf-btn:hover { border-color: var(--lc, var(--turq)); color: var(--navy); }
         .lf-btn.is-active {
-          background: var(--lc, var(--navy));
-          border-color: var(--lc, var(--navy));
+          background: var(--lc, var(--navy-surface));
+          border-color: var(--lc, var(--navy-surface));
           color: #fff;
         }
 

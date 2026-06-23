@@ -23,6 +23,14 @@ const {
     <link rel="preload" href={geistSans400} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={geistPixelCircle} as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {/* Set the theme before first paint to avoid a flash of the wrong colors. */}
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('theme');
+        const theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <title>{title}</title>
   </head>
   <body>
