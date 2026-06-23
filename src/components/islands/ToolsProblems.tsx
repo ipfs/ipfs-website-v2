@@ -107,6 +107,44 @@ const PROBLEMS: Problem[] = [
       { name: '@dasl/rasl', link: 'https://github.com/darobin/rasl', lang: 'typescript' },
     ],
   },
+  {
+    label: 'Archive & transfer with CAR files',
+    guidance:
+      'Pack content-addressed blocks into a single CAR (Content Addressable aRchive) file for storage or transfer; verifiable and self-describing.',
+    tools: [
+      { name: '@ipld/car', link: 'https://github.com/ipld/js-car', lang: 'typescript' },
+      { name: 'go-car', link: 'https://github.com/ipld/go-car', lang: 'go' },
+      { name: 'py-ipld-car', link: 'https://github.com/storacha/py-ipld-car', lang: 'python' },
+      // No standalone maintained Rust CAR crate; rust-ipfs handles CAR internally.
+      { name: 'rust-ipfs', link: 'https://github.com/dariusc93/rust-ipfs', lang: 'rust' },
+    ],
+  },
+  {
+    label: 'Encode IPLD data (DAG-CBOR / DAG-JSON)',
+    guidance:
+      'Serialize linked data with the DAG-CBOR and DAG-JSON codecs, the IPLD formats that give you deterministic encoding and CID links between blocks.',
+    tools: [
+      { name: 'js-dag-cbor', link: 'https://github.com/ipld/js-dag-cbor', lang: 'typescript' },
+      { name: 'js-dag-json', link: 'https://github.com/ipld/js-dag-json', lang: 'typescript' },
+      { name: 'serde_ipld_dagcbor', link: 'https://github.com/ipld/serde_ipld_dagcbor', lang: 'rust' },
+      { name: 'serde_ipld_dagjson', link: 'https://github.com/ipld/serde_ipld_dagjson', lang: 'rust' },
+      { name: 'go-ipld-prime', link: 'https://github.com/ipld/go-ipld-prime', lang: 'go' },
+      { name: 'py-ipld-dag', link: 'https://github.com/ipld/py-ipld-dag', lang: 'python' },
+      // dag-cbor only; no maintained Java dag-json codec found.
+      { name: 'dag-cbor', link: 'https://github.com/Peergos/dag-cbor', lang: 'java' },
+    ],
+  },
+  {
+    label: 'Build UnixFS file trees',
+    guidance:
+      'Represent files and directories as IPLD with UnixFS, the data model behind chunked files and folders on IPFS.',
+    tools: [
+      { name: 'js-ipfs-unixfs', link: 'https://github.com/ipfs/js-ipfs-unixfs', lang: 'typescript' },
+      { name: 'boxo/unixfs', link: 'https://github.com/ipfs/boxo/tree/main/ipld/unixfs', lang: 'go' },
+      // Only actively maintained Rust UnixFS implementation; older repos are archived.
+      { name: 'rust-ipfs', link: 'https://github.com/dariusc93/rust-ipfs/tree/libp2p-next/unixfs', lang: 'rust' },
+    ],
+  },
 ]
 
 function chipOpacity(chipLang: Lang, active: Lang): number {
