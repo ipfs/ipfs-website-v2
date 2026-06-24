@@ -136,6 +136,7 @@ const PROBLEMS: Problem[] = [
       { name: 'js-dag-json', link: 'https://github.com/ipld/js-dag-json', lang: 'typescript' },
       { name: 'serde_ipld_dagcbor', link: 'https://github.com/ipld/serde_ipld_dagcbor', lang: 'rust' },
       { name: 'serde_ipld_dagjson', link: 'https://github.com/ipld/serde_ipld_dagjson', lang: 'rust' },
+      { name: 'rust-ipld-core', link: 'https://github.com/ipld/rust-ipld-core', lang: 'rust' },
       { name: 'go-ipld-prime', link: 'https://github.com/ipld/go-ipld-prime', lang: 'go' },
       { name: 'py-ipld-dag', link: 'https://github.com/ipld/py-ipld-dag', lang: 'python' },
       // dag-cbor only; no maintained Java dag-json codec found.

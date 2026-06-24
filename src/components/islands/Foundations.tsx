@@ -74,7 +74,12 @@ export default function Foundations() {
                 background: isActive ? 'var(--grad)' : 'var(--stone)',
                 opacity: isActive ? 1 : 0.4,
               }} />
-              <h3 style={{ margin: '0 0 12px', fontSize: 24, fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em' }}>{f.title}</h3>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'baseline', marginBottom: 16 }}>
+                <span style={{ fontFamily: 'var(--font-geist-mono)', fontSize: 11, color: isActive ? 'var(--turq)' : 'var(--ink-3)', letterSpacing: '.12em', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                  {isActive ? '◉ live demo ↓' : '○ try demo'}
+                </span>
+              </div>
+              <h3 style={{ margin: '0 0 12px', fontSize: 24, fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em', userSelect: 'text' }}>{f.title}</h3>
               <p style={{ margin: 0, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.6 }}>{f.body}</p>
             </button>
           );

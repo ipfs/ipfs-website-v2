@@ -100,7 +100,7 @@ import SectionHeader from './SectionHeader.astro';
         </div>
         <div class="topo-body">
           <span class="topo-badge topo-badge--public">Public</span>
-          <p class="topo-desc">Nodes discover peers via the Amino DHT and IPNI. Any compliant node can join and find content, no coordination required.</p>
+          <p class="topo-desc">Nodes discover peers via the <a href="https://docs.ipfs.tech/concepts/glossary/#amino-dht" target="_blank" rel="noopener">Amino DHT</a> and <a href="https://docs.ipfs.tech/concepts/glossary/#ipni" target="_blank" rel="noopener">IPNI</a>. Any compliant node can join and find content, no coordination required.</p>
         </div>
       </div>
 
@@ -220,7 +220,7 @@ import SectionHeader from './SectionHeader.astro';
         </div>
         <div class="topo-body">
           <span class="topo-badge topo-badge--hybrid">Hybrid</span>
-          <p class="topo-desc">Public peers, private data. Content is encrypted. CIDs route over the Amino DHT while ciphertext stays opaque to every transit node.</p>
+          <p class="topo-desc">Public peers, private data. Content is encrypted. CIDs route over the <a href="https://docs.ipfs.tech/concepts/glossary/#amino-dht" target="_blank" rel="noopener">Amino DHT</a> while ciphertext stays opaque to every transit node.</p>
         </div>
       </div>
 
@@ -288,7 +288,7 @@ import SectionHeader from './SectionHeader.astro';
         </div>
         <div class="topo-body">
           <span class="topo-badge topo-badge--private">Private</span>
-          <p class="topo-desc">All peers share a swarm key. Routing and transfer stay within the closed network. Nothing routes in or out without it.</p>
+          <p class="topo-desc">All peers share a <a href="https://github.com/ipfs/kubo/blob/master/docs/experimental-features.md#private-networks" target="_blank" rel="noopener">swarm key</a>. Routing and transfer stay within the closed network. Nothing routes in or out without it.</p>
         </div>
       </div>
 
@@ -390,7 +390,7 @@ import SectionHeader from './SectionHeader.astro';
         </div>
         <div class="topo-body">
           <span class="topo-badge topo-badge--gateway">Trustless Gateways</span>
-          <p class="topo-desc">Gateways pull content from the IPFS network and serve it over HTTP. Browsers verify data against the CID locally, trust is rooted in CID, not the gateway.</p>
+          <p class="topo-desc"><a href="https://docs.ipfs.tech/concepts/ipfs-gateway/" target="_blank" rel="noopener">Gateways</a> pull content from the IPFS network and serve it over HTTP. Browsers verify data against the CID locally, trust is rooted in CID, not the gateway.</p>
         </div>
       </div>
 
@@ -453,6 +453,15 @@ import SectionHeader from './SectionHeader.astro';
     font-size: 15px;
     color: var(--ink-2);
     line-height: 1.6;
+  }
+  .topo-desc a {
+    color: var(--turq);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--turq) 40%, transparent);
+    transition: border-color .15s;
+  }
+  .topo-desc a:hover {
+    border-bottom-color: var(--turq);
   }
 
   /* Public network SVG classes */
