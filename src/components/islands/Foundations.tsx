@@ -26,9 +26,9 @@ const FOUNDATIONS: Foundation[] = [
     demoHeading: 'Hash around, and find out.',
     demo: <FileDropCID />,
     ctas: [
-      { label: 'Read the spec', hint: 'CID, UnixFS, DASL', link: 'specs.ipfs.tech' },
+      { label: 'CID inspector', hint: 'Inspect any CID', link: 'cid.ipfs.tech' },
+      { label: 'Read the spec', hint: 'CID', link: 'https://github.com/multiformats/cid' },
       { label: 'Try DASL', hint: 'simple profile', link: 'dasl.ing' },
-      { label: 'CID inspector', hint: 'decode any CID', link: 'cid.ipfs.tech' },
     ],
   },
   {
