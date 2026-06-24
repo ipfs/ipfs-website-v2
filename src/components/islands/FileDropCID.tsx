@@ -21,6 +21,12 @@ async function computeCid(bytes: Uint8Array): Promise<string> {
   return 'bafkreic' + out.slice(0, 48);
 }
 
+// Detects a pasted CIDv1 (base32, starts with b). CIDv0 (Qm…) is excluded
+// because the anatomy labels assume the CIDv1 layout and would be wrong for it.
+function looksLikeCid(s: string): boolean {
+  return /^b[a-z2-7]{40,}$/.test(s.trim());
+}
+
 interface CidPart {
   key: string;
   label: string;
@@ -147,9 +153,14 @@ export default function FileDropCID() {
   const [size, setSize] = useState(0);
   const [dragOver, setDragOver] = useState(false);
   const [pulseCid, setPulseCid] = useState(false);
+  // When a CID is pasted we hide the input so its computed hash can't be confused
+  // with the pasted one. `editNonce` lets us recompute from text on returning to edit.
+  const [showInput, setShowInput] = useState(true);
+  const [editNonce, setEditNonce] = useState(0);
   const liveRef = useRef(true);
 
   useEffect(() => {
+    if (!showInput) return;
     liveRef.current = true;
     setComputing(true);
     const bytes = new TextEncoder().encode(text);
@@ -166,7 +177,24 @@ export default function FileDropCID() {
       liveRef.current = false;
       clearTimeout(t);
     };
-  }, [text]);
+  }, [text, editNonce]);
+
+  const onPaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const pasted = e.clipboardData.getData('text');
+    if (!looksLikeCid(pasted)) return;
+    e.preventDefault();
+    liveRef.current = false; // cancel any pending compute from the textarea
+    setShowInput(false);
+    setComputing(false);
+    setCid(pasted.trim());
+    setPulseCid(true);
+    setTimeout(() => setPulseCid(false), 450);
+  };
+
+  const editText = () => {
+    setShowInput(true);
+    setEditNonce((n) => n + 1); // re-trigger compute from the current text
+  };
 
   const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -186,36 +214,62 @@ export default function FileDropCID() {
     <div style={{ background: 'var(--paper)', borderRadius: 10, padding: 18 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
         <div className="retro-label" style={{ fontSize: 13, color: 'var(--ink-3)' }}>
-          ↓ drop a file or edit
+          {showInput ? '↓ drop a file, edit, or paste a CID' : 'pasted CID'}
         </div>
         <div className="mono" style={{ fontSize: 11, color: 'var(--ink-3)' }}>
-          sha-256 · {size} bytes
+          {showInput ? `sha-256 · ${size} bytes` : 'from clipboard'}
         </div>
       </div>
-      <div
-        onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-        onDragLeave={() => setDragOver(false)}
-        onDrop={onDrop}
-        style={{
-          border: `1.5px dashed ${dragOver ? 'var(--turq)' : 'var(--stone)'}`,
-          borderRadius: 8, padding: 12, marginBottom: 12,
-          background: dragOver ? 'rgba(107,196,206,0.08)' : 'var(--pearl)',
-          transition: 'all .15s',
-        }}
-      >
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows={4}
-          className="mono"
+      {showInput ? (
+        <div
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={onDrop}
           style={{
-            width: '100%', border: 'none', borderRadius: 5,
-            fontSize: 13, padding: 10, resize: 'vertical', background: 'transparent',
-            color: 'var(--ink)', outline: 'none', boxSizing: 'border-box',
-            lineHeight: 1.5,
+            border: `1.5px dashed ${dragOver ? 'var(--turq)' : 'var(--stone)'}`,
+            borderRadius: 8, padding: 12, marginBottom: 12,
+            background: dragOver ? 'rgba(107,196,206,0.08)' : 'var(--pearl)',
+            transition: 'all .15s',
           }}
-        />
-      </div>
+        >
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            onPaste={onPaste}
+            rows={4}
+            className="mono"
+            style={{
+              width: '100%', border: 'none', borderRadius: 5,
+              fontSize: 13, padding: 10, resize: 'vertical', background: 'transparent',
+              color: 'var(--ink)', outline: 'none', boxSizing: 'border-box',
+              lineHeight: 1.5,
+            }}
+          />
+        </div>
+      ) : (
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10,
+          border: '1.5px solid var(--stone)', borderRadius: 8, padding: '10px 12px', marginBottom: 12,
+          background: 'var(--pearl)',
+        }}>
+          <span className="mono" style={{
+            fontSize: 12, color: 'var(--ink-2)', minWidth: 0,
+            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          }}>
+            inspecting <span style={{ color: 'var(--ink)' }}>{cid}</span>
+          </span>
+          <button
+            onClick={editText}
+            className="retro-label"
+            style={{
+              border: '1px solid var(--stone)', borderRadius: 5, padding: '4px 10px',
+              background: 'transparent', color: 'var(--ink-2)', cursor: 'pointer', fontSize: 12,
+            }}
+          >
+            edit text instead
+          </button>
+        </div>
+      )}
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
         <div style={{ flex: 1, height: 1, background: 'var(--hair)' }} />

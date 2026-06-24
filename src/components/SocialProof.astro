@@ -3,12 +3,12 @@ import { categories } from '../data/stories';
 
 // Brand logos for the trust strip — the subset of stories that ship a real mark.
 const logos = [
-  { src: '/brands/wikipedia.png', alt: 'Wikipedia' },
-  { src: '/brands/snapshot.png', alt: 'Snapshot' },
-  { src: '/brands/orcestra.svg', alt: 'ORCESTRA' },
-  { src: '/brands/anytype.png', alt: 'Anytype' },
-  { src: '/brands/weatherxm.png', alt: 'WeatherXM' },
-  { src: '/brands/3s.png', alt: '3S Studios' },
+  { src: '/brands/wikipedia.png', alt: 'Wikipedia', href: 'https://blog.ipfs.tech/24-uncensorable-wikipedia/' },
+  { src: '/brands/snapshot.png', alt: 'Snapshot', href: 'https://snapshot.org/' },
+  { src: '/brands/orcestra.svg', alt: 'ORCESTRA', href: 'https://orcestra-campaign.org/' },
+  { src: '/brands/anytype.png', alt: 'Anytype', href: 'https://anytype.io/' },
+  { src: '/brands/weatherxm.png', alt: 'WeatherXM', href: 'https://weatherxm.com/' },
+  { src: '/brands/hin.webp', alt: 'HIN', href: 'https://www.hin.ch/' },
 ];
 
 // Single source of truth: lift every testimonial out of the use-case data so
@@ -28,7 +28,9 @@ const initials = (name: string) =>
     <div class="retro-label proof-label">running in production at</div>
     <div class="proof-logos">
       {logos.map((l) => (
-        <img class="proof-logo" src={l.src} alt={l.alt} loading="lazy" />
+        <a class="proof-logo-link" href={l.href} target="_blank" rel="noopener" aria-label={l.alt}>
+          <img class="proof-logo" src={l.src} alt={l.alt} loading="lazy" />
+        </a>
       ))}
     </div>
 
@@ -103,6 +105,10 @@ const initials = (name: string) =>
     justify-content: center;
     gap: 32px 52px;
     margin-bottom: 44px;
+  }
+  .proof-logo-link {
+    display: inline-flex;
+    align-items: center;
   }
   .proof-logo {
     height: 28px;
