@@ -6,9 +6,9 @@ import Logomark from './Logomark.astro';
   <div class="mx-auto flex items-center justify-between" style="max-width: 1240px; padding: 14px 32px;">
     <div class="flex items-center" style="gap: 10px; color: var(--ink);">
       <Logomark size={24} variant="mono" />
-      <span style="font-weight: 600; font-size: 16px; letter-spacing: .02em;">IPFS</span>
+      <span style="font-weight: 600; font-size: var(--text-md); letter-spacing: .02em;">IPFS</span>
     </div>
-    <div class="hidden md:flex" style="gap: 28px; font-size: 14px; color: var(--ink-2);">
+    <div class="hidden md:flex" style="gap: 28px; font-size: var(--text-ui); color: var(--ink-2);">
       <a class="nav-link" href="https://docs.ipfs.tech/">Docs</a>
       <a class="nav-link" href="https://specs.ipfs.tech/">Specs</a>
       <a class="nav-link" href="#tools">Tools</a>
@@ -16,7 +16,7 @@ import Logomark from './Logomark.astro';
       <a class="nav-link" href="https://blog.ipfs.tech/">Blog</a>
     </div>
     <div class="flex items-center" style="gap: 14px;">
-      <a class="nav-link hidden sm:inline" style="font-size: 13px;" href="https://github.com/ipfs">github ↗</a>
+      <a class="nav-link hidden sm:inline" style="font-size: var(--text-sm);" href="https://github.com/ipfs">github ↗</a>
       <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
         {/* Sun (shown in dark mode) */}
         <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

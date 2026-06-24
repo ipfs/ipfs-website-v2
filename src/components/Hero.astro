@@ -124,13 +124,13 @@ for (let i = 0; i < nodes.length; i++) {
     <h1 class="hero-h1" style="font-weight: 600; letter-spacing: -0.025em; margin: 0 0 28px; line-height: 1.04; max-width: 980px; text-wrap: balance;">
       {tagline.pre}<span class="mono-display" style="color: var(--yellow); font-weight: 400;">{tagline.hl}</span>
     </h1>
-    <p style="font-size: 20px; color: rgba(255,255,255,0.85); max-width: 720px; margin: 0 0 36px; line-height: 1.5;">
+    <p style="font-size: var(--text-xl); color: rgba(255,255,255,0.85); max-width: 720px; margin: 0 0 36px; line-height: 1.5;">
       {tagline.sub}
     </p>
     <div class="flex flex-wrap items-center" style="gap: 12px;">
       <!-- <button class="mono-display" style="background: var(--teal); color: var(--navy); border: none; padding: 14px 22px; border-radius: 8px; font-size: 14px; font-weight: 400; cursor: pointer; letter-spacing: .01em;">$ npm install helia</button> -->
-      <a href="#tools" style="background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); padding: 13px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block;">Pick the tool that fits the job →</a>
-      <span class="mono" style="font-size: 12px; color: rgba(255,255,255,0.6); margin-left: 6px;">
+      <a href="#tools" style="background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); padding: 13px 22px; border-radius: 8px; font-size: var(--text-ui); font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block;">Pick the tool that fits the job →</a>
+      <span class="mono" style="font-size: var(--text-xs); color: rgba(255,255,255,0.6); margin-left: 6px;">
         open-source
       </span>
     </div>
@@ -139,7 +139,7 @@ for (let i = 0; i < nodes.length; i++) {
 
 <style>
   .hero-h1 {
-    font-size: clamp(40px, 5.2vw, 72px);
+    font-size: var(--text-h1);
   }
   .mesh {
     transform-box: fill-box;

@@ -257,7 +257,7 @@ export default function ToolsProblems() {
           border-radius: 999px;
           cursor: pointer;
           font: inherit;
-          font-size: 13px;
+          font-size: var(--text-sm);
           font-weight: 500;
           color: var(--ink-2);
           transition: border-color .15s, background .15s, color .15s;
@@ -294,7 +294,7 @@ export default function ToolsProblems() {
         }
 
         .tp-label {
-          font-size: 18px;
+          font-size: var(--text-lg);
           font-weight: 600;
           color: var(--navy);
           letter-spacing: -0.01em;
@@ -306,7 +306,7 @@ export default function ToolsProblems() {
 
         .tp-guidance {
           margin: 0;
-          font-size: 15px;
+          font-size: var(--text-base);
           color: var(--ink-2);
           line-height: 1.6;
         }
@@ -321,7 +321,7 @@ export default function ToolsProblems() {
           border: 1px solid var(--line);
           border-radius: 6px;
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: var(--text-xs);
           font-weight: 600;
           color: var(--cc, var(--turq));
           text-decoration: none;

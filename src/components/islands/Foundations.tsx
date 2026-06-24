@@ -75,12 +75,12 @@ export default function Foundations() {
                 opacity: isActive ? 1 : 0.4,
               }} />
               <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'baseline', marginBottom: 16 }}>
-                <span style={{ fontFamily: 'var(--font-geist-mono)', fontSize: 11, color: isActive ? 'var(--turq)' : 'var(--ink-3)', letterSpacing: '.12em', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                <span style={{ fontFamily: 'var(--font-geist-mono)', fontSize: 'var(--text-2xs)', color: isActive ? 'var(--turq)' : 'var(--ink-3)', letterSpacing: '.12em', fontWeight: 600, whiteSpace: 'nowrap' }}>
                   {isActive ? '◉ live demo ↓' : '○ try demo'}
                 </span>
               </div>
-              <h3 style={{ margin: '0 0 12px', fontSize: 24, fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em', userSelect: 'text' }}>{f.title}</h3>
-              <p style={{ margin: 0, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.6 }}>{f.body}</p>
+              <h3 style={{ margin: '0 0 12px', fontSize: 'var(--text-2xl)', fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em', userSelect: 'text' }}>{f.title}</h3>
+              <p style={{ margin: 0, fontSize: 'var(--text-base)', color: 'var(--ink-2)', lineHeight: 1.6 }}>{f.body}</p>
             </button>
           );
         })}
@@ -89,21 +89,21 @@ export default function Foundations() {
       <div style={{ background: 'var(--pearl)', border: '1px solid var(--line)', borderRadius: 16, padding: 28 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 22, flexWrap: 'wrap', gap: 12 }}>
           <div>
-            <h3 style={{ margin: 0, fontSize: 28, fontWeight: 600, letterSpacing: '-0.015em', color: 'var(--navy)' }}>{node.demoHeading}</h3>
+            <h3 style={{ margin: 0, fontSize: 'var(--text-3xl)', fontWeight: 600, letterSpacing: '-0.015em', color: 'var(--navy)' }}>{node.demoHeading}</h3>
           </div>
-          <div style={{ fontSize: 14, color: 'var(--ink-3)', maxWidth: 380, textAlign: 'right' }}>{node.demoSub}</div>
+          <div style={{ fontSize: 'var(--text-ui)', color: 'var(--ink-3)', maxWidth: 380, textAlign: 'right' }}>{node.demoSub}</div>
         </div>
         <div key={active}>{node.demo}</div>
 
         <div className="foundation-ctas">
-          <div className="retro-label" style={{ fontSize: 14, color: 'var(--ink-3)' }}>
+          <div className="retro-label" style={{ fontSize: 'var(--text-ui)', color: 'var(--ink-3)' }}>
             get started
           </div>
           {node.ctas.map((c) => (
             <a key={c.link} href={`https://${c.link}`} className="foundation-cta">
               <span style={{ color: 'var(--turq)', fontWeight: 600 }}>↗ {c.label}</span>
-              <span style={{ color: 'var(--ink-3)', fontSize: 11 }}>{c.hint}</span>
-              <span className="mono" style={{ color: 'var(--ink-3)', fontSize: 11, marginLeft: 'auto' }}>{c.link}</span>
+              <span style={{ color: 'var(--ink-3)', fontSize: 'var(--text-2xs)' }}>{c.hint}</span>
+              <span className="mono" style={{ color: 'var(--ink-3)', fontSize: 'var(--text-2xs)', marginLeft: 'auto' }}>{c.link}</span>
             </a>
           ))}
         </div>
@@ -136,7 +136,7 @@ export default function Foundations() {
           border-radius: 6px;
           background: var(--paper);
           border: 1px solid var(--line);
-          font-size: 13px;
+          font-size: var(--text-sm);
           text-decoration: none;
           transition: border-color .15s, transform .15s;
           flex: 1 1 auto;
