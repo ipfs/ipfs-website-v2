@@ -172,15 +172,15 @@ export default function Tools() {
           color: #fff;
           border-color: var(--navy-surface);
         }
-        .tools-job-label { font-size: 14px; font-weight: 500; }
+        .tools-job-label { font-size: var(--text-ui); font-weight: 500; }
         .tools-job-hint {
-          font-size: 11px;
+          font-size: var(--text-2xs);
           color: var(--ink-3);
           letter-spacing: .02em;
         }
         .tools-job.is-active .tools-job-hint { color: rgba(255,255,255,0.65); }
         .tools-job-count {
-          font-size: 11px;
+          font-size: var(--text-2xs);
           color: var(--ink-3);
           background: var(--pearl);
           padding: 1px 7px;
@@ -232,7 +232,7 @@ export default function Tools() {
         }
         .tool-name {
           margin: 0;
-          font-size: 20px;
+          font-size: var(--text-xl);
           font-weight: 600;
           color: var(--navy);
           letter-spacing: -0.01em;
@@ -240,7 +240,7 @@ export default function Tools() {
         .tool-badge {
           font-family: var(--font-retro);
           font-style: italic;
-          font-size: 12px;
+          font-size: var(--text-xs);
           color: var(--turq);
           background: var(--pearl);
           padding: 3px 8px;
@@ -249,7 +249,7 @@ export default function Tools() {
         }
         .tool-blurb {
           margin: 0;
-          font-size: 14px;
+          font-size: var(--text-ui);
           color: var(--ink-2);
           line-height: 1.55;
           flex: 1;
@@ -260,11 +260,11 @@ export default function Tools() {
           gap: 14px;
           padding-top: 12px;
           border-top: 1px dashed var(--line);
-          font-size: 12px;
+          font-size: var(--text-xs);
         }
         .tool-pillar { font-weight: 600; }
         .tool-lang { color: var(--ink-3); }
-        .tool-link { margin-left: auto; color: var(--turq); font-size: 14px; }
+        .tool-link { margin-left: auto; color: var(--turq); font-size: var(--text-ui); }
 
         @media (prefers-reduced-motion: reduce) {
           .tool-card { animation: none; }

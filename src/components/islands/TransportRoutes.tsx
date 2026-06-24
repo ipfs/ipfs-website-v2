@@ -21,8 +21,8 @@ export default function TransportRoutes() {
     <div style={{ background: 'var(--paper)', borderRadius: 12, padding: '16px 20px', marginBottom: 18 }}>
 
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 14 }}>
-        <span className="retro-label" style={{ fontSize: 12, color: 'var(--teal)', flexShrink: 0 }}>cid</span>
-        <span className="mono" style={{ fontSize: 12, color: 'var(--ink-2)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
+        <span className="retro-label" style={{ fontSize: 'var(--text-xs)', color: 'var(--teal)', flexShrink: 0 }}>cid</span>
+        <span className="mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--ink-2)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
           {CID}
         </span>
       </div>
@@ -34,15 +34,15 @@ export default function TransportRoutes() {
             borderBottom: '1px solid var(--line)', padding: '10px 0',
             borderLeft: `3px solid ${l.color}`, paddingLeft: 12,
           }}>
-            <span className="mono" style={{ color: l.color, fontWeight: 600, fontSize: 13, width: 14, textAlign: 'center', flexShrink: 0 }}>{l.icon}</span>
-            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--navy)', whiteSpace: 'nowrap' }}>{l.name}</span>
-            <span className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{l.hint}</span>
+            <span className="mono" style={{ color: l.color, fontWeight: 600, fontSize: 'var(--text-sm)', width: 14, textAlign: 'center', flexShrink: 0 }}>{l.icon}</span>
+            <span style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--navy)', whiteSpace: 'nowrap' }}>{l.name}</span>
+            <span className="mono" style={{ fontSize: 'var(--text-2xs)', color: 'var(--ink-3)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{l.hint}</span>
           </div>
         ))}
       </div>
 
       <div className="mono" style={{
-        marginTop: 12, fontSize: 12, color: 'var(--ink-3)',
+        marginTop: 12, fontSize: 'var(--text-xs)', color: 'var(--ink-3)',
         display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
       }}>
         <span style={{ color: 'var(--jade)' }}>✓</span>

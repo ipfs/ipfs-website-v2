@@ -69,7 +69,7 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
       background: pulse ? 'rgba(107,196,206,0.12)' : 'var(--pearl)',
       borderRadius: 10, padding: 14, transition: 'background .4s',
     }}>
-      <div className="mono" style={{ fontSize: 14, lineHeight: 1.5, marginBottom: 12, wordBreak: 'break-all' }}>
+      <div className="mono" style={{ fontSize: 'var(--text-ui)', lineHeight: 1.5, marginBottom: 12, wordBreak: 'break-all' }}>
         {parts.map((p) => {
           const isHovered = hover === p.key;
           const isDim = !!hover && !isHovered;
@@ -111,13 +111,13 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
                 borderLeft: `3px solid ${p.color}`,
               }}>
               <div className="retro-label" style={{
-                fontSize: 13,
+                fontSize: 'var(--text-sm)',
                 color: isHovered ? '#fff' : p.color,
                 marginBottom: 2, whiteSpace: 'nowrap',
                 overflow: 'hidden', textOverflow: 'ellipsis',
               }}>{p.label}</div>
               <div style={{
-                fontSize: 11,
+                fontSize: 'var(--text-2xs)',
                 color: isHovered ? 'rgba(255,255,255,0.85)' : 'var(--ink-3)',
                 whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
               }}>{p.sub}</div>
@@ -125,12 +125,12 @@ function CIDAnatomy({ cid, pulse }: { cid: string; pulse: boolean }) {
           );
         })}
         <div style={{ gridColumn: '1 / -1', marginTop: 8, paddingTop: 10, borderTop: '1px dashed var(--hair)' }}>
-          <div style={{ fontSize: 12, color: 'var(--ink-2)', lineHeight: 1.55, minHeight: 34 }}>
+          <div style={{ fontSize: 'var(--text-xs)', color: 'var(--ink-2)', lineHeight: 1.55, minHeight: 34 }}>
             {hovered ? (
               <span>
                 <span className="retro-label" style={{
                   color: hovered.color,
-                  fontSize: 13, marginRight: 8,
+                  fontSize: 'var(--text-sm)', marginRight: 8,
                 }}>{hovered.label}</span>
                 {hovered.detail}
               </span>
@@ -213,10 +213,10 @@ export default function FileDropCID() {
   return (
     <div style={{ background: 'var(--paper)', borderRadius: 10, padding: 18 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-        <div className="retro-label" style={{ fontSize: 13, color: 'var(--ink-3)' }}>
+        <div className="retro-label" style={{ fontSize: 'var(--text-sm)', color: 'var(--ink-3)' }}>
           {showInput ? '↓ drop a file, edit, or paste a CID' : 'pasted CID'}
         </div>
-        <div className="mono" style={{ fontSize: 11, color: 'var(--ink-3)' }}>
+        <div className="mono" style={{ fontSize: 'var(--text-2xs)', color: 'var(--ink-3)' }}>
           {showInput ? `sha-256 · ${size} bytes` : 'from clipboard'}
         </div>
       </div>
@@ -240,7 +240,7 @@ export default function FileDropCID() {
             className="mono"
             style={{
               width: '100%', border: 'none', borderRadius: 5,
-              fontSize: 13, padding: 10, resize: 'vertical', background: 'transparent',
+              fontSize: 'var(--text-sm)', padding: 10, resize: 'vertical', background: 'transparent',
               color: 'var(--ink)', outline: 'none', boxSizing: 'border-box',
               lineHeight: 1.5,
             }}
@@ -253,7 +253,7 @@ export default function FileDropCID() {
           background: 'var(--pearl)',
         }}>
           <span className="mono" style={{
-            fontSize: 12, color: 'var(--ink-2)', minWidth: 0,
+            fontSize: 'var(--text-xs)', color: 'var(--ink-2)', minWidth: 0,
             overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
           }}>
             inspecting <span style={{ color: 'var(--ink)' }}>{cid}</span>
@@ -263,7 +263,7 @@ export default function FileDropCID() {
             className="retro-label"
             style={{
               border: '1px solid var(--stone)', borderRadius: 5, padding: '4px 10px',
-              background: 'transparent', color: 'var(--ink-2)', cursor: 'pointer', fontSize: 12,
+              background: 'transparent', color: 'var(--ink-2)', cursor: 'pointer', fontSize: 'var(--text-xs)',
             }}
           >
             edit text instead
@@ -273,7 +273,7 @@ export default function FileDropCID() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
         <div style={{ flex: 1, height: 1, background: 'var(--hair)' }} />
-        <div className="mono" style={{ fontSize: 11, color: 'var(--ink-3)' }}>
+        <div className="mono" style={{ fontSize: 'var(--text-2xs)', color: 'var(--ink-3)' }}>
           {computing ? 'computing…' : 'anatomy of a CID'}
         </div>
         <div style={{ flex: 1, height: 1, background: 'var(--hair)' }} />

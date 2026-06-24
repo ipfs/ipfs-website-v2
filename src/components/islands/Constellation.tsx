@@ -126,7 +126,7 @@ export default function Constellation({ height = 480 }: { height?: number }) {
                 boxShadow: isLocked ? `0 0 0 6px ${KINDS[n.kind].color}33` : 'none',
               }} />
               <div className="mono" style={{
-                fontSize: 11, fontWeight: 600, color: 'var(--ink)',
+                fontSize: 'var(--text-2xs)', fontWeight: 600, color: 'var(--ink)',
                 background: 'var(--paper)', padding: '2px 6px', borderRadius: 3,
                 boxShadow: '0 0 0 1px var(--hair)',
               }}>{n.label}</div>
@@ -134,7 +134,7 @@ export default function Constellation({ height = 480 }: { height?: number }) {
           );
         })}
         <div className="mono" style={{
-          position: 'absolute', top: 12, right: 12, fontSize: 10,
+          position: 'absolute', top: 12, right: 12, fontSize: 'var(--text-2xs)',
           color: 'var(--ink-3)', background: 'var(--paper)',
           padding: '8px 12px', borderRadius: 6, border: '1px solid var(--hair)',
           display: 'flex', flexDirection: 'column', gap: 6, minWidth: 150,
@@ -152,23 +152,23 @@ export default function Constellation({ height = 480 }: { height?: number }) {
         border: '1px solid var(--line)', borderRadius: 12, padding: 22,
         background: 'var(--paper)', display: 'flex', flexDirection: 'column',
       }}>
-        <div className="retro-label" style={{ fontSize: 13, color: 'var(--ink-3)', marginBottom: 6 }}>
+        <div className="retro-label" style={{ fontSize: 'var(--text-sm)', color: 'var(--ink-3)', marginBottom: 6 }}>
           {activeNode.role}
         </div>
-        <h3 className="mono" style={{ margin: '0 0 12px', fontSize: 32, fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em' }}>
+        <h3 className="mono" style={{ margin: '0 0 12px', fontSize: 'var(--text-4xl)', fontWeight: 600, color: 'var(--navy)', letterSpacing: '-0.01em' }}>
           {activeNode.label}
         </h3>
-        <p style={{ margin: '0 0 18px', fontSize: 15, color: 'var(--ink-2)' }}>{activeNode.blurb}</p>
+        <p style={{ margin: '0 0 18px', fontSize: 'var(--text-base)', color: 'var(--ink-2)' }}>{activeNode.blurb}</p>
         <div style={{ marginTop: 'auto', display: 'flex', gap: 10, alignItems: 'center', justifyContent: 'space-between' }}>
           {activeNode.link === '—' ? (
-            <span className="mono" style={{ fontSize: 12, color: 'var(--ink-3)' }}>{activeNode.link}</span>
+            <span className="mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--ink-3)' }}>{activeNode.link}</span>
           ) : (
             <a
               className="mono"
               href={`https://${activeNode.link}`}
               target="_blank"
               rel="noopener"
-              style={{ fontSize: 12, color: 'var(--turq)', textDecoration: 'none' }}
+              style={{ fontSize: 'var(--text-xs)', color: 'var(--turq)', textDecoration: 'none' }}
             >
               ↗ {activeNode.link}
             </a>
