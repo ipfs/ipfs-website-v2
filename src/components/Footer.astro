@@ -29,7 +29,7 @@ const columns: [string, { label: string; href: string }[]][] = [
 ---
 
 <footer style="background: var(--navy-surface); color: rgba(255,255,255,0.75); padding: 48px 32px; border-top: 1px solid rgba(255,255,255,0.08);">
-  <div class="mx-auto grid" style="max-width: 1240px; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px;">
+  <div class="mx-auto footer-grid" style="max-width: 1240px;">
     <div>
       <div class="flex items-center" style="gap: 10px; color: #fff; margin-bottom: 14px;">
         <Logomark size={22} variant="mono" color="#fff" />
@@ -56,3 +56,28 @@ const columns: [string, { label: string; href: string }[]][] = [
     <span>© IPFS · MIT License</span>
   </div>
 </footer>
+
+<style>
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  @media (max-width: 760px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid > :first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+</style>
