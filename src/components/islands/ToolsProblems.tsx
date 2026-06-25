@@ -34,7 +34,6 @@ const PROBLEMS: Problem[] = [
       'Use DASL for simple content-addressed values; reach for full IPLD when you need linked data or Merkle structures. Boxo provides Go building blocks for CID handling and IPFS protocols.',
     tools: [
       { name: 'DASL', link: 'https://dasl.ing/', lang: 'http' },
-      { name: 'IPLD', link: 'https://ipld.io/', lang: 'http' },
       { name: 'Helia', link: 'https://helia.io/', lang: 'typescript' },
       { name: 'Boxo', link: 'https://github.com/ipfs/boxo', lang: 'go' },
       {
@@ -44,6 +43,7 @@ const PROBLEMS: Problem[] = [
       },
       { name: 'rust-cid', link: 'https://github.com/multiformats/rust-cid', lang: 'rust' },
       { name: 'go-cid', link: 'https://github.com/ipfs/go-cid', lang: 'go' },
+      { name: 'go-dasl', link: 'https://github.com/hyphacoop/go-dasl', lang: 'go' },
       { name: 'py-cid', link: 'https://github.com/ipld/py-cid', lang: 'python' },
       { name: 'java-cid', link: 'https://github.com/ipld/java-cid', lang: 'java' },
     ],
@@ -138,6 +138,7 @@ const PROBLEMS: Problem[] = [
       { name: 'serde_ipld_dagjson', link: 'https://github.com/ipld/serde_ipld_dagjson', lang: 'rust' },
       { name: 'rust-ipld-core', link: 'https://github.com/ipld/rust-ipld-core', lang: 'rust' },
       { name: 'go-ipld-prime', link: 'https://github.com/ipld/go-ipld-prime', lang: 'go' },
+      { name: 'go-dasl', link: 'https://github.com/hyphacoop/go-dasl', lang: 'go' },
       { name: 'py-ipld-dag', link: 'https://github.com/ipld/py-ipld-dag', lang: 'python' },
       // dag-cbor only; no maintained Java dag-json codec found.
       { name: 'dag-cbor', link: 'https://github.com/Peergos/dag-cbor', lang: 'java' },
