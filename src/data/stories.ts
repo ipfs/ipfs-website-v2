@@ -34,12 +34,14 @@ export const categories: UseCaseCategory[] = [
         title: 'Self-verifying records for open social',
         body: 'AT Protocol identifies every post, repo, and event by CID, so any client can verify what it received without trusting the server that delivered it.',
         linkLabel: 'How atproto uses CIDs', link: 'atproto.com', href: 'https://atproto.com/specs/data-model#link-and-cid-formats',
+        logo: '/brands/atproto.png',
       },
       {
         brand: 'Seed Hypermedia', hue: 165,
         title: 'Peer-to-peer hypermedia documents',
         body: 'Seed builds collaborative documents where every version, comment, and link is addressed by CID, durable across servers, editors, and time.',
         linkLabel: 'Visit Seed', link: 'seed.hyper.media', href: 'https://seed.hyper.media/',
+        logo: '/brands/seed-hypermedia.png',
         quote: {
           who: 'Gabo H Beaumont', role: 'Co-Founder, Seed Hypermedia',
           text: 'It’s crucially important to have a distributed file system in our open hypertext system. IPFS is the missing piece that allows for a truly decentralized and open web.',

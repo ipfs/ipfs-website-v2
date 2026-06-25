@@ -28,7 +28,7 @@ const FOUNDATIONS: Foundation[] = [
     ctas: [
       { label: 'CID inspector', hint: 'Inspect any CID', link: 'cid.ipfs.tech' },
       { label: 'Read the spec', hint: 'CID', link: 'https://github.com/multiformats/cid' },
-      { label: 'Try DASL', hint: 'simple profile', link: 'dasl.ing' },
+      { label: 'Try DASL', hint: 'Minimal subset of the CID spec', link: 'dasl.ing' },
     ],
   },
   {
