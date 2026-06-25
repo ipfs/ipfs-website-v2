@@ -132,17 +132,6 @@ export const categories: UseCaseCategory[] = [
         logo: '/brands/weatherxm.png',
       },
       {
-        brand: 'Actyx', hue: 290,
-        title: 'Mission-critical factory swarms',
-        body: 'Actyx deploys private IPFS swarms to coordinate factory devices with no central infrastructure.',
-        linkLabel: 'View on GitHub', link: 'github.com/Actyx/Actyx', href: 'https://github.com/Actyx/Actyx',
-        quote: {
-          who: 'Roland Kuhn', role: 'Actyx',
-          text: 'Using IPFS private swarms, we deployed a fleet of devices communicating mission-critical data in a factory without any central infrastructure, which has allowed us to move much faster.',
-          photo: '/portraits/roland-kuhn.webp',
-        },
-      },
-      {
         brand: '3S Studios', hue: 340,
         title: 'Fast game asset delivery for superfans',
         body: '3S Studios built an IPFS plugin for Unity that reduced game content from 2 GB to 40 MB, then streamed updates over the swarm.',
