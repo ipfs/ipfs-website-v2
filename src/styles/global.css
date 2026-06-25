@@ -145,10 +145,10 @@ code, pre, kbd, samp, .mono {
   html { zoom: 1.4; }
 }
 
-/* Section labels/eyebrows ("running in production at", etc.) in Geist Mono
-   for a terminal-flavored, technical tone. */
+/* Section labels/eyebrows ("running in production at", etc.) in Geist Pixel Circle
+   for a retro pixel-terminal tone. */
 .retro-label {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-display-mono);
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0;
